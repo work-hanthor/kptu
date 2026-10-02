@@ -1,0 +1,959 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>2026년 공공운수노조 국감·예산 대응 현황판</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 국회 공문 같은 문서형 현황판 — 상단 D-day 띠와 회기 타임라인, 아래 업무 목록(주)과 일정(보조) 2단 */
+:root{
+  --paper:#f3f4f1; --sheet:#fcfcfa; --ink:#1d2a2b; --ink-2:#4c5a5b; --ink-3:#7c8888;
+  --rule:#d8dcd6; --rule-2:#e7e9e4;
+  --seal:#b8322a; --seal-soft:#f6e3e0;          /* 인주 빛 강조색 */
+  --teal:#1f5d5c; --teal-soft:#dde9e6;           /* 국정감사 트랙 */
+  --ochre:#8a6414; --ochre-soft:#f1e8d2;         /* 예산 트랙 */
+  --lex:#45508a; --lex-soft:#e3e5f1; --loc:#b0501a; --loc-soft:#fbe7d8; --ref:#6d3f8e; --ref-soft:#efe4f6; --hl:#fff4c2;
+  --ok:#2e6b3a; --ok-soft:#e0eddf; --warn:#9a5a00; --warn-soft:#f6e9d3; --hold:#6b6f76; --hold-soft:#e8e9ec;
+  --focus:#1f5d5c;
+  --f-display:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#141a1a; --sheet:#1b2222; --ink:#e6ebe8; --ink-2:#b3bdba; --ink-3:#83908d;
+  --rule:#2f3a39; --rule-2:#263030;
+  --seal:#e8675c; --seal-soft:#3a2220;
+  --teal:#6fb8b3; --teal-soft:#1f3534; --ochre:#d9ac55; --ochre-soft:#3a3120;
+  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517;
+  --ok:#7cc48a; --ok-soft:#1f3324; --warn:#e3a650; --warn-soft:#3a2d1a; --hold:#a3a8b0; --hold-soft:#2b2f34;
+  --focus:#6fb8b3; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141a1a; --sheet:#1b2222; --ink:#e6ebe8; --ink-2:#b3bdba; --ink-3:#83908d;
+  --rule:#2f3a39; --rule-2:#263030;
+  --seal:#e8675c; --seal-soft:#3a2220;
+  --teal:#6fb8b3; --teal-soft:#1f3534; --ochre:#d9ac55; --ochre-soft:#3a3120;
+  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517;
+  --ok:#7cc48a; --ok-soft:#1f3324; --warn:#e3a650; --warn-soft:#3a2d1a; --hold:#a3a8b0; --hold-soft:#2b2f34;
+  --focus:#6fb8b3; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 56px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+/* 머리 */
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;border-bottom:2px solid var(--ink);padding-bottom:14px}
+.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--ink-3);font-weight:600}
+h1{font-size:clamp(26px,4vw,36px);margin-top:4px}
+h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;border:2px solid var(--seal);color:var(--seal);border-radius:4px;font-size:.62em;vertical-align:.2em;margin-left:.3em;transform:rotate(-6deg)}
+.head-side{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.fs{display:inline-flex;align-items:center;gap:0;border:1px solid var(--rule);border-radius:4px;background:var(--sheet);overflow:hidden}
+.fs > span{font-size:11.5px;color:var(--ink-3);padding:0 8px 0 10px;white-space:nowrap}
+.fs button{border:0;border-left:1px solid var(--rule);background:transparent;color:var(--ink-2);width:34px;height:28px;cursor:pointer;font-weight:700;display:grid;place-items:center;line-height:1}
+.fs button:hover{color:var(--ink);background:var(--paper)}
+.fs button[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+@media (max-width:560px){.head-side{align-items:flex-start}.today{text-align:left}}
+.today{font-size:13px;color:var(--ink-2);text-align:right}
+.today b{font-family:var(--f-mono);font-weight:500;color:var(--ink)}
+
+/* D-day 띠 */
+.dday{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--rule);background:var(--sheet)}
+.dday > div{padding:10px 14px;border-left:1px solid var(--rule);display:flex;flex-direction:column;gap:2px;min-width:0}
+.dday > div:first-child{border-left:0}
+.dday .lbl{font-size:15px;font-weight:600;color:var(--ink-2)}
+.dday .num{font-family:var(--f-mono);font-size:23px;font-weight:500;line-height:1.2}
+.dday .num.hot{color:var(--seal)}
+.dday .when{font-size:12px;color:var(--ink-3)}
+.dday .basis{font-size:11.5px;color:var(--ink-3)}
+.dday .top-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.dday .set{background:none;border:0;padding:0;font-size:12px;color:var(--ink-3);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.dday .set:hover{color:var(--ink)}
+.dday .num.muted{color:var(--ink-3)}
+.dday input[type=date]{border:1px solid var(--rule);background:var(--sheet);border-radius:4px;padding:3px 6px;font-size:13px;max-width:100%}
+@media (max-width:420px){.dday{grid-template-columns:minmax(0,1fr)}.dday > div{border-left:0}.dday > div + div{border-top:1px solid var(--rule)}}
+
+.drow{display:flex;gap:16px;align-items:stretch;flex-wrap:wrap}
+.drow .dday{flex:1 1 420px;min-width:0}
+.dtools{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:8px;flex:0 0 auto}
+.btn.ghost.doc-btn{display:inline-flex;align-items:center;gap:6px;border-color:var(--ref-soft);color:var(--ref);background:var(--ref-soft);font-weight:700}
+.btn.ghost.doc-btn:hover{border-color:var(--ref);opacity:1}
+@media (max-width:620px){.dtools{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start;width:100%}}
+.modal{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.modal[hidden]{display:none}
+.modal-back{position:absolute;inset:0;background:rgba(10,16,16,.5)}
+.modal-box{position:relative;width:min(760px,100%);max-height:calc((100vh - 32px) / var(--z,1));max-height:calc((100dvh - 32px) / var(--z,1));min-height:0;display:flex;flex-direction:column;background:var(--sheet);color:var(--ink);border:1px solid var(--rule);border-radius:6px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:2px solid var(--ink)}
+.modal-head h2{font-size:19px}
+.modal-head .btn{padding:4px 12px;font-size:13px}
+.modal-body{flex:1 1 auto;min-height:0;padding:18px 20px 22px;overflow:auto;overscroll-behavior:contain;font-size:15px;line-height:1.75;max-width:none}
+.modal-body h3{font-size:16px;margin:18px 0 6px}
+.modal-body p{margin:0 0 10px}
+.modal-box.wide{width:min(1080px,100%)}
+.rf-sum{font-size:13.5px;color:var(--ink-2);margin:0 0 12px}
+.rf-scroll{border:1px solid var(--rule);border-radius:4px;width:max-content;min-width:100%}
+.rf{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px;line-height:1.45}
+.rf th,.rf td{border:1px solid var(--rule);padding:7px 9px;vertical-align:middle;text-align:left}
+.rf thead th{position:sticky;top:-18px;background:var(--ink);color:var(--sheet);font-size:12.5px;font-weight:700;text-align:center;border-color:var(--ink);z-index:1}
+.rf td.c-min{background:var(--paper);font-weight:700;text-align:center;white-space:nowrap}
+.rf td.c-new{font-weight:600;color:var(--ref)}
+.rf td.c-num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.rf td.c-type,.rf td.c-org{text-align:center;white-space:nowrap}
+.rf td.y{background:var(--hl);color:var(--ref);font-weight:600}
+.rf tbody tr{height:34px}
+.split-note{display:block;font-size:11.5px;font-weight:600;color:var(--ref);margin-top:2px}
+.modal-empty{color:var(--ink-3);text-align:center;padding:30px 0}
+/* 타임라인 */
+.tl{background:var(--sheet);border:1px solid var(--rule);padding:16px 18px 12px}
+.tl-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.tl-head h2{font-size:17px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.tl-scroll{overflow-x:auto}
+.tl-body{position:relative;min-width:1100px;padding-left:92px}
+.tl-mhead{position:relative;height:22px}
+.tl-mhead span{position:absolute;top:0;padding-left:6px;font-size:12px;font-weight:600;color:var(--ink-3)}
+.tl-lines{position:absolute;top:0;bottom:0;left:92px;right:0;pointer-events:none}
+.tl-lines i{position:absolute;top:0;bottom:0;border-left:1px solid var(--rule-2)}
+.lane{position:relative;border-top:1px solid var(--rule)}
+.lane-name{position:absolute;left:-92px;top:0;bottom:0;width:84px;display:flex;align-items:center;font-size:12.5px;font-weight:700;line-height:1.3;word-break:keep-all;color:var(--c,var(--ink-2))}
+.it{position:absolute;height:30px}
+.it .mk{height:10px;border-radius:2px;background:var(--c)}
+.it.pt .mk{width:10px;height:10px;border-radius:50%;margin-left:-5px}
+.it.tent .mk{background:repeating-linear-gradient(90deg,var(--c) 0 7px,transparent 7px 11px);box-shadow:inset 0 0 0 1px var(--c)}
+.it .lb{position:absolute;top:13px;left:0;white-space:nowrap;font-size:12px;color:var(--ink-2);background:var(--sheet);padding:0 2px;z-index:1}
+.it.pt .lb{left:-5px}
+.it.end .lb{left:auto;right:0}
+.it.pt.end .lb{right:-5px}
+.it.key .lb{font-weight:700;color:var(--c)}
+.c-n{--c:var(--ink-3)} .c-g{--c:var(--teal)} .c-b{--c:var(--ochre)} .c-l{--c:var(--lex)} .c-law{--c:var(--seal)}
+.tl-now{position:absolute;top:0;bottom:0;width:0;border-left:2px dashed var(--seal)}
+.tl-now span{position:absolute;bottom:4px;left:4px;font-size:11px;color:var(--seal);font-weight:700;white-space:nowrap;background:var(--sheet);padding:0 3px}
+.tl-foot{margin:10px 0 0;font-size:12px;color:var(--ink-3)}
+
+
+/* 오늘·내일 국감 */
+.aud{background:var(--sheet);border:1px solid var(--rule)}
+.aud-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid var(--rule)}
+.aud-head h2{font-size:17px}
+.aud-head .src{font-size:12px;color:var(--ink-3)}
+.aud-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.aud-day{min-width:0;display:flex;flex-direction:column}
+.aud-day + .aud-day{border-left:1px solid var(--rule)}
+@media (max-width:820px){.aud-cols{grid-template-columns:minmax(0,1fr)}.aud-day + .aud-day{border-left:0;border-top:1px solid var(--rule)}}
+.aud-dh{display:flex;align-items:baseline;gap:10px;padding:12px 18px;border-bottom:1px solid var(--rule-2);background:var(--paper)}
+.aud-dh b{font-family:var(--f-display);font-size:16px}
+.aud-dh .dt{font-family:var(--f-mono);font-size:13px;color:var(--ink-2)}
+.aud-dh .cnt{margin-left:auto;font-size:12.5px;color:var(--teal);font-weight:600}
+.aud-list{list-style:none;margin:0;padding:0}
+.aud-list li{display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;padding:10px 18px;border-bottom:1px solid var(--rule-2)}
+.aud-list li:last-child{border-bottom:0}
+.aud-com{font-weight:700;font-size:13.5px;color:var(--teal);line-height:1.35;word-break:keep-all}
+.aud-com span{display:block}
+.aud-ag{font-size:13.5px;color:var(--ink);white-space:pre-line;text-align:left;word-break:keep-all;overflow-wrap:anywhere;min-width:0;line-height:1.7}
+.chip{display:inline;font-size:12px;font-weight:700;padding:1px 7px 1px 5px;border-radius:3px;white-space:normal;margin-right:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.chip svg{display:inline-block;vertical-align:-1px;margin-right:3px}
+.chip.loc{background:var(--loc-soft);color:var(--loc);border:1px solid var(--loc)}
+.chip.loc svg{width:11px;height:11px;flex:none}
+.chip.site{background:var(--ok-soft);color:var(--ok);border:1px solid var(--ok)}
+.chip.site svg{width:11px;height:11px;flex:none}
+.chip.comp{background:var(--warn-soft);color:var(--warn);padding-left:7px}
+.ref{background:var(--ref-soft);color:var(--ref);font-weight:600;padding:0 3px;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.chip.ref{padding-left:7px}
+.priv{color:var(--seal);font-size:12px;font-weight:600;margin-left:3px}
+.aud-out{display:inline-block;margin-top:4px;font-size:11px;font-weight:700;color:var(--loc)}
+.aud-legend{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--ink-3)}
+.aud-list li.aud-colhead{padding-block:6px;background:var(--sheet);border-bottom:1px solid var(--rule)}
+.aud-colhead span{font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
+@media (max-width:480px){.aud-list li.aud-colhead{display:flex;gap:6px}.aud-colhead span + span::before{content:"· ";}}
+.aud-btn{padding:4px 12px;font-size:12.5px;margin-left:4px}
+.aud-btn[aria-expanded="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+.com-panel{border-top:2px solid var(--ink)}
+.com-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:12px 18px;background:var(--paper);border-bottom:1px solid var(--rule)}
+.com-bar label{font-size:13px;font-weight:700;color:var(--ink-2)}
+.com-bar select{border:1px solid var(--rule);background:var(--sheet);border-radius:4px;padding:6px 10px;font-size:14px;max-width:100%}
+.com-sum{font-size:13px;color:var(--teal);font-weight:600}
+.com-bar .btn{margin-left:auto;padding:4px 12px;font-size:12.5px}
+.com-list li{grid-template-columns:112px minmax(0,1fr)}
+.com-list .cd{font-family:var(--f-mono);font-size:13px;line-height:1.5}
+.com-list .cd small{display:block;font-family:var(--f-body);font-size:11.5px;color:var(--ink-3)}
+.com-list li.past{opacity:.5}
+.com-list li.is-today{background:var(--seal-soft)}
+.com-list li.is-today .cd small{color:var(--seal);font-weight:700}
+.team{display:block;border-left:3px solid var(--ink);padding:1px 0 1px 10px;margin-top:8px}
+.team:first-child{margin-top:0}
+.team-b{display:inline-block;background:var(--ink);color:var(--sheet);font-weight:700;font-size:12.5px;line-height:1.5;padding:0 9px;border-radius:3px;margin-right:6px;white-space:nowrap}
+.team-p{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);margin-right:6px;white-space:nowrap}
+.gantt-wrap{padding:14px 18px 12px;border-bottom:1px solid var(--rule)}
+.gantt-title{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.gantt-title b{font-family:var(--f-display);font-size:15px}
+.gantt-title span{font-size:12px;color:var(--ink-3)}
+.gantt-scroll{overflow-x:auto}
+.gantt{display:grid;gap:4px 0;min-width:520px}
+.g-day{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);text-align:center;line-height:1.25;padding-bottom:4px;border-bottom:1px solid var(--rule)}
+.g-day small{display:block;font-family:var(--f-body)}
+.g-day.we{color:var(--seal)}
+.g-day.now{background:var(--seal-soft);color:var(--seal);font-weight:700;border-radius:3px 3px 0 0}
+.g-lab{display:flex;align-items:center;padding-right:8px}
+.g-bar{align-self:center;height:26px;border-radius:4px;background:var(--teal-soft);border:1px solid var(--teal);color:var(--teal);font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;padding:0 8px;white-space:nowrap;overflow:hidden;min-width:0}
+.g-bar .mono{font-weight:500}
+.g-bar em{font-style:normal;color:var(--ink-2);font-weight:500}
+.g-row-bg{grid-column:2/-1;align-self:stretch;border-radius:4px}
+.aud-notice{padding:12px 18px 12px;border-bottom:1px solid var(--rule);background:var(--warn-soft);color:var(--ink);font-size:13px;line-height:1.6}
+.aud-notice b{display:block;font-size:13px;color:var(--warn);margin-bottom:4px}
+.aud-notice ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
+.aud-notice ul li{padding-left:12px;text-indent:-12px}
+.aud-notice ul li::before{content:"- ";}
+.aud-notice ul.dot{margin-top:6px}
+.aud-notice ul.dot li{padding-left:14px;text-indent:-14px}
+.aud-notice ul.dot li::before{content:"● ";font-size:10px;vertical-align:1px;color:var(--warn)}
+.aud-notice strong{color:var(--ink)}
+.aud-empty{padding:22px 18px;color:var(--ink-2);font-size:14px;display:flex;flex-direction:column;gap:4px}
+.aud-empty small{color:var(--ink-3);font-size:12.5px}
+@media (max-width:480px){.aud-list li{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+/* 본문 2단 */
+.cols{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:920px){.cols{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--sheet);border:1px solid var(--rule);min-width:0}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid var(--rule)}
+.panel-head h2{font-size:19px}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--sheet);padding:7px 14px;border-radius:4px;font-size:13.5px;font-weight:600;cursor:pointer}
+.btn:hover{opacity:.88}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn.danger{background:transparent;color:var(--seal);border-color:var(--seal)}
+.btn.danger.armed{background:var(--seal);color:var(--sheet)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+/* 요약 */
+.summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-bottom:1px solid var(--rule)}
+.sum-track{padding:14px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.sum-track + .sum-track{border-left:1px solid var(--rule)}
+@media (max-width:520px){.summary{grid-template-columns:minmax(0,1fr)}.sum-track + .sum-track{border-left:0;border-top:1px solid var(--rule)}}
+.sum-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.sum-top b{font-size:14px}
+.sum-top .pct{font-family:var(--f-mono);font-size:20px}
+.meter{height:6px;background:var(--rule-2);border-radius:3px;overflow:hidden}
+.meter > i{display:block;height:100%}
+.sum-counts{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2)}
+.sum-counts .mono{color:var(--ink)}
+.sum-counts .late{color:var(--seal);font-weight:600}
+
+/* 필터 */
+.filters{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--rule)}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:5px 12px;font-size:13px;cursor:pointer;color:var(--ink-2)}
+.seg button + button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+.filters label{font-size:13px;color:var(--ink-2);display:flex;gap:6px;align-items:center}
+.filters select{border:1px solid var(--rule);background:var(--sheet);border-radius:4px;padding:4px 8px;font-size:13px}
+
+/* 업무 목록 */
+.tasks{list-style:none;margin:0;padding:0}
+.task{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 14px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--rule-2)}
+.task:last-child{border-bottom:0}
+.task.done .t-title{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--rule)}
+.stripe{width:4px;align-self:stretch;border-radius:2px}
+.stripe.g{background:var(--teal)} .stripe.b{background:var(--ochre)}
+.t-main{min-width:0;display:flex;flex-direction:column;gap:3px}
+.t-title{font-weight:600;font-size:15px;background:none;border:0;padding:0;text-align:left;cursor:pointer;overflow-wrap:anywhere}
+.t-title:hover{text-decoration:underline;text-underline-offset:3px}
+.t-meta{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12.5px;color:var(--ink-2)}
+.t-meta .sep{color:var(--rule)}
+.t-note{font-size:12.5px;color:var(--ink-3);overflow-wrap:anywhere}
+.t-side{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.due{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+.due.late{color:var(--seal);font-weight:500}
+.due.soon{color:var(--warn)}
+.st{appearance:none;-webkit-appearance:none;border:1px solid transparent;border-radius:999px;padding:3px 12px;font-size:12.5px;font-weight:600;cursor:pointer;text-align:center}
+.st[disabled]{cursor:default}
+.st.s-준비{background:var(--rule-2);color:var(--ink-2)}
+.st.s-진행{background:var(--warn-soft);color:var(--warn)}
+.st.s-완료{background:var(--ok-soft);color:var(--ok)}
+.st.s-보류{background:var(--hold-soft);color:var(--hold)}
+.pri{font-size:11px;font-weight:700;color:var(--seal);border:1px solid var(--seal);border-radius:3px;padding:0 5px;letter-spacing:.02em}
+@media (max-width:520px){.task{grid-template-columns:auto minmax(0,1fr)}.t-side{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between}}
+
+.empty{padding:34px 22px;text-align:center;color:var(--ink-2);display:flex;flex-direction:column;align-items:center;gap:12px}
+.empty h3{font-size:18px;color:var(--ink)}
+.empty p{margin:0;max-width:46ch;font-size:14px}
+.empty .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+
+/* 입력 폼 */
+.form{padding:16px 18px;border-bottom:1px solid var(--rule);background:var(--paper);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px 12px}
+.form .f{display:flex;flex-direction:column;gap:4px;min-width:0}
+.form label{font-size:12px;color:var(--ink-2);font-weight:600}
+.form input,.form select,.form textarea{border:1px solid var(--rule);background:var(--sheet);border-radius:4px;padding:7px 9px;font-size:14px;width:100%;min-width:0}
+.form textarea{resize:vertical;min-height:60px}
+.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}.c2{grid-column:span 2}
+.form .actions{grid-column:span 6;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.form .actions .grow{margin-right:auto}
+@media (max-width:620px){.c4,.c3,.c2{grid-column:span 6}}
+.form-title{grid-column:span 6;font-family:var(--f-display);font-weight:700;font-size:16px}
+
+/* 일정 */
+.events{list-style:none;margin:0;padding:0}
+.ev{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:10px;padding:10px 18px;border-bottom:1px solid var(--rule-2);align-items:start}
+.ev.past{opacity:.55}
+.ev .d{font-family:var(--f-mono);font-size:13px;line-height:1.35}
+.ev .d small{display:block;color:var(--ink-3);font-size:11.5px}
+.ev .body{min-width:0;display:flex;flex-direction:column;gap:2px}
+.ev .body b{font-weight:600;font-size:14px;overflow-wrap:anywhere}
+.ev .body span{font-size:12.5px;color:var(--ink-2);overflow-wrap:anywhere}
+.tag{font-size:11px;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap}
+.tag.g{background:var(--teal-soft);color:var(--teal)} .tag.b{background:var(--ochre-soft);color:var(--ochre)} .tag.law{background:var(--seal-soft);color:var(--seal)}
+.ev .x{background:none;border:0;color:var(--ink-3);cursor:pointer;font-size:12px;padding:2px 4px}
+.ev .x:hover{color:var(--seal)}
+.ev.today-line{background:var(--seal-soft)}
+.past-toggle{display:block;width:100%;background:none;border:0;border-bottom:1px solid var(--rule-2);padding:9px 18px;text-align:left;font-size:12.5px;color:var(--ink-2);cursor:pointer}
+.past-toggle:hover{color:var(--ink)}
+.side-note{padding:12px 18px;font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule)}
+
+.notice{border:1px solid var(--warn);background:var(--warn-soft);color:var(--warn);padding:10px 14px;font-size:13.5px;border-radius:4px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--sheet);padding:9px 16px;border-radius:4px;font-size:13.5px;z-index:10}
+footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:12px}
+@media (prefers-reduced-motion:no-preference){.task,.ev{transition:background-color .15s}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>2026년 공공운수노조 국감·예산 대응 현황판</h1>
+    </div>
+    <div class="head-side">
+      <div class="today">오늘 <b id="todayLabel">—</b> <b id="clockLabel">—</b><br><span id="syncLabel">최종 변경 —</span></div>
+    </div>
+  </header>
+
+  <div id="notice" class="notice" hidden></div>
+
+  <div class="drow">
+    <section class="dday" aria-label="주요 기한">
+    <div><span class="lbl" id="d1lbl">국정감사 개시</span><span class="num mono" id="d1">—</span></div>
+    <div><span class="lbl">예산안 의결 법정시한</span><span class="num mono" id="d2">—</span></div>
+    </section>
+    <div class="dtools">
+        <div class="fs" role="group" aria-labelledby="fsLabel">
+          <span id="fsLabel">글자 크기</span>
+          <button type="button" data-fs="1" aria-pressed="true" aria-label="글자 크기 보통"><span style="font-size:13px">가</span></button>
+          <button type="button" data-fs="1.15" aria-pressed="false" aria-label="글자 크기 크게"><span style="font-size:15px">가</span></button>
+          <button type="button" data-fs="1.3" aria-pressed="false" aria-label="글자 크기 아주 크게"><span style="font-size:17px">가</span></button>
+        </div>
+        <button class="btn ghost doc-btn" type="button" id="reformBtn" aria-haspopup="dialog" aria-controls="reformModal">공공기관 기능개혁 방안</button>
+    </div>
+  </div>
+
+  <section class="tl" aria-label="회기 타임라인">
+    <div class="tl-head">
+      <h2>2026년 정기 국회 전체 의사일정 흐름</h2>
+      <div class="legend"><span><i style="background:var(--teal)"></i>국정감사</span><span><i style="background:var(--ochre)"></i>예산 심사</span><span><i style="background:var(--lex)"></i>법안심사(본회의)</span><span><i style="background:var(--seal)"></i>법정기한</span></div>
+    </div>
+    <div class="tl-scroll"><div class="tl-body" id="tlBody"></div></div>
+    <p class="tl-foot">2026. 10. 2.(금) 이후 의사일정은 상임위원회별 국정감사 일정으로 인하여 아직 발표되지 않은 상황입니다. 국회 의사일정이 발표(수정, 추가, 변경 등)되는 대로 반영하겠습니다.</p>  </section>
+
+  <section class="aud" aria-labelledby="audH">
+    <div class="aud-head">
+      <h2 id="audH">오늘·내일 국정감사</h2>
+      <div class="aud-legend"><span class="chip loc"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 0.8a3.9 3.9 0 0 0-3.9 3.9C2.1 7.6 6 11.4 6 11.4s3.9-3.8 3.9-6.7A3.9 3.9 0 0 0 6 .8Zm0 5.4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>국회 밖 감사 장소</span><span class="chip site"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 0.8a3.9 3.9 0 0 0-3.9 3.9C2.1 7.6 6 11.4 6 11.4s3.9-3.8 3.9-6.7A3.9 3.9 0 0 0 6 .8Zm0 5.4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>현장시찰·점검</span><span class="chip ref">공공기관 기능개혁 대상</span><button class="btn ghost aud-btn" type="button" id="comBtn" aria-expanded="false" aria-controls="comPanel">위원회별 보기</button></div>
+    </div>
+    <div class="aud-notice" role="note">
+      <b>※ 참고사항</b>
+      <ul>
+        <li>해당하는 일자에 상임위와 피감기관 명칭이 없는 경우 감사 일정이 없으며, 의원(실)은 감사를 준비합니다.</li>
+        <li>상임위가 아닌 겸임위(운영위, 정보위, 성평등위)는 모든 상임위 국감이 종료된 이후에 국감을 진행합니다.</li>
+        <li>위원장-간사 협의를 통하여 감사 일정이 추가로 늘어나거나, 사정에 따라 변경될 수도 있습니다.</li>
+      </ul>
+      <ul class="dot">
+        <li><strong>[법제사법위]</strong> 2026. 10. 2. 공소청 출범 후 실시하는 대검찰청 및 각급 검찰청에 대한 국감은 이에 상응하는 공소청 및 각급 공소청에 대한 국감으로 보기로 결정했습니다.</li>
+        <li><strong>[외교통일위]</strong> 대사관 및 총영사관 감사를 위해 해외 공관으로 약 2주간 출장 진행되며, 3개의 반(미주반, 구주반, 아주반)을 편성하여 흩어지므로 일정 확인 시 주의하셔야 합니다.</li>
+        <li><strong>[성평등가족위]</strong> 아직 국정감사계획서가 채택되지 못했으나, 관례상 겸임위는 상임위의 국감이 모두 끝나고 진행하고 있어 예년과 같을 것으로 예상됩니다.</li>
+      </ul>
+    </div>
+    <div class="aud-cols" id="audCols"></div>
+    <div class="com-panel" id="comPanel" hidden>
+      <div class="com-bar">
+        <label for="comSel">위원회</label>
+        <select id="comSel"></select>
+        <span class="com-sum" id="comSum"></span>
+        <button class="btn ghost" type="button" id="comClose">닫기</button>
+      </div>
+      <div class="gantt-wrap" id="comGantt" hidden></div>
+      <ul class="aud-list com-list" id="comList"></ul>
+    </div>
+  </section>
+
+  <div class="cols">
+    <section class="panel" aria-labelledby="tasksH">
+      <div class="panel-head">
+        <h2 id="tasksH">업무 현황</h2>
+        <button class="btn" id="addTaskBtn" type="button">업무 추가</button>
+      </div>
+      <form class="form" id="taskForm" hidden autocomplete="off">
+        <div class="form-title" id="formTitle">새 업무</div>
+        <div class="f c4"><label for="fTitle">업무명</label><input id="fTitle" required maxlength="120" placeholder="예: 고용노동부 질의요구안 작성"></div>
+        <div class="f c2"><label for="fTrack">구분</label><select id="fTrack"><option>국감</option><option>예산</option></select></div>
+        <div class="f c2"><label for="fKind">유형</label><select id="fKind">
+          <option>의제·자료 분석</option><option>질의요구안</option><option>자료요구</option><option>의원실 협의</option><option>증인·참고인</option><option>증액·감액 요구</option><option>모니터링</option><option>성명·보도</option><option>기타</option></select></div>
+        <div class="f c2"><label for="fCom">상임위·기관</label><input id="fCom" maxlength="60" placeholder="예: 기후에너지환경노동위"></div>
+        <div class="f c2"><label for="fOwner">담당</label><input id="fOwner" maxlength="40" placeholder="예: 정책실 김○○"></div>
+        <div class="f c2"><label for="fDue">마감일</label><input id="fDue" type="date"></div>
+        <div class="f c2"><label for="fStatus">상태</label><select id="fStatus"><option>준비</option><option>진행</option><option>완료</option><option>보류</option></select></div>
+        <div class="f c2"><label for="fPri">중요도</label><select id="fPri"><option>보통</option><option>높음</option></select></div>
+        <div class="f c6"><label for="fNote">메모</label><textarea id="fNote" maxlength="1000" placeholder="협의 결과, 전달한 의원실, 다음 할 일 등"></textarea></div>
+        <div class="actions">
+          <button class="btn danger grow" id="delBtn" type="button" hidden>삭제</button>
+          <button class="btn ghost" id="cancelBtn" type="button">취소</button>
+          <button class="btn" id="saveBtn" type="submit">저장</button>
+        </div>
+      </form>
+
+      <div class="summary" id="summary"></div>
+
+      <div class="filters">
+        <div class="seg" role="group" aria-label="구분">
+          <button type="button" data-track="전체" aria-pressed="true">전체</button>
+          <button type="button" data-track="국감" aria-pressed="false">국감</button>
+          <button type="button" data-track="예산" aria-pressed="false">예산</button>
+        </div>
+        <label for="statusFilter">상태
+          <select id="statusFilter"><option value="미완료">완료 제외</option><option value="전체">전체</option><option>준비</option><option>진행</option><option>완료</option><option>보류</option></select>
+        </label>
+        <label for="ownerFilter">담당
+          <select id="ownerFilter"><option value="">전체</option></select>
+        </label>
+      </div>
+
+      <ul class="tasks" id="taskList"></ul>
+      <div class="empty" id="taskEmpty">
+        <h3>아직 등록된 업무가 없습니다</h3>
+        <p>국감 질의요구안, 의원실 협의, 예산 증액 요구처럼 이번 회기에 할 일을 등록하면 여기서 진행 상황을 함께 볼 수 있습니다.</p>
+        <div class="row">
+          <button class="btn" type="button" id="emptyAdd">첫 업무 등록</button>
+          <button class="btn ghost" type="button" id="loadTpl">기본 업무 목록 불러오기</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="evH">
+      <div class="panel-head">
+        <h2 id="evH">주요 일정</h2>
+        <button class="btn ghost" id="addEvBtn" type="button">일정 추가</button>
+      </div>
+      <form class="form" id="evForm" hidden autocomplete="off">
+        <div class="f c3"><label for="eDate">날짜</label><input id="eDate" type="date" required></div>
+        <div class="f c3"><label for="eTrack">구분</label><select id="eTrack"><option>국감</option><option>예산</option><option>법정기한</option></select></div>
+        <div class="f c6"><label for="eTitle">내용</label><input id="eTitle" required maxlength="120" placeholder="예: 고용노동부 예산 상임위 예비심사"></div>
+        <div class="f c6"><label for="eNote">비고</label><input id="eNote" maxlength="200" placeholder="장소, 상임위, 대상기관 등"></div>
+        <div class="actions"><button class="btn ghost" id="evCancel" type="button">취소</button><button class="btn" type="submit">추가</button></div>
+      </form>
+      <button class="past-toggle" id="pastToggle" type="button" hidden></button>
+      <ul class="events" id="evList"></ul>
+      <div class="empty" id="evEmpty" hidden><p>등록된 일정이 없습니다. ‘일정 추가’로 상임위 감사일과 예산 심사 일정을 넣어 주세요.</p></div>
+      <div class="side-note">상임위별 세부 일정은 국정감사계획서와 국회 의사일정으로 수시로 바뀝니다. 확정되는 대로 이곳에 반영해 주세요.</div>
+    </section>
+  </div>
+
+  <footer>이 페이지는 공공운수노조 연대사업실이 관리 및 업데이트를 진행하고 있습니다.　※ 담당자 : 연대사업부장 서한솔(010-2562-9051, work.hanthor@gmail.com)</footer>
+</div>
+<div class="modal" id="reformModal" hidden>
+  <div class="modal-back" data-close></div>
+  <div class="modal-box wide" role="dialog" aria-modal="true" aria-labelledby="reformTitle">
+    <div class="modal-head">
+      <h2 id="reformTitle">공공기관 기능개혁 방안</h2>
+      <button class="btn ghost" type="button" data-close>닫기</button>
+    </div>
+    <div class="modal-body" id="reformBody">
+      <p class="rf-sum">정부가 발표한 「공공기관 기능개혁 추진방안(2026. 9. 3.)」에 따라 우리 노조 산하조직이 있는 경우를 중심으로 정리해 둔 것입니다.</p>
+      <div class="rf-scroll"><table class="rf"><thead><tr><th>주관 부처</th><th>통합 기관</th><th>통합 대상 기관</th><th>노조 산하 조직<br>(조합원수)</th><th>정원</th><th>기능개혁 유형</th><th>노조 조직<br>상황</th></tr></thead><tbody><tr><td rowspan="13" class="c-min">국토부<br>(7건)</td><td rowspan="2" class="c-new">코레일 자회사1<br>(고객서비스분야)</td><td class="y">코레일관광개발(주)</td><td class="y">철도노조(474)</td><td class="c-num y">1,300</td><td rowspan="2" class="c-type">자회사<br>수평통합</td><td rowspan="2" class="c-org">다수</td></tr><tr><td class="y">코레일네트웍스(주)</td><td class="y">철도노조(773)</td><td class="c-num y">1,685</td></tr><tr><td rowspan="2" class="c-new">코레일 자회사 2<br>(유통·물류 분야)</td><td class="y">코레일로지스(주)</td><td class="y">철도노조(35)</td><td class="c-num y">543</td><td rowspan="2" class="c-type">자회사<br>수평통합</td><td rowspan="2" class="c-org">소수</td></tr><tr><td>코레일유통(주)</td><td></td><td class="c-num">472</td></tr><tr><td class="c-new">코레일 자회사 3<br>(유지관리 분야)</td><td class="y">코레일테크(주)</td><td class="y">철도노조(543)</td><td class="c-num y">5,265</td><td class="c-type">자회사<br>수평통합</td><td class="c-org">소수</td></tr><tr><td rowspan="2" class="c-new">한국철도공사</td><td class="y">한국철도공사</td><td class="y">철도노조(22,719)</td><td class="c-num y">32,975</td><td rowspan="2" class="c-type">통합<br>기존기관</td><td rowspan="2" class="c-org">다수</td></tr><tr><td>주식회사 에스알</td><td></td><td class="c-num">700</td></tr><tr><td rowspan="2" class="c-new">(가)항공보안공단</td><td class="y">한국공항보안(주)</td><td class="y">한국공항지부(758)</td><td class="c-num y">2,575</td><td rowspan="2" class="c-type">복수 원청<br>수평통합</td><td rowspan="2" class="c-org">소수</td></tr><tr><td class="y">인천국제공항보안</td><td class="y">인천공항지부(1,570)</td><td class="c-num y">3,960</td></tr><tr><td rowspan="2" class="c-new">KAC공항서비스</td><td class="y">KAC공항서비스</td><td class="y">한국공항지부(646)</td><td class="c-num y">1,139</td><td rowspan="2" class="c-type">자회사<br>수평통합</td><td rowspan="2" class="c-org">다수</td></tr><tr><td class="y">남부공항서비스(주)</td><td class="y">한국공항지부(631)</td><td class="c-num y">1,405</td></tr><tr><td rowspan="2" class="c-new">(가)인천공항서비스</td><td class="y">인천공항시설관리(주)</td><td class="y">인천공항지부(818)</td><td class="c-num y">4,030</td><td rowspan="2" class="c-type">자회사<br>수평통합</td><td rowspan="2" class="c-org">다수</td></tr><tr><td class="y">인천공항운영서비스(주)</td><td class="y">인천공항지부(1,360)</td><td class="c-num y">2,675</td></tr><tr><td rowspan="8" class="c-min">해수부<br>(2건)</td><td rowspan="3" class="c-new">(가)한국해양문화진흥원</td><td>국립울진해양과학관</td><td></td><td class="c-num">42</td><td rowspan="3" class="c-type">통합<br>신규설립</td><td rowspan="3" class="c-org">소수</td></tr><tr><td>국립인천해양박물관</td><td></td><td class="c-num">109</td></tr><tr><td class="y">국립해양박물관</td><td class="y">공공연구노조(12)</td><td class="c-num y">61</td></tr><tr><td rowspan="5" class="c-new">(가)한국항만보안시설공단</td><td>여수광양항만관리주식회사</td><td></td><td class="c-num">223</td><td rowspan="5" class="c-type">자회사<br>수평통합</td><td rowspan="5" class="c-org">소수</td></tr><tr><td>울산항만관리(주)</td><td></td><td class="c-num">143</td></tr><tr><td>주식회사 부산항보안공사</td><td></td><td class="c-num">506</td></tr><tr><td class="y">주식회사 인천항보안공사</td><td class="y">인천항보안공사지부(65)</td><td class="c-num y">212</td></tr><tr><td>여수엑스포관리주식회사</td><td></td><td class="c-num">31</td></tr><tr><td rowspan="14" class="c-min">문체부<br>(5건)</td><td rowspan="4" class="c-new">(가)한국문화예술산업진흥원</td><td>(재)예술경영지원센터</td><td></td><td class="c-num">76</td><td rowspan="4" class="c-type">통합<br>신규설립</td><td rowspan="4" class="c-org">소수</td></tr><tr><td>국립박물관문화재단</td><td></td><td class="c-num">88</td></tr><tr><td>국립문화공간재단</td><td></td><td class="c-num">45</td></tr><tr><td rowspan="2" class="y split">한국공예디자인문화진흥원</td><td rowspan="2" class="y">한국공예디자인문화진흥원지회(32)</td><td rowspan="2" class="c-num y">65</td></tr><tr><td rowspan="4" class="c-new">(가)한국문화진흥원</td><td rowspan="4" class="c-type">통합<br>신규설립</td><td rowspan="4" class="c-org">소수</td></tr><tr><td>(재)지역문화진흥원</td><td></td><td class="c-num">37</td></tr><tr><td>한국문화예술교육진흥원</td><td></td><td class="c-num">150</td></tr><tr><td>한국문화정보원</td><td></td><td class="c-num">67</td></tr><tr><td rowspan="2" class="c-new">(가)한국저작권원</td><td class="y">한국저작권보호원</td><td class="y">한국저작권보호원지부(63)</td><td class="c-num y">113</td><td rowspan="2" class="c-type">통합<br>신규설립</td><td rowspan="2" class="c-org">소수</td></tr><tr><td>한국저작권위원회</td><td></td><td class="c-num">161</td></tr><tr><td rowspan="2" class="c-new">국민체육진흥공단</td><td class="y">국민체육진흥공단</td><td class="y">국민체육진흥공단비정규지부(7)</td><td class="c-num y">1,433</td><td rowspan="2" class="c-type">자회사<br>수직통합</td><td rowspan="2" class="c-org">소수</td></tr><tr><td class="y">한국체육산업개발(주)</td><td class="y">국민체육진흥공단지부(117)</td><td class="c-num y">1,175</td></tr><tr><td rowspan="2" class="c-new">태권도진흥재단</td><td class="y">태권도진흥재단</td><td class="y">태권도진흥재단지부(47)</td><td class="c-num y">86</td><td rowspan="2" class="c-type">자회사<br>수직통합</td><td rowspan="2" class="c-org">소수</td></tr><tr><td>태권도원운영관리(주)</td><td></td><td class="c-num">116</td></tr><tr><td rowspan="5" class="c-min">기후부<br>(1건)</td><td rowspan="5" class="c-new">(가)한국발전</td><td class="y">한국남동발전(주)</td><td class="y">발전노조(124)</td><td class="c-num y">2,975</td><td rowspan="5" class="c-type">통합<br>신규설립</td><td rowspan="5" class="c-org">소수</td></tr><tr><td class="y">한국남부발전(주)</td><td class="y">발전노조(469)</td><td class="c-num y">2,818</td></tr><tr><td class="y">한국동서발전(주)</td><td class="y">발전노조(135)</td><td class="c-num y">2,722</td></tr><tr><td class="y">한국서부발전(주)</td><td class="y">발전노조(171)</td><td class="c-num y">2,869</td></tr><tr><td class="y">한국중부발전(주)</td><td class="y">발전노조(58)</td><td class="c-num y">3,027</td></tr><tr><td rowspan="5" class="c-min">중기부<br>(2건)</td><td rowspan="2" class="c-new">(가)중소기업마케팅진흥공사</td><td>㈜공영홈쇼핑</td><td></td><td class="c-num">383</td><td rowspan="2" class="c-type">통합<br>신규설립</td><td rowspan="2" class="c-org">소수</td></tr><tr><td class="y">한국중소벤처기업유통원</td><td class="y">한국중소벤처기업유통원지부(186)</td><td class="c-num y">300</td></tr><tr><td rowspan="3" class="c-new">(가)중소벤처관리주식회사</td><td>기보메이트</td><td></td><td class="c-num">80</td><td rowspan="3" class="c-type">복수 원청<br>수평통합</td><td rowspan="3" class="c-org">다수</td></tr><tr><td class="y">중진공파트너스(주)</td><td class="y">중진공파트너스지부(134)</td><td class="c-num y">205</td></tr><tr><td>한유원파트너스(주)</td><td></td><td class="c-num">102</td></tr><tr><td rowspan="2" class="c-min">과기부<br>(1건)</td><td rowspan="2" class="c-new">우체국시설관리단</td><td class="y">(재)우체국시설관리단</td><td class="y">민주우체국본부(839)</td><td class="c-num y">2,264</td><td rowspan="2" class="c-type">통합<br>기존기관</td><td rowspan="2" class="c-org">경합</td></tr><tr><td>별정우체국연금관리단</td><td></td><td class="c-num">12</td></tr><tr><td rowspan="5" class="c-min">금융위<br>(1건)</td><td rowspan="5" class="c-new">(가)정책금융FMC</td><td>㈜캠코에프엠씨</td><td></td><td class="c-num">1,023</td><td rowspan="5" class="c-type">복수 원청<br>수평통합</td><td rowspan="5" class="c-org">소수</td></tr><tr><td>예울FMC(주)</td><td></td><td class="c-num">79</td></tr><tr><td>신보운영관리(주)</td><td></td><td class="c-num">296</td></tr><tr><td class="y">산은비즈(주)</td><td class="y">서울지부(145)</td><td class="c-num y">604</td></tr><tr><td class="y">수은플러스(주)</td><td class="y">서울지부(4)</td><td class="c-num y">158</td></tr><tr><td rowspan="5" class="c-min">산업부<br>(2건)</td><td rowspan="3" class="c-new">(가)에너지자원공사관리</td><td class="y">코가스보안관리</td><td class="y">한국가스공사S&amp;P지부(76)</td><td class="c-num y">431</td><td rowspan="3" class="c-type">자회사<br>수평통합</td><td rowspan="3" class="c-org">경합</td></tr><tr><td class="y">코가스서비스얼라이언스</td><td class="y">한국가스공사S&amp;P지부(491)</td><td class="c-num y">877</td></tr><tr><td>케이엔오씨서비스주식회사</td><td></td><td class="c-num">121</td></tr><tr><td rowspan="2" class="c-new">(가)에너지자원공사</td><td class="y">한국가스공사</td><td class="y">한국가스공사지부(3,652)</td><td class="c-num y">4,486</td><td rowspan="2" class="c-type">통합<br>신규설립</td><td rowspan="2" class="c-org">다수</td></tr><tr><td>한국석유공사</td><td></td><td class="c-num">1,442</td></tr><tr><td rowspan="3" class="c-min">농식품부<br>(1건)</td><td rowspan="3" class="c-new">(가)한국축산진흥공사</td><td class="y">축산물품질평가원</td><td class="y">축산물품질평가원지부(343)</td><td class="c-num y">502</td><td rowspan="3" class="c-type">통합<br>신규설립</td><td rowspan="3" class="c-org">다수</td></tr><tr><td class="y">가축위생방역지원본부</td><td class="y">가축위생방역지원본부지부(716)</td><td class="c-num y">1,286</td></tr><tr><td>(재)축산환경관리원</td><td></td><td class="c-num">57</td></tr><tr><td rowspan="3" class="c-min">유산청<br>(1건)</td><td rowspan="3" class="c-new">국가유산진흥원</td><td class="y">국가유산진흥원</td><td class="y">국가유산진흥원지부(165)</td><td class="c-num y">395</td><td rowspan="3" class="c-type">통합<br>기존기관</td><td rowspan="3" class="c-org">다수</td></tr><tr><td>국가유산정책연구원</td><td></td><td class="c-num">6</td></tr><tr><td>국외소재문화유산재단</td><td></td><td class="c-num">30</td></tr><tr><td rowspan="2" class="c-min">재경부<br>(1건)</td><td rowspan="2" class="c-new">콤스코시큐리티</td><td>콤스코시큐리티</td><td></td><td class="c-num">89</td><td rowspan="2" class="c-type">자회사<br>수평통합</td><td rowspan="2" class="c-org">소수</td></tr><tr><td class="y">콤스코투게더</td><td class="y">콤스코투게더지부(58)</td><td class="c-num y">95</td></tr><tr><td rowspan="3" class="c-min">교육부<br>(1건)</td><td rowspan="3" class="c-new">(가)한국학역사고전연구원</td><td>한국학중앙연구원</td><td></td><td class="c-num">268</td><td rowspan="3" class="c-type">통합<br>신규설립</td><td rowspan="3" class="c-org">소수</td></tr><tr><td class="y">한국고전번역원</td><td class="y">한국고전번역원노조(82)</td><td class="c-num y">143</td></tr><tr><td>동북아역사재단</td><td></td><td class="c-num">118</td></tr><tr><td rowspan="2" class="c-min">행안부<br>(1건)</td><td rowspan="2" class="c-new">민주화운동기념사업회</td><td>국립국가폭력트라우마치유센터</td><td></td><td class="c-num">25</td><td rowspan="2" class="c-type">통합<br>기존기관</td><td rowspan="2" class="c-org">다수</td></tr><tr><td class="y">민주화운동기념사업회</td><td class="y">민주화운동기념사업회지부(57)</td><td class="c-num y">72</td></tr><tr><td rowspan="2" class="c-min">노동부<br>(1건)</td><td rowspan="2" class="c-new">한국잡월드</td><td>한국잡월드</td><td></td><td class="c-num">69</td><td rowspan="2" class="c-type">자회사<br>수직통합</td><td rowspan="2" class="c-org">다수</td></tr><tr><td class="y">한국잡월드파트너즈(주)</td><td class="y">경기지부(194)</td><td class="c-num y">370</td></tr><tr><td rowspan="2" class="c-min">보훈부<br>(1건)</td><td rowspan="2" class="c-new">독립기념관</td><td class="y">독립기념관</td><td class="y">공공연구노조(6)</td><td class="c-num y">143</td><td rowspan="2" class="c-type">자회사<br>수직통합</td><td rowspan="2" class="c-org">소수</td></tr><tr><td>㈜한빛씨에스</td><td></td><td class="c-num">156</td></tr><tr><td rowspan="2" class="c-min">기상청<br>(1건)</td><td rowspan="2" class="c-new">한국수치모델개발원</td><td>차세대수치예보모델개발사업단</td><td></td><td class="c-num">106</td><td rowspan="2" class="c-type">통합<br>신규설립</td><td rowspan="2" class="c-org">소수</td></tr><tr><td class="y">아시아·태평양경제협력체기후센터</td><td class="y">직가입 지회(23)</td><td class="c-num y">63</td></tr></tbody></table></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const STATUS = ["준비","진행","완료","보류"];
+  const WD = ["일","월","화","수","목","금","토"];
+  let db = null, canWrite = true;
+  let tasks = [], events = [];
+  let trackF = "전체", editingId = null, showPast = false, delArmed = false;
+
+
+  // ---- 글자 크기 (보는 사람마다 따로 기억) ----
+  (function(){
+    const wrap=document.querySelector(".wrap"), btns=[...document.querySelectorAll(".fs button")];
+    function apply(v){
+      wrap.style.zoom=v; const mb=document.querySelector(".modal-box"); if(mb){ mb.style.zoom=v; mb.style.setProperty("--z",v); }
+      btns.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.fs===String(v))));
+    }
+    let saved="1"; try{ saved=localStorage.getItem("fontScale")||"1"; }catch(_){}
+    if(!btns.some(b=>b.dataset.fs===saved)) saved="1";
+    apply(saved);
+    btns.forEach(b=>b.addEventListener("click",()=>{ apply(b.dataset.fs); try{ localStorage.setItem("fontScale",b.dataset.fs); }catch(_){} }));
+  })();
+
+  // ---- 공공기관 기능개혁 방안 팝업 ----
+  (function(){
+    const m=document.getElementById("reformModal"), btn=document.getElementById("reformBtn");
+    function open(){ m.hidden=false; document.body.style.overflow="hidden"; m.querySelector(".modal-head .btn").focus(); }
+    function close(){ m.hidden=true; document.body.style.overflow=""; btn.focus(); }
+    btn.addEventListener("click",open);
+    m.querySelectorAll("[data-close]").forEach(x=>x.addEventListener("click",close));
+    document.addEventListener("keydown",e=>{ if(!m.hidden && e.key==="Escape") close(); });
+  })();
+  // ---- 날짜 ----
+  const TEST_DATE=""; // 테스트용 오늘 날짜 (빈 문자열이면 실제 오늘)
+  function todayStr(){ if(TEST_DATE) return TEST_DATE; const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+  function parse(s){ const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); }
+  function diff(s){ return Math.round((parse(s)-parse(todayStr()))/86400000); }
+  function dLabel(s){ const n=diff(s); return n===0?"D-DAY":(n>0?"D-"+n:"D+"+(-n)); }
+  function md(s){ const d=parse(s); return String(d.getMonth()+1).padStart(2,"0")+"."+String(d.getDate()).padStart(2,"0"); }
+  function wd(s){ return WD[parse(s).getDay()]; }
+
+  function el(tag, attrs, ...kids){
+    const e=document.createElement(tag);
+    if(attrs) for(const k in attrs){ if(k==="class") e.className=attrs[k]; else if(k==="text") e.textContent=attrs[k]; else e.setAttribute(k,attrs[k]); }
+    kids.flat().forEach(c=>{ if(c==null) return; e.append(c instanceof Node?c:document.createTextNode(c)); });
+    return e;
+  }
+  function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,2200); }
+  function notice(msg){ const n=$("#notice"); n.textContent=msg; n.hidden=!msg; }
+
+  // ---- 헤더 / D-day ----
+  const t0=todayStr();
+  $("#todayLabel").textContent = t0.replaceAll("-",".")+" ("+wd(t0)+")";
+  const hm = d => String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");
+  function tick(){
+    const n=new Date(), s=todayStr();
+    $("#todayLabel").textContent = s.replaceAll("-",".")+" ("+wd(s)+")"+(TEST_DATE?" [테스트]":"");
+    $("#clockLabel").textContent = hm(n);
+  }
+  tick(); setInterval(tick, 15000);
+
+  // ---- 최종 변경 기록 ----
+  // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
+  const PAGE_UPDATED={at:"2026-10-01T12:35:43Z", action:"현황판 수정"};
+  let lastChange=null;
+  function renderLastChange(){
+    const l=$("#syncLabel");
+    const lc=(lastChange&&lastChange.at&&lastChange.at>PAGE_UPDATED.at)?lastChange:PAGE_UPDATED;
+    const d=new Date(lc.at); if(isNaN(d)){ l.textContent="최종 변경 기록 없음"; return; }
+    const s=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+    l.textContent="최종 변경 "+s.replaceAll("-",".")+" ("+wd(s)+") "+hm(d)+(lc.action?" · "+lc.action:"");
+  }
+  renderLastChange();
+  async function touch(action){
+    if(!db) return;
+    try{ await db.doc("meta/lastChange").set({at:new Date().toISOString(), action}); }catch(_){}
+  }
+  const AUDIT_START="2026-10-06", AUDIT_END="2026-10-30";
+  function renderDday(){
+    const a=$("#d1"), n=diff(AUDIT_START);
+    a.classList.remove("hot","muted");
+    if(n>0){ $("#d1lbl").textContent="국정감사 개시"; a.textContent=dLabel(AUDIT_START); if(n<=7) a.classList.add("hot"); }
+    else if(diff(AUDIT_END)>=0){ $("#d1lbl").textContent="국정감사 진행"; a.textContent=(1-n)+"일차"; a.classList.add("hot"); }
+    else { $("#d1lbl").textContent="국정감사"; a.textContent="종료"; a.classList.add("muted"); }
+    const b=$("#d2"), m=diff("2026-12-02"); b.textContent=dLabel("2026-12-02"); b.classList.toggle("hot",m>=0&&m<=7);
+  }
+  renderDday(); setInterval(renderDday, 60000);
+
+  // ---- 타임라인 ----
+  (function(){
+    const body=$("#tlBody"), start=parse("2026-08-29"), end=parse("2026-12-21"), span=end-start;
+    const pos=s=>((parse("2026-"+s)-start)/span*100);
+    const posEnd=s=>((parse("2026-"+s)-start+86400000)/span*100);
+    const ROW=34;
+    const LANES=[
+      {name:"국정감사", c:"g", rows:[
+        [{a:"10-06",b:"10-30",t:"국정감사(10. 6. ~ 10. 30, 25일간)",key:1}]]},
+      {name:"예산 심사", c:"b", rows:[
+        [{a:"09-03",t:"정부 예산안 국회 제출(9. 3.)"},{a:"11-02",b:"11-30",t:"상임위 예비심사·예결위 심사(예정)",tent:1}]]},
+      {name:"법안심사(본회의)", c:"l", rows:[
+        [{a:"09-02",b:"09-02",t:"위원회 법률안 심사(9. 2.)",nolb:1},{a:"09-04",b:"09-06",t:"위원회 법률안 심사(9. 4.~9. 6.)",nolb:1},
+         {a:"09-12",b:"09-13",t:"위원회 법률안 심사(9. 12.~9. 13.)",nolb:1},{a:"09-15",b:"09-16",t:"위원회 법률안 심사(9. 15.~9. 16.)",nolb:1},
+         {a:"09-18",b:"09-30",t:"위원회 법률안 심사(9월)"},{a:"11-02",b:"12-09",t:"상임위 법안심사·본회의 처리(예정)",tent:1}]]},
+      {name:"본회의", c:"n", rows:[
+        [{a:"09-01",t:"1차",tip:"1차 본회의 9. 1. 개회식 직후"},{a:"09-07",t:"3차",tip:"3차 본회의 9. 7. 10:00 — 교섭단체 대표연설"},{a:"09-10",t:"6차",tip:"6차 본회의 9. 10. 14:00 — 대정부질문"},{a:"09-14",t:"8차",tip:"8차 본회의 9. 14. 14:00 — 대정부질문"},{a:"10-01",t:"10차",tip:"10차 본회의 10. 1. 14:00"}],
+        [{a:"09-03",t:"2차",tip:"2차 본회의 9. 3. 14:00"},{a:"09-08",t:"4차",tip:"4차 본회의 9. 8. 10:00 — 교섭단체 대표연설"},{a:"09-11",t:"7차",tip:"7차 본회의 9. 11. 14:00 — 대정부질문"},{a:"09-17",t:"9차",tip:"9차 본회의 9. 17. 14:00"}],
+        [{a:"09-09",t:"5차",tip:"5차 본회의 9. 9. 14:00 — 대정부질문"}]]},
+      {name:"법정기한", c:"law", rows:[
+        [{a:"11-30",t:"예산 심사기한(11. 30.)",end:1},{a:"12-02",t:"예산안 의결(12. 2.)",key:1}],
+        [{a:"12-09",t:"정기회 종료(12. 9.)"}]]}
+    ];
+    const lines=el("div",{class:"tl-lines"});
+    const head=el("div",{class:"tl-mhead"});
+    ["09-01","10-01","11-01","12-01"].forEach((m,i)=>{
+      head.append(el("span",{style:"left:"+pos(m)+"%"},(9+i)+"월"));
+      lines.append(el("i",{style:"left:"+pos(m)+"%"}));
+    });
+    body.append(head);
+    LANES.forEach(L=>{
+      const lane=el("div",{class:"lane c-"+L.c,style:"height:"+(L.rows.length*ROW+8)+"px"});
+      lane.append(el("div",{class:"lane-name"},L.name));
+      L.rows.forEach((row,ri)=>row.forEach(it=>{
+        const cls=["it","c-"+L.c]; if(!it.b) cls.push("pt"); if(it.tent) cls.push("tent"); if(it.end) cls.push("end"); if(it.key) cls.push("key");
+        const style="top:"+(ri*ROW+8)+"px;left:"+pos(it.a)+"%;"+(it.b?"width:"+(posEnd(it.b)-pos(it.a))+"%":"width:0");
+        lane.append(el("div",{class:cls.join(" "),style,title:it.tip||it.t}, el("div",{class:"mk"}), it.nolb?null:el("span",{class:"lb"},it.t)));
+      }));
+      body.append(lane);
+    });
+    const now=parse(todayStr());
+    if(now>=start&&now<end){ const n=el("div",{class:"tl-now",style:"left:"+((now-start)/span*100)+"%"}); n.append(el("span",{},"오늘("+(now.getMonth()+1)+"/"+now.getDate()+")")); lines.append(n); }
+    body.append(lines);
+  })();
+
+
+  // ---- 오늘·내일 국정감사 ----
+  const AUDIT={"2026-10-05":{"items":[],"note":"공휴일 (개천절)"},"2026-10-06":{"items":[{"c":["법제사법"],"a":[["대법원(법원행정처), 사법연수원, 사법정책연구원, 법원공무원교육원, 법원도서관, 양형위원회, 윤리감사관",""]]},{"c":["정무"],"a":[["국가보훈부, 한국보훈복지의료공단, ",""],["독립기념관","ref"],[", 88관광개발(주), 국민권익위원회",""]]},{"c":["재정경제기획"],"a":[["재정경제부",""]]},{"c":["과학기술정보","방송통신"],"a":[["과학기술정보통신부, 우정사업본부, 국립전파연구원, 중앙전파관리소, 국립중앙과학관, 국립과천과학관, 우체국물류지원단, 우체국금융개발원, 한국우편사업진흥원, ",""],["별정우체국연금관리단","ref"],[", ",""],["우체국시설관리단","ref"]]},{"c":["외교통일"],"a":[["외교부, 한국국제협력단, 한국국제교류재단, 한·아프리카재단, 재외동포청",""]]},{"c":["행정안전"],"a":[["행정안전부, 진실·화해를위한과거사정리위원회, 10·29이태원특별조사위원회, 한국지능정보사회진흥원, 한국승강기안전공단, ",""],["민주화운동기념사업회","ref"],[", 일제강제동원피해자지원재단, 전국재해구호협회, 바르게살기운동중앙협의회, 새마을운동중앙회, 한국자유총연맹",""]]},{"c":["산업통상자원","중소벤처기업"],"a":[["산업통상부",""]]},{"c":["기후환경에너지","환경노동"],"a":[["기후에너지환경부",""]]}]},"2026-10-07":{"items":[{"c":["교육"],"a":[["교육부, 국가교육위원회, 국사편찬위원회, 국립특수교육원, 중앙교육연수원, 교원소청심사위원회, 국립국제교육원, 대한민국학술원사무국",""]]},{"c":["과학기술정보","방송통신"],"a":[["현장시찰","site"],[" 미정",""]]},{"c":["외교통일"],"a":[["통일부 남북회담본부","loc"],[" 통일부, 북한이탈주민지원재단, 남북교류협력지원협회, 민주평화통일자문회의사무처",""]]},{"c":["국방"],"a":[["국방부","loc"],[" 국방부, 국방정보본부, 정보사령부, 국방방첩본부, 국방보안지원단, 국군의무사령부, 국방시설본부, 국방부근무지원단, 계룡대근무지원단, 국군체육부대, 국군복지단, 국군간호사관학교, 국방출판지원단, 국군재정관리단, 국방부조사본부, 국방부군비통제검증단, 국방부군사편찬연구소, 국방대학교, 국방부유해발굴감식단, 국방통합데이터센터, 국방정신전력원, 국방전산정보원, 국방홍보원, 주한미군기지이전사업단, 특수임무수행자보상지원단, 6·25 비정규군보상지원단, 한국국방연구원, 국방전직교육원, 전쟁기념사업회, 군인공제회",""]]},{"c":["행정안전"],"a":[["중앙선거관리위원회, 인사혁신처, 소방청, 서울특별시선거관리위원회, 송파구선거관리위원회, 공무원연금공단, 한국소방산업기술원",""]]},{"c":["문화체육관광"],"a":[["문화체육관광부",""]]},{"c":["농림축산식품","해양수산"],"a":[["농림축산식품부, ",""],["축산물품질평가원","ref"],[", ",""],["가축위생방역지원본부","ref"],[", 농업정책보험금융원, 농림식품기술기획평가원, 농림수산식품교육문화정보원, ",""],["축산환경관리원,","ref"],[" 국립농업박물관",""]]},{"c":["산업통상자원","중소벤처기업"],"a":[["중소벤처기업부",""]]},{"c":["보건복지"],"a":[["보건복지부, 질병관리청",""]]},{"c":["국토교통"],"a":[["국토교통부, 행정중심복합도시건설청, 새만금개발청 및 산하기관 전체",""]]}]},"2026-10-08":{"items":[{"c":["법제사법"],"a":[["법무부, 대한법률구조공단, 정부법무공단, 한국법무보호복지공단",""]]},{"c":["정무"],"a":[["금융위원회, 한국산업은행, 중소기업은행",""]]},{"c":["재정경제기획"],"a":[["기획예산처",""]]},{"c":["과학기술정보","방송통신"],"a":[["현장시찰","site"],[" 미정",""]]},{"c":["국방"],"a":[["국방부","loc"],[" 합동참모본부, 국군수송사령부, 국군화생방방호사령부, 국군심리전단, 사이버작전사령부, 국군지휘통신사령부, 합동군사대학교, 드론작전사령부, 전략사령부, 육군지상작전사령부, 육군제2작전사령부",""]]},{"c":["문화체육관광"],"a":[["국가유산청, 한국전통문화대학교, 국립문화유산연구원, 국립고궁박물관, 국립해양유산연구소, 궁능유적본부, ",""],["국가유산진흥원","ref"],[", ",""],["국외소재문화유산재단","ref"]]},{"c":["보건복지"],"a":[["(오전) 부산대학교병원, 부산대학교 치과병원, 강원대학교병원, 강원대학교 치과병원, 경북대학교병원, 경북대학교 치과병원, 경상국립대학교병원, 전남대학교병원, 전북대학교병원, 제주대학교병원, 충남대학교병원, 충북대학교병원\n(오후) 보건복지부, 질병관리청",""]]},{"c":["기후환경에너지","환경노동"],"a":[["기상청, 수치예보센터, 기상기후인재개발원, 수도권기상청, 부산지방기상청, 광주지방기상청, 강원지방기상청, 대전지방기상청, 대구지방기상청, 제주지방기상청, 국가기상위성센터, 기상레이더센터, 국립기상과학원, 항공기상청, 한국기상산업기술원, ",""],["아시아·태평양경제협력체 기후센터","ref"],[", ",""],["한국수치모델개발원","ref"]]},{"c":["국토교통"],"a":[["한국도로공사, 한국교통안전공단, 한국도로공사서비스(주), 자동차손해배상진흥원",""]]}]},"2026-10-09":{"items":[],"note":"공휴일 (한글날)"},"2026-10-10":{"items":[],"note":"공휴일"},"2026-10-11":{"items":[{"c":["외교통일"],"a":[["[미주반] 10/11(일) ~ 10/22(목) 주미국대사관, 주애틀랜타총영사관, 주시카고총영사관, 주휴스턴총영사관 주유엔대표부, 주뉴욕총영사관, 주보스턴총영사관 주상파울루총영사관, 주파라과이대사관, 주볼리비아대사관, 주브라질대사관 주콜롬비아대사관, 주니카라과대사관, 주쿠바대사관, 주에콰도르대사관 주토론토총영사관, 주몬트리올총영사관, 주캐나다대사관 [구주반] 10/11(일) ~ 10/20(화) 주영국대사관, 주아일랜드대사관 주포르투갈대사관, 주스페인대사관, 주바르셀로나총영사관 주독일대사관, 주프랑크푸르트총영사관, 주벨기에유럽연합대사관겸주북대서양조약기구대표부 주폴란드대사관, 주우크라이나대사관, 주벨라루스대사관, 주러시아대사관 [아주반] 10/11(일) ~ 10/21(수) 주일본대사관 주스리랑카대사관, 주말레이시아대사관, 주인도네시아대사관 주인도대사관 주중국대사관, 주상하이총영사관",""]]}],"note":"공휴일"},"2026-10-12":{"items":[{"c":["법제사법"],"a":[["감사원","loc"],[" 감사원",""]]},{"c":["정무"],"a":[["공정거래위원회, 한국공정거래조정원, 한국소비자원",""]]},{"c":["재정경제기획"],"a":[["한국은행 본점","loc"],[" 한국은행",""]]},{"c":["교육"],"a":[["한국학중앙연구원","ref"],[", 한국교육시설안전원, 국가평생교육진흥원, 한국대학교육협의회, 한국전문대학교육협의회, 한국사학진흥재단, 한국연구재단, 한국장학재단, ",""],["한국고전번역원","ref"],[", ",""],["동북아역사재단","ref"],[", 사립학교직원연금공단, 한국영유아보육·교육진흥원, 한국교육학술정보원",""]]},{"c":["과학기술정보","방송통신"],"a":[["방송미디어통신위원회, 방송미디어통신사무소, 방송미디어통신심의위원회",""]]},{"c":["국방"],"a":[["(오전) ",""],["대전","loc"],[" 병무청, 대체역 심사위원회\n(오후) ",""],["현장점검","site"],[" 국방과학연구소 ",""]]},{"c":["행정안전"],"a":[["경찰청","loc"],[" 경찰청, 한국도로교통공단",""]]},{"c":["문화체육관광"],"a":[["한국콘텐츠진흥원, 국립국어원, 국립국악원, 국립중앙극장, 국립아시아문화전당, 대한민국예술원사무국, ",""],["한국문화정보원","ref"],[", 세종학당재단, 국립아시아문화전당재단, 영화진흥위원회, 영상물등급위원회, 한국영상자료원, 게임물관리위원회, ",""],["한국저작권위원회","ref"],[", ",""],["한국저작권보호원","ref"]]},{"c":["농림축산식품","해양수산"],"a":[["해양수산부 별관","loc"],[" 해양수산부, 해양수산자원공단, 한국해양수산연수원, 한국해양진흥공사, 한국해양과학기술원, 한국해양교통안전공단, 국립해양생물자원관, ",""],["국립해양박물관","ref"],[", ",""],["국립울진해양과학관","ref"]]},{"c":["산업통상자원","중소벤처기업"],"a":[["대한무역투자진흥공사, 한국무역보험공사, 한국산업단지공단, 한국산업기술진흥원, 한국산업기술기획평가원, 한국세라믹기술원, 무역안보관리원, 한국로봇산업진흥원, 한국산업기술시험원, 한국디자인진흥원, 한국탄소산업진흥원, 한국제품안전관리원, 한국전력공사, 한국수력원자력",""]]},{"c":["국토교통"],"a":[["한국토지주택공사, 국토안전관리원, 국토교통과학기술진흥원, 대한건설기계안전관리원, 주택관리공단(주), 건설기술교육원",""]]}]},"2026-10-13":{"items":[{"c":["법제사법"],"a":[["(오전) 헌법재판소(사무처), 헌법재판연구원\n(오후) 고위공직자범죄수사처",""]]},{"c":["정무"],"a":[["국무조정실, 국무총리비서, 경제·인문사회연구회 및 소관 출연연구기관(과학기술정책연구원, 국토연구원, 대외경제정책연구원, 산업연구원, 에너지경제연구원, 정보통신정책연구원, 통일연구원, 한국개발연구원, 한국교육개발원, 한국교육과정평가원, 한국교통연구원, 한국노동연구원, 한국농촌경제연구원, 한국법제연구원, 한국보건사회연구원, 한국여성정책연구원, 한국조세재정연구원, 한국직업능력연구원, 한국청소년정책연구원, 한국해양수산개발원, 한국행정연구원, 한국형사·법무정책연구원, 한국환경연구원, 건축공간연구원), 개인정보보호위원회",""]]},{"c":["재정경제기획"],"a":[["정부세종2청사","loc"],[" 국세청 및 서울·중부·인천지방국세청",""]]},{"c":["과학기술정보","방송통신"],"a":[["원자력안전위원회, 우주항공청, 한국원자력안전기술원, 한국원자력통제기술원, 한국원자력안전재단, 한국수력원자력(주), 국가위성운영센터, 우주환경센터",""]]},{"c":["국방"],"a":[["방위사업청, 국방과학연구소, 국방기술품질원(국방기술진흥연구소 포함)",""]]},{"c":["행정안전"],"a":[["(오전) ",""],["경기도청","loc"],[" 경기도청\n(경기도청 감사 종료 후) ",""],["경기남부경찰청","loc"],[" 경기남부경찰청, 경기북부경찰청",""]]},{"c":["농림축산식품","해양수산"],"a":[["김해","loc"],[" ",""],["현장시찰","site"],[" 부경양돈농협유통센터",""]]},{"c":["산업통상자원","중소벤처기업"],"a":[["(오전) ",""],["대전","loc"],[" 부경양돈농협유통센터지식재산처, 한국발명진흥회, 한국지식재산연구원, 한국지식재산보호원, 한국특허전략개발원, 한국특허정보원, 한국특허기술진흥원\n(오후) ",""],["대전","loc"],[" ",""],["현장시찰","site"],[" 지식재산처",""]]},{"c":["보건복지"],"a":[["식품의약품안전처 *소속기관 및 소관기관 배석(지방청 포함) : 식품의약품안전평가원, 한국식품안전관리인증원, 한국의약품안전관리원, 식품안전정보원, 한국의료기기안전정보원, 한국마약퇴치운동본부, 한국희귀·필수의약품센터",""]]},{"c":["기후환경에너지","환경노동"],"a":[["고용노동부",""]]},{"c":["국토교통"],"a":[["한국철도공사","ref"],[", ",""],["국가철도공단","ref"],[", ",""],["코레일네트웍스(주)","ref"],[", ",""],["코레일유통(주)","ref"],[", ",""],["코레일테크(주)","ref"]]}]},"2026-10-14":{"items":[{"c":["교육"],"a":[["서울교육청, 경기교육청, 인천교육청",""]]},{"c":["문화체육관광"],"a":[["사행산업통합감독위원회, 한국예술종합학교, 한국정책방송원, 한국문화관광연구원, 한국출판문화산업진흥원, 한국언론진흥재단, 국제방송교류재단, 한국관광공사, 그랜드코리아레저㈜, 한국도박문제예방치유원, 언론중재위원회",""]]},{"c":["농림축산식품","해양수산"],"a":[["농촌진흥청, 한국농어촌공사, 한국농수산식품유통공사, 국제식물검역인증원, 한식진흥원, 한국식품산업클러스터진흥원, 한국농업기술진흥원",""]]},{"c":["보건복지"],"a":[["국민연금공단",""]]}]},"2026-10-15":{"items":[{"c":["법제사법"],"a":[["(오전) 법제처\n(오후) ",""],["국방부","loc"],[" 군사법원",""]]},{"c":["정무"],"a":[["부산국제금융센터","loc"],[" 한국자산관리공사, 한국주택금융공사, 신용보증기금 ",""]]},{"c":["재정경제기획"],"a":[["정부대전청사","loc"],[" 국가데이터처, 관세청, 조달청",""]]},{"c":["과학기술정보","방송통신"],"a":[["정보통신산업진흥원, 정보통신산업진흥원 소프트웨어정책연구소, 한국인터넷진흥원, 한국방송통신전파진흥원, 한국지능정보사회진흥원, 한국데이터산업진흥원",""]]},{"c":["국방"],"a":[["(오전) ",""],["광주","loc"],[" ",""],["현장점검","site"],[" 공군 제1전투비행단(광주공항)\n(오후) ",""],["장성","loc"],[" ",""],["현장점검","site"],[" 상무대",""]]},{"c":["행정안전"],"a":[["(오전) ",""],["서울시청","loc"],[" 서울시청\n(서울시청 감사 종료 후) ",""],["서울경찰청","loc"],[" 서울경찰청",""]]},{"c":["문화체육관광"],"a":[["현장시찰","site"],[" 부산 지역(기관 및 장소 미정)",""]]},{"c":["산업통상자원","중소벤처기업"],"a":[["중소벤처기업진흥공단, 기술보증기금, 소상공인시장진흥공단, 중소기업기술정보진흥원, 신용보증재단중앙회, 창업진흥원, 한국벤처투자, ",""],["한국중소벤처기업유통원","ref"],[", ",""],["공영홈쇼핑","ref"],[", 중소벤처기업연구원, 장애인기업종합지원센터",""]]},{"c":["기후환경에너지","환경노동"],"a":[["중앙환경분쟁조정피해구제위원회, 국립환경과학원, 국립생물자원관, 국립환경인재개발원, 화학물질안전원, 국가미세먼지정보센터, 국립야생동물질병관리원, 한강유역환경청, 낙동강유역환경청, 금강유역환경청, 영산강유역환경청, 수도권대기환경청, 원주지방환경청, 대구지방환경청, 전북지방환경청, 한강홍수통제소, 낙동강홍수통제소, 금강홍수통제소, 영산강홍수통제소, 한국수자원공사, 한국환경공단, 국립공원공단, 수도권매립지관리공사, 한국환경산업기술원, 국립생태원, 국립낙동강생물자원관, 한국상하수도협회, 한국환경보전원, 한국수자원조사기술원, 국립호남권생물자원관, 한국물기술인증원",""]]},{"c":["국토교통"],"a":[["한국부동산원, 주택도시보증공사, 제주국제자유도시개발센터, 한국국토정보공사, 한국해외인프라도시개발지원공사, 새만금개발공사, 공간정보품질관리원, 공간정보산업진흥원",""]]}]},"2026-10-16":{"items":[{"c":["법제사법"],"a":[["서울고등법원, 수원고등법원, 서울중앙지방법원, 서울가정법원, 서울행정법원, 서울회생법원, 서울동부지방법원, 서울남부지방법원, 서울북부지방법원, 서울서부지방법원, 의정부지방법원, 인천지방법원, 인천가정법원, 춘천지방법원, 수원지방법원, 수원가정법원, 수원회생법원",""]]},{"c":["정무"],"a":[["거제","loc"],[" ",""],["현장시찰","site"],[" 장소 미정",""]]},{"c":["재정경제기획"],"a":[["[1반] ",""],["한국은행 전북본부","loc"],[" 대전지방국세청, 광주지방국세청, 광주본부세관, 호남지방데이터청, 충청지방데이터청, 한국은행(대전세종충남·충북·광주전남·전북·목포본부) ",""],["현장시찰","site"],[" 조달비축기지(군산) [2반] ",""],["한국은행 대구경북본부","loc"],[" 부산지방국세청, 대구지방국세청, 부산본부세관, 대구본부세관, 동북지방데이터청, 동남지방데이터청, 한국은행(부산·경남·울산·대구경북·포항본부) ",""],["현장시찰","site"],[" 화폐본부(경산)",""]]},{"c":["교육"],"a":[["서울대학교, 서울대병원, 서울대치과병원, 인천대학교, 한국방송통신대학교, 한국교원대학교, 서울과학기술대학교, 서울교육대학교, 한국체육대학교, 한경국립대학교, 경인교육대학교 ",""]]},{"c":["과학기술정보","방송통신"],"a":[["(오전) ",""],["상암 MBC","loc"],[" ㈜문화방송 업무현황보고 ",""],["※ 비공개","priv"],["\n(오후) 한국방송공사, 한국교육방송공사, 방송문화진흥회, 시청자미디어재단, 한국방송광고진흥공사",""]]},{"c":["국방"],"a":[["(오전) ",""],["광주","loc"],[" ",""],["현장점검","site"],[" 기아\n(오후) ",""],["무안, 목포","loc"],[" ",""],["현장점검","site"],[" 육군 제31보병사단(해안소초), 해군 제3함대사령부",""]]},{"c":["문화체육관광"],"a":[["현장시찰","site"],[" 부산 지역(기관 및 장소 미정)",""]]},{"c":["농림축산식품","해양수산"],"a":[["농업협동조합중앙회, 농협경제지주, 농협금융지주(농협은행, 농협생명보험, 농협손해보험 포함), 한국마사회",""]]},{"c":["보건복지"],"a":[["원주","loc"],[" 국민건강보험공단, 건강보험심사평가원",""]]},{"c":["기후환경에너지","환경노동"],"a":[["경제사회노동위원회, 중앙노동위원회(12개 지방노동위원회 포함), 최저임금위원회, 산업재해보상보험재심사위원회, 고용보험심사위원회, 고용노동부고객상담센터, 서울지방고용노동청, 경기지방고용노동청, 중부지방고용노동청, 부산지방고용노동청, 대구지방고용노동청, 광주지방고용노동청, 대전지방고용노동청",""]]}]},"2026-10-17":{"items":[],"note":"공휴일"},"2026-10-18":{"items":[],"note":"공휴일"},"2026-10-19":{"items":[{"c":["법제사법"],"a":[["서울고등검찰청, 수원고등검찰청, 서울중앙지방검찰청, 서울동부지방검찰청, 서울남부지방검찰청, 서울북부지방검찰청, 서울서부지방검찰청, 의정부지방검찰청, 인천지방검찰청, 춘천지방검찰청, 수원지방검찰청",""]]},{"c":["정무"],"a":[["금융감독원, 예금보험공사, 서민금융진흥원",""]]},{"c":["국방"],"a":[["계룡대","loc"],[" 육군본부, 육군지상작전사령부, 육군제2작전사령부, 육군교육사령부, 육군3사관학교, 육군군수사령부, 육군항공사령부, 육군특수전사령부, 육군인사사령부, 육군수도방위사령부, 육군동원전력사령부, 육군미사일전략사령부, 육군학생군사학교",""]]},{"c":["문화체육관광"],"a":[["(10:00) 국립중앙박물관, 국립전통예술중학교, 국립전통예술고등학교, 국립중앙도서관, 국립민속박물관, 대한민국역사박물관, 국립한글박물관, 국립장애인도서관, 국립현대미술관, ",""],["한국문화예술교육진흥원","ref"],[", 한국문화예술위원회, ",""],["(재)예술경영지원센터","ref"],[", 한국문학번역원, 예술의전당, 국악방송, 한국예술인복지재단, ",""],["국립박물관문화재단","ref"],[", 국립극단, 국립발레단, 국립오페라단, 국립합창단, 국립현대무용단, 서울예술단, (재)국립심포니오케스트라, (재)한국장애인문화예술원, 한국문화원연합회\n(17:00) ",""],["연합뉴스 사옥","loc"],[" 연합뉴스 업무현황보고 ",""],["※ 비공개","priv"]]},{"c":["농림축산식품","해양수산"],"a":[["해양경찰청, 해양환경공단, 수산업협동조합중앙회(수협은행 포함), 부산항만공사, 인천항만공사, 여수광양항만공사, 울산항만공사, 해양수산과학기술진흥원, 한국어촌어항공단, ",""],["국립인천해양박물관","ref"],[", 한국항로표지기술원, 한국해양조사협회",""]]},{"c":["산업통상자원","중소벤처기업"],"a":[["한국석유공사","ref"],[", ",""],["한국가스공사","ref"],[", 강원랜드, 대한석탄공사, 한국가스기술공사, 한국가스안전공사, 한국석유관리원, 한국광해광업공단",""]]},{"c":["기후환경에너지","환경노동"],"a":[["온실가스종합정보센터, 전기위원회, 고준위방사성폐기물관리위원회, 한국전력공사, ",""],["한국남동발전","ref"],[", ",""],["한국중부발전","ref"],[", ",""],["한국서부발전","ref"],[", ",""],["한국남부발전","ref"],[", ",""],["한국동서발전","ref"],[", 한전KPS, 한전KDN, 한국전력거래소, 한전MCS(주), 한국수력원자력, 한국원자력환경공단, 한전원자력연료(주), 한국전력국제원자력대학원대학교, 한국전력기술, 한국에너지공단, 한국지역난방공사, 한국전기안전공사, 한국에너지기술평가원, 한국에너지재단, 한국에너지정보문화재단",""]]},{"c":["국토교통"],"a":[["[1반] ",""],["서울시청","loc"],[" 서울특별시 [2반] ",""],["경기도청","loc"],[" 경기도청",""]]}]},"2026-10-20":{"items":[{"c":["법제사법"],"a":[["[1반] (오전) ",""],["광주고법","loc"],[" 대전고등법원, 광주고등법원, 특허법원, 대전지방법원, 대전가정법원, 대전회생법원, 청주지방법원, 광주지방법원, 광주가정법원, 광주회생법원, 전주지방법원, 제주지방법원\n (오후) ",""],["광주고검","loc"],[" 대전고등검찰청, 광주고등검찰청, 대전지방검찰청, 청주지방검찰청, 광주지방검찰청, 전주지방검찰청, 제주지방검찰청 [2반] (오전) ",""],["대구고법","loc"],[" 대구고등법원, 부산고등법원, 대구지방법원, 대구가정법원, 대구회생법원, 부산지방법원, 부산가정법원, 부산회생법원, 울산지방법원, 울산가정법원, 창원지방법원\n (오후) ",""],["대구고검","loc"],[" 대구고등검찰청, 부산고등검찰청, 대구지방검찰청, 부산지방검찰청, 울산지방검찰청, 창원지방검찰청",""]]},{"c":["재정경제기획"],"a":[["한국수출입은행, 한국조폐공사, 한국투자공사, 한국재정정보원, 한국원산지정보원, 한국통계정보원, 한국통계진흥원, 한국관세정보원, 한미전략투자공사",""]]},{"c":["교육"],"a":[["[1반] ",""],["부산교육청","loc"],[" 부산교육청, 울산교육청, 경남교육청, 대구교육청, 경북교육청, 강원교육청 [2반] ",""],["전남광주통합특별시청 전남청사(무안)","loc"],[" 전남광주통합특별시교육청, 전북교육청, 제주교육청, 충남교육청, 충북교육청, 대전교육청, 세종교육청",""]]},{"c":["과학기술정보","방송통신"],"a":[["대전","loc"],[" 국가과학기술연구회, 한국과학기술연구원 및 연구원 부설 국가녹색기술연구소, 한국기초과학지원연구원, 한국핵융합에너지연구원, 한국생명공학연구원, 한국한의학연구원, 한국과학기술정보연구원, 한국표준과학연구원, 한국원자력연구원, 한국생산기술연구원, 한국전자통신연구원 및 연구원 부설 국가보안기술연구소, 한국건설기술연구원, 한국철도기술연구원, 한국식품연구원 및 연구원 부설 세계김치연구소, 한국지질자원연구원, 한국기계연구원, 한국재료연구원, 한국에너지기술연구원, 한국연구재단 및 재단 부설 정보통신기획평가원, 한국과학창의재단, 한국과학기술원 및 부설 고등과학원/나노종합기술원/한국과학영재학교, 광주과학기술원, 울산과학기술원, 대구경북과학기술원 및 기술원 부설, 한국뇌연구원, 기초과학연구원 및 연구원 부설 국가수리과학연구소, 연구개발특구진흥재단, 한국과학기술기획평가원 및 평가원 부설 국가과학기술인력개발원, 한국원자력의학원(동남권원자력의학원(분원기관) 포함), 국립대구과학관, 국립광주과학관, 국립부산과학관, 국립강원전문과학관, 한국나노기술원, 과학기술사업화진흥원, 한국여성과학기술인육성재단, 과학기술연합대학원대학교, 과학기술인공제회, 한국과학기술단체총연합회, 한국과학기술한림원, 한국천문연구원, 한국항공우주연구원, 한국전기연구원, 한국화학연구원 및 연구원 부설 국가독성과학연구소",""]]},{"c":["국방"],"a":[["(오전) ",""],["계룡대","loc"],[" 해군본부, 해군작전사령부, 해군군수사령부, 해군교육사령부, 해병대사령부, 서북도서방위사령부\n(오후) ",""],["계룡대","loc"],[" 공군본부, 공군작전사령부, 공군군수사령부, 공군교육사령부",""]]},{"c":["행정안전"],"a":[["[1반] ",""],["충청북도청","loc"],[" 충청북도\n (도청 감사 종료 후) ",""],["충북경찰청","loc"],[" 충북경찰청 [2반] ",""],["경상북도청","loc"],[" 경상북도\n (도청 감사 종료 후) ",""],["경북경찰청","loc"],[" 경북경찰청",""]]},{"c":["농림축산식품","해양수산"],"a":[["산림청, 한국산림복지진흥원, 한국수목원정원관리원, 한국임업진흥원, 한국등산트레킹지원센터, 한국산림재난안전기술공단, 산림조합중앙회",""]]},{"c":["산업통상자원","중소벤처기업"],"a":[["구미","loc"],[" ",""],["현장시찰","site"],[" 장소 미정",""]]},{"c":["보건복지"],"a":[["한국보건산업진흥원, 한국건강증진개발원, 국립암센터, 대한적십자사, 한국보건의료인국가시험원, 한국국제보건의료재단, 국립중앙의료원, 한국보건의료연구원, 한국의료분쟁조정중재원, 한국장기조직기증원, 한국한의약진흥원, 의료기관평가인증원, 한국공공조직은행, 한국보건의료정보원, 한국생명존중희망재단, 대한결핵협회, 전국지방의료원연합회",""]]},{"c":["기후환경에너지","환경노동"],"a":[["제주","loc"],[" ",""],["현장시찰","site"],[" 한림해상풍력 등 방문(세부장소 미정)",""]]},{"c":["국토교통"],"a":[["현장시찰","site"],[" 현대자동차 남양연구소, 한국교통안전공단 자동차안전연구원 (조정 가능)",""]]}]},"2026-10-21":{"items":[{"c":["정무"],"a":[["종합감사","comp"],[" 비금융기관(국가보훈부, 국무조정실, 국무총리비서실, 공정거래위원회, 국민권익위원회, 개인정보보호위원회 등) 전체",""]]},{"c":["교육"],"a":[["[1반] ",""],["부산대학교","loc"],[" 부산대학교, 경상국립대학교, 경북대학교, 강원대학교, 부경대학교, 한국해양대학교, 부산교육대학교, 창원대학교, 진주교육대학교 [2반] ",""],["전남대학교","loc"],[" 전남대학교, 충북대학교, 충남대학교, 전북대학교, 제주대학교, 공주대학교, 한국교통대학교, 한밭대학교, 공주교육대학교, 청주교육대학교",""]]},{"c":["행정안전"],"a":[["[1반] ",""],["울산시청","loc"],[" 울산광역시\n (시청 감사 종료 후) ",""],["울산경찰청","loc"],[" 울산경찰청 [2반] ",""],["부산시청","loc"],[" 부산광역시\n (시청 감사 종료 후) ",""],["부산경찰청","loc"],[" 부산경찰청",""]]},{"c":["문화체육관광"],"a":[["대한체육회, ",""],["서울올림픽기념국민체육진흥공단","ref"],[", ",""],["한국체육산업개발㈜","ref"],[", 한국스포츠레저㈜, 스포츠윤리센터, 대한장애인체육회, ",""],["태권도진흥재단","ref"]]},{"c":["기후환경에너지","환경노동"],"a":[["제주","loc"],[" ",""],["현장시찰","site"],[" 한림해상풍력 등 방문(세부장소 미정)",""]]}]},"2026-10-22":{"items":[{"c":["법제사법"],"a":[["대검찰청",""]]},{"c":["정무"],"a":[["종합감사","comp"],[" 금융기관(금융위원회, 금융감독원 등) 전체",""]]},{"c":["재정경제기획"],"a":[["종합감사","comp"],[" 재정경제부, 국가데이터처, 국세청, 관세청, 조달청",""]]},{"c":["과학기술정보","방송통신"],"a":[["종합감사","comp"],[" 방송미디어통신위원회 및 소관 기관 전체, 방송미디어통신심의위원회",""]]},{"c":["국방"],"a":[["(오전) ",""],["육군사관학교","loc"],[" 사관학교(육군, 해군, 공군)\n(오후) ",""],["연천","loc"],[" ",""],["현장점검","site"],[" 육군 제5보병사단(GOP과학화경계 시범사단)",""]]},{"c":["행정안전"],"a":[["[1반] ",""],["전남광주통합특별시청 광주청사","loc"],[" 전남광주통합특별시\n (시청 감사 종료 후) 광주경찰청, 전남경찰청 [2반] ",""],["제주도청","loc"],[" 제주특별자치도\n (도청 감사 종료 후) ",""],["제주경찰청","loc"],[" 제주경찰청",""]]},{"c":["농림축산식품","해양수산"],"a":[["종합감사","comp"],[" 농림축산식품부 및 소관 기관",""]]},{"c":["산업통상자원","중소벤처기업"],"a":[["종합감사","comp"],[" 산업통상부 및 소관 기관",""]]},{"c":["보건복지"],"a":[["한국노인인력개발원, 한국사회보장정보원, 한국보건복지인재원, 한국장애인개발원, 한국사회복지협의회, 국가아동권리보장원, 한국자활복지개발원, 중앙사회서비스원, 인구보건복지협회",""]]},{"c":["국토교통"],"a":[["인천국제공항","loc"],[" ",""],["인천국제공항공사","ref"],[", ",""],["한국공항공사","ref"],[", 항공안전기술원, 국립항공박물관, 가덕도신공항건설공단 ",""]]}]},"2026-10-23":{"items":[{"c":["재정경제기획"],"a":[["종합감사","comp"],[" 기획예산처, 한국은행, 한국수출입은행, 한국조폐공사, 한국투자공사, 한국재정정보원, 한국원산지정보원, 한국통계정보원, 한국통계진흥원, 한국관세정보원, 한미전략투자공사",""]]},{"c":["교육"],"a":[["종합감사","comp"],[" 교육부, 국가교육위원회 등 전체 기관",""]]},{"c":["과학기술정보","방송통신"],"a":[["종합감사","comp"],[" 과학기술정보통신부, 원자력안전위원회, 우주항공청 및 소관 기관 전체 ",""]]},{"c":["문화체육관광"],"a":[["종합감사","comp"],[" 문화체육관광부 및 국가유산청, 그 소속기관, 공공기관 및 유관기관",""]]},{"c":["농림축산식품","해양수산"],"a":[["종합감사","comp"],[" 해양수산부 및 소관 기관",""]]},{"c":["산업통상자원","중소벤처기업"],"a":[["종합감사","comp"],[" 중소벤처기업부, 지식재산처 및 소관 기관",""]]},{"c":["기후환경에너지","환경노동"],"a":[["근로복지공단, 한국산업안전보건공단, 한국산업인력공단, 한국장애인고용공단, 한국고용정보원, 학교법인 한국폴리텍, 한국기술교육대학교, 노사발전재단, 건설근로자공제회, 한국사회적기업진흥원, ",""],["한국잡월드","ref"],[", 한국고용노동교육원",""]]},{"c":["국토교통"],"a":[["종합감사","comp"],[" 국토교통부 및 소관 기관, 산하기관 전체",""]]}]},"2026-10-24":{"items":[],"note":"공휴일"},"2026-10-25":{"items":[],"note":"공휴일"},"2026-10-26":{"items":[{"c":["법제사법"],"a":[["종합감사","comp"],[" 법무부, 법제처, 감사원, 고위공직자범죄수사처, 헌법재판소(사무처), 대법원(법원행정처)",""]]},{"c":["국방"],"a":[["종합감사","comp"],[" 국방위원회 소관 기관 전체",""]]},{"c":["행정안전"],"a":[["종합감사","comp"],[" 행정안전부, 진실·화해를위한과거사정리위원회, 10·29이태원특별조사위원회, 인사혁신처, 경찰청, 소방청",""]]},{"c":["기후환경에너지","환경노동"],"a":[["종합감사","comp"],[" 기후에너지환경부, 기상청, 고준위방사성폐기물관리위원회",""]]}]},"2026-10-27":{"items":[{"c":["외교통일"],"a":[["종합감사","comp"],[" 외교부, 한국국제협력단, 한국국제교류재단, 한·아프리카재단, 통일부, 북한이탈주민지원재단, 남북교류협력지원협회, 민주평화통일자문회의사무처, 재외통포청",""]]},{"c":["보건복지"],"a":[["종합감사","comp"],[" 위원회 소관 기관 전체",""]]},{"c":["기후환경에너지","환경노동"],"a":[["종합감사","comp"],[" 고용노동부, 경제사회노동위원회",""]]}]},"2026-10-28":{"items":[{"c":["국회운영"],"a":[["(오전) 국가인권위원회\n(오후) 국회 소속기관(국회사무처, 국회도서관, 국회예산정책처, 국회입법조사처, 국회기록원, 국회미래연구원)",""]]},{"c":["정보"],"a":[["(오전) 국방정보본부(정보사령부, 777사령부 포함)\n(오후) 경찰청",""]]}]},"2026-10-29":{"items":[{"c":["정보"],"a":[["국가정보원","loc"],[" 국가정보원",""]]}]},"2026-10-30":{"items":[{"c":["국회운영"],"a":[["대통령비서실, 대통령경호처, 국가안보실",""]]},{"c":["정보"],"a":[["(오전) ",""],["국방방첩본부","loc"],[" 국방방첩본부\n (국방방첩본부 감사 종료 후) ",""],["국방방첩본부","loc"],[" 사이버작전사령부\n(오후) ",""],["현장시찰","site"],[" 국방방첩본부, 사이버작전사령부",""]]}]}};
+  function addDays(s,n){ const d=parse(s); d.setDate(d.getDate()+n); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+  const AUD_PREVIEW=""; // 미리보기용 기준일 (빈 문자열이면 오늘)
+  const PIN='<svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 0.8a3.9 3.9 0 0 0-3.9 3.9C2.1 7.6 6 11.4 6 11.4s3.9-3.8 3.9-6.7A3.9 3.9 0 0 0 6 .8Zm0 5.4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>';
+  function agEl(it){
+    const ag=el("div",{class:"aud-ag"});
+    let cur=ag, fresh=false;
+    const put=n=>{ cur.append(n); };
+    const text=t=>{ if(fresh){ t=t.replace(/^\s+/,""); if(!t) return; const m=t.match(/^(\d+\/\d+\([^)]\)\s*~\s*\d+\/\d+\([^)]\))\s*/); if(m){ put(el("span",{class:"team-p"},m[1])); t=t.slice(m[0].length); } fresh=false; } if(t) put(document.createTextNode(t)); };
+    it.a.forEach(([txt,k])=>{
+      if(k==="loc"||k==="site"){ fresh=false; const c=el("span",{class:"chip "+k,title:k==="loc"?"국회 밖 감사 장소":"현장시찰·점검"}); c.innerHTML=PIN; c.append(txt); put(c); }
+      else if(k==="comp"){ fresh=false; put(el("span",{class:"chip comp"},txt)); }
+      else if(k==="priv"){ fresh=false; put(el("span",{class:"priv"},txt)); }
+      else if(k==="ref"){
+        const m=txt.match(/^(\s*)(.*?)([\s,，]*)$/s);
+        if(m[1]) text(m[1]);
+        fresh=false;
+        m[2].split(/(,\s*)/).forEach(part=>{ if(!part) return; if(/^,\s*$/.test(part)) put(document.createTextNode(part)); else put(el("span",{class:"ref",title:"공공기관 기능개혁 대상 기관"},part)); });
+        if(m[3]) put(document.createTextNode(m[3]));
+      }
+      else {
+        txt.split(/\[([^\]\s]{1,4}반)\]/).forEach((part,idx)=>{
+          if(idx%2===1){
+            if(cur!==ag && cur.lastChild && cur.lastChild.nodeType===3) cur.lastChild.nodeValue=cur.lastChild.nodeValue.replace(/\s+$/,"");
+            if(cur===ag && ag.lastChild && ag.lastChild.nodeType===3){ ag.lastChild.nodeValue=ag.lastChild.nodeValue.replace(/\s+$/,""); if(!ag.lastChild.nodeValue) ag.lastChild.remove(); }
+            cur=el("div",{class:"team"}); ag.append(cur); cur.append(el("span",{class:"team-b"},part)); fresh=true;
+          } else if(part) text(part);
+        });
+      }
+    });
+    return ag;
+  }
+  // 여러 날에 걸친 반별 감사(예: 외교통일위 해외공관)는 시작일 다음 날부터 "감사 중"으로 표시
+  function ongoingFor(k){
+    const byCom={};
+    Object.keys(AUDIT).forEach(d=>{ if(d>=k) return; AUDIT[d].items.forEach(it=>{
+      teamPeriods(it).forEach(p=>{ if(p.a<k && k<=p.b){ const key=it.c.join(""); (byCom[key]=byCom[key]||{c:it.c,ongoing:[]}).ongoing.push({name:p.name,day:Math.round((parse(k)-parse(p.a))/86400000)+1,end:p.b,last:k===p.b}); } });
+    }); });
+    return Object.values(byCom);
+  }
+  function ongoingEl(it){
+    const ag=el("div",{class:"aud-ag"});
+    const c=el("span",{class:"chip loc"}); c.innerHTML=PIN; c.append("해외 공관 감사 중"); ag.append(c);
+    it.ongoing.forEach(o=>{ const e=parse(o.end);
+      ag.append(el("div",{class:"team"}, el("span",{class:"team-b"},o.name), el("span",{class:"team-p"},o.day+"일차"), o.last?"오늘 감사 종료":("~ "+(e.getMonth()+1)+"/"+e.getDate()+"("+wd(o.end)+") 종료 예정"))); });
+    return ag;
+  }
+  let audKey="";
+  function renderAudit(){
+    const t=AUD_PREVIEW||todayStr(); if(t===audKey) return; audKey=t;
+    const box=$("#audCols"); box.textContent="";
+    [["오늘",t],["내일",addDays(t,1)]].forEach(([nm,k])=>{
+      const e=AUDIT[k], items=(e?e.items:[]).concat(ongoingFor(k));
+      const d=parse(k);
+      const col=el("div",{class:"aud-day"});
+      col.append(el("div",{class:"aud-dh"}, el("b",{},nm), el("span",{class:"dt"},(d.getMonth()+1)+". "+d.getDate()+".("+wd(k)+")"),
+        items.length?el("span",{class:"cnt"},items.length+"개 위원회"):null));
+      if(items.length){
+        const ul=el("ul",{class:"aud-list"});
+        ul.append(el("li",{class:"aud-colhead","aria-hidden":"true"}, el("span",{},"위원회"), el("span",{},"피감기관")));
+        items.forEach(it=>{
+          const ag=it.ongoing?ongoingEl(it):agEl(it);
+          const out=!!it.ongoing||it.a.some(x=>x[1]==="loc");
+          const com=el("div",{class:"aud-com"}, it.c.map(x=>el("span",{},x)), out?el("span",{class:"aud-out"},"국회 밖"):null);
+          ul.append(el("li",{}, com, ag));
+        });
+        col.append(ul);
+      } else {
+        let msg="국정감사 일정이 없습니다.", sub="";
+        if(e&&e.note) msg=e.note+" · 국정감사 일정이 없습니다.";
+        if(k<AUDIT_START){ sub="국정감사는 10. 6.(화)부터 시작합니다."; }
+        else if(k>AUDIT_END){ sub="2026년 국정감사 일정이 끝났습니다."; }
+        col.append(el("div",{class:"aud-empty"}, el("span",{},msg), sub?el("small",{},sub):null));
+      }
+      box.append(col);
+    });
+  }
+  if(AUD_PREVIEW){ $("#audH").textContent="오늘·내일 국정감사 (10. 12. 기준 미리보기)"; }
+  renderAudit(); setInterval(renderAudit,60000);
+
+  // ---- 위원회별 보기 ----
+  const COM_ORDER=["국회운영","법제사법","정무","재정경제기획","교육","과학기술정보방송통신","외교통일","국방","행정안전","문화체육관광","농림축산식품해양수산","산업통상자원중소벤처기업","보건복지","기후환경에너지환경노동","국토교통","정보"];
+  const comMap={};
+  Object.keys(AUDIT).sort().forEach(k=>AUDIT[k].items.forEach(it=>{ const key=it.c.join(""); if(!key) return; (comMap[key]=comMap[key]||{label:key,rows:[]}).rows.push([k,it]); }));
+  const comKeys=Object.keys(comMap).sort((a,b)=>{ const i=COM_ORDER.indexOf(a), j=COM_ORDER.indexOf(b); return (i<0?99:i)-(j<0?99:j)||a.localeCompare(b); });
+  const comSel=$("#comSel");
+  comKeys.forEach(k=>comSel.append(el("option",{value:k},comMap[k].label)));
+
+  function teamPeriods(it){
+    const full=it.a.map(x=>x[0]).join("");
+    const re=/\[([^\]\s]{1,4}반)\]\s*(\d+)\/(\d+)\([^)]\)\s*~\s*(\d+)\/(\d+)\([^)]\)([\s\S]*?)(?=\[[^\]\s]{1,4}반\]|$)/g;
+    const out=[]; let m;
+    while((m=re.exec(full))){
+      const ymd=(mo,d)=>"2026-"+String(mo).padStart(2,"0")+"-"+String(d).padStart(2,"0");
+      const posts=m[6].split(/[,\s]+/).filter(w=>/^주\S+(?:대사관|총영사관|대표부)$/.test(w)).length;
+      out.push({name:m[1], a:ymd(m[2],m[3]), b:ymd(m[4],m[5]), posts});
+    }
+    return out;
+  }
+  function renderGantt(rows){
+    const box=$("#comGantt"); box.textContent="";
+    const periods=[]; rows.forEach(([k,it])=>teamPeriods(it).forEach(p=>periods.push(p)));
+    if(!periods.length){ box.hidden=true; return; }
+    box.hidden=false;
+    const lo=periods.reduce((m,p)=>p.a<m?p.a:m,periods[0].a), hi=periods.reduce((m,p)=>p.b>m?p.b:m,periods[0].b);
+    const days=[]; for(let d=lo; d<=hi; d=addDays(d,1)) days.push(d);
+    const t=AUD_PREVIEW||todayStr();
+    box.append(el("div",{class:"gantt-title"}, el("b",{},"반별 감사 기간"), el("span",{},"막대 길이가 반별 출장 기간입니다")));
+    const g=el("div",{class:"gantt",style:"grid-template-columns:88px repeat("+days.length+",minmax(34px,1fr))"});
+    g.append(el("div",{}));
+    days.forEach(d=>{ const dd=parse(d); const w=dd.getDay(); g.append(el("div",{class:"g-day"+(w===0||w===6?" we":"")+(d===t?" now":"")}, (dd.getMonth()+1)+"/"+dd.getDate(), el("small",{},d===t?"오늘":wd(d)))); });
+    periods.forEach((p,i)=>{
+      const row=i+2, s0=days.indexOf(p.a)+2, e0=days.indexOf(p.b)+3;
+      const n=diff(p.b)-diff(p.a)+1;
+      let st="";
+      if(t>=p.a&&t<=p.b) st=" · "+(Math.round((parse(t)-parse(p.a))/86400000)+1)+"일차";
+      g.append(el("div",{class:"g-lab",style:"grid-row:"+row+";grid-column:1"}, el("span",{class:"team-b"},p.name)));
+      const pa=parse(p.a), pb=parse(p.b);
+      g.append(el("div",{class:"g-bar",style:"grid-row:"+row+";grid-column:"+s0+"/"+e0,title:p.name+" "+(pa.getMonth()+1)+"/"+pa.getDate()+"("+wd(p.a)+") ~ "+(pb.getMonth()+1)+"/"+pb.getDate()+"("+wd(p.b)+") · "+n+"일간"+(p.posts?" · 공관 "+p.posts+"곳":"")},
+        el("span",{class:"mono"},(pa.getMonth()+1)+"/"+pa.getDate()+" ~ "+(pb.getMonth()+1)+"/"+pb.getDate()),
+        el("span",{},n+"일간"+st), p.posts?el("em",{},"공관 "+p.posts+"곳"):null));
+    });
+    box.append(el("div",{class:"gantt-scroll"},g));
+  }
+  function renderCom(){
+    const c=comMap[comSel.value]; const ul=$("#comList"); ul.textContent=""; if(!c){ $("#comGantt").hidden=true; return; }
+    renderGantt(c.rows);
+    const t=AUD_PREVIEW||todayStr();
+    const days=new Set(c.rows.map(r=>r[0])).size;
+    $("#comSum").textContent="감사일 "+days+"일";
+    ul.append(el("li",{class:"aud-colhead","aria-hidden":"true"}, el("span",{},"감사일"), el("span",{},"피감기관")));
+    c.rows.forEach(([k,it])=>{
+      const d=parse(k);
+      const rel=k===t?"오늘":(k===addDays(t,1)?"내일":(k<t?"지남":dLabel(k).replace("D-","D-")));
+      ul.append(el("li",{class:(k<t?"past":"")+(k===t?" is-today":"")},
+        el("div",{class:"cd"}, (d.getMonth()+1)+". "+d.getDate()+".("+wd(k)+")", el("small",{},rel)),
+        agEl(it)));
+    });
+  }
+  comSel.addEventListener("change",renderCom);
+  function toggleCom(open){
+    $("#comPanel").hidden=!open; $("#comBtn").setAttribute("aria-expanded",String(open));
+    if(open){ renderCom(); comSel.focus(); }
+  }
+  $("#comBtn").addEventListener("click",()=>toggleCom($("#comPanel").hidden));
+  $("#comClose").addEventListener("click",()=>{ toggleCom(false); $("#comBtn").focus(); });
+
+  // ---- 업무 렌더 ----
+  function renderSummary(){
+    const box=$("#summary"); box.textContent="";
+    [["국감","g","var(--teal)"],["예산","b","var(--ochre)"]].forEach(([tk,cls,col])=>{
+      const list=tasks.filter(t=>t.track===tk && t.status!=="보류");
+      const done=list.filter(t=>t.status==="완료").length;
+      const pct=list.length?Math.round(done/list.length*100):0;
+      const late=tasks.filter(t=>t.track===tk && t.status!=="완료" && t.due && diff(t.due)<0).length;
+      const cnt=s=>tasks.filter(t=>t.track===tk&&t.status===s).length;
+      const m=el("div",{class:"meter"}); const fill=el("i"); fill.style.width=pct+"%"; fill.style.background=col; m.append(fill);
+      box.append(el("div",{class:"sum-track"},
+        el("div",{class:"sum-top"}, el("b",{}, tk==="국감"?"2026 국정감사":"2027년 예산"), el("span",{class:"pct"}, pct+"%")),
+        m,
+        el("div",{class:"sum-counts"},
+          ...STATUS.map(s=>el("span",{}, s+" ", el("span",{class:"mono"},String(cnt(s))))),
+          late?el("span",{class:"late"},"기한 지남 "+late):null)
+      ));
+    });
+  }
+  function renderOwners(){
+    const sel=$("#ownerFilter"), cur=sel.value;
+    const owners=[...new Set(tasks.map(t=>(t.owner||"").trim()).filter(Boolean))].sort();
+    sel.textContent=""; sel.append(el("option",{value:""},"전체"));
+    owners.forEach(o=>sel.append(el("option",{value:o},o)));
+    sel.value=owners.includes(cur)?cur:"";
+  }
+  function renderTasks(){
+    renderSummary(); renderOwners();
+    const sf=$("#statusFilter").value, of=$("#ownerFilter").value;
+    const order={"진행":0,"준비":1,"보류":2,"완료":3};
+    const list=tasks.filter(t=>(trackF==="전체"||t.track===trackF)
+      && (sf==="전체"||(sf==="미완료"?t.status!=="완료":t.status===sf))
+      && (!of||(t.owner||"").trim()===of))
+      .sort((a,b)=>(order[a.status]-order[b.status])||((a.due||"9999")<(b.due||"9999")?-1:(a.due||"9999")>(b.due||"9999")?1:0));
+    const ul=$("#taskList"); ul.textContent="";
+    $("#taskEmpty").hidden = tasks.length>0;
+    if(tasks.length && !list.length){ ul.append(el("li",{class:"empty"}, el("p",{},"조건에 맞는 업무가 없습니다. 필터를 바꿔 보세요."))); return; }
+    list.forEach(t=>{
+      const st=el("select",{class:"st s-"+t.status,"aria-label":"상태: "+t.title});
+      STATUS.forEach(s=>{ const o=el("option",{},s); if(s===t.status) o.selected=true; st.append(o); });
+      if(!canWrite) st.disabled=true;
+      st.addEventListener("change",()=>saveTask(t.id,{status:st.value},"상태를 ‘"+st.value+"’(으)로 바꿨습니다"));
+      let due=null;
+      if(t.due){ const n=diff(t.due); const late=n<0&&t.status!=="완료"; due=el("span",{class:"due"+(late?" late":(n<=3&&n>=0&&t.status!=="완료"?" soon":""))}, md(t.due)+" ("+wd(t.due)+") · "+dLabel(t.due)); }
+      const title=el("button",{class:"t-title",type:"button"}, t.title);
+      title.addEventListener("click",()=>openTask(t));
+      const meta=[t.kind,t.committee,t.owner].filter(Boolean);
+      const metaEl=el("div",{class:"t-meta"});
+      metaEl.append(el("span",{class:"tag "+(t.track==="국감"?"g":"b")},t.track));
+      if(t.priority==="높음") metaEl.append(el("span",{class:"pri"},"중요"));
+      meta.forEach((m,i)=>{ metaEl.append(el("span",{},m)); });
+      ul.append(el("li",{class:"task"+(t.status==="완료"?" done":"")},
+        el("span",{class:"stripe "+(t.track==="국감"?"g":"b")}),
+        el("div",{class:"t-main"}, title, metaEl, t.note?el("div",{class:"t-note"}, t.note.length>90?t.note.slice(0,90)+"…":t.note):null),
+        el("div",{class:"t-side"}, st, due)
+      ));
+    });
+  }
+
+  // ---- 업무 폼 ----
+  const form=$("#taskForm");
+  function openTask(t){
+    if(!canWrite && !t){ return; }
+    editingId=t?t.id:null; delArmed=false;
+    $("#formTitle").textContent=t?"업무 수정":"새 업무";
+    $("#fTitle").value=t?t.title:""; $("#fTrack").value=t?t.track:(trackF==="예산"?"예산":"국감");
+    $("#fKind").value=t?(t.kind||"기타"):"질의요구안"; $("#fCom").value=t?(t.committee||""):"";
+    $("#fOwner").value=t?(t.owner||""):""; $("#fDue").value=t?(t.due||""):"";
+    $("#fStatus").value=t?t.status:"준비"; $("#fPri").value=t?(t.priority||"보통"):"보통"; $("#fNote").value=t?(t.note||""):"";
+    const del=$("#delBtn"); del.hidden=!t; del.classList.remove("armed"); del.textContent="삭제";
+    [...form.elements].forEach(e=>{ if(e.id!=="cancelBtn") e.disabled=!canWrite; });
+    $("#saveBtn").hidden=!canWrite;
+    form.hidden=false; $("#fTitle").focus();
+    form.scrollIntoView({block:"nearest",behavior:"smooth"});
+  }
+  function closeForm(){ form.hidden=true; editingId=null; }
+  $("#addTaskBtn").addEventListener("click",()=>openTask(null));
+  $("#emptyAdd").addEventListener("click",()=>openTask(null));
+  $("#cancelBtn").addEventListener("click",closeForm);
+  form.addEventListener("submit",async e=>{
+    e.preventDefault();
+    const data={ title:$("#fTitle").value.trim(), track:$("#fTrack").value, kind:$("#fKind").value, committee:$("#fCom").value.trim(),
+      owner:$("#fOwner").value.trim(), due:$("#fDue").value, status:$("#fStatus").value, priority:$("#fPri").value, note:$("#fNote").value.trim() };
+    if(!data.title) return;
+    if(editingId){ await saveTask(editingId,data,"저장했습니다"); }
+    else { data.createdAt=new Date().toISOString(); await createTask(data); }
+    closeForm();
+  });
+  $("#delBtn").addEventListener("click",async ()=>{
+    const b=$("#delBtn");
+    if(!delArmed){ delArmed=true; b.classList.add("armed"); b.textContent="한 번 더 누르면 삭제"; return; }
+    try{ await db.collection("tasks").doc(editingId).delete(); touch("업무 삭제"); toast("삭제했습니다"); closeForm(); }catch(err){ fail(err); }
+  });
+
+  async function createTask(data){
+    if(!db){ toast("저장소에 연결되지 않아 저장할 수 없습니다"); return; }
+    try{ await db.collection("tasks").add(data); touch("업무 추가"); toast("업무를 등록했습니다"); }catch(err){ fail(err); }
+  }
+  async function saveTask(id,patch,msg){
+    if(!db) return;
+    try{ patch.updatedAt=new Date().toISOString(); await db.collection("tasks").doc(id).update(patch); touch("업무 수정"); if(msg) toast(msg); }catch(err){ fail(err); }
+  }
+  function fail(err){
+    const c=err&&err.code;
+    if(c==="invalid_argument"&&!canWrite){ toast("보기 권한만 있어 변경할 수 없습니다"); return; }
+    if(c==="invalid_argument"){ canWrite=false; applyWriteMode(); toast("변경 권한이 없어 읽기 전용으로 전환했습니다"); return; }
+    if(c==="quota_exceeded"){ toast("저장 공간이 가득 찼습니다. 완료된 항목을 정리해 주세요"); return; }
+    toast("저장하지 못했습니다. 잠시 후 다시 시도해 주세요");
+  }
+
+  // 기본 업무 템플릿 (사용자가 버튼을 눌렀을 때만 추가)
+  const TEMPLATE=[
+    ["국감","의제·자료 분석","소관 상임위 국감 일정·피감기관 확인","기후에너지환경노동위","2026-10-02","높음"],
+    ["국감","의제·자료 분석","핵심 국감 의제 선정 및 근거자료 정리","","2026-10-02","높음"],
+    ["국감","질의요구안","의원실 전달용 질의요구안 작성","","2026-10-05","높음"],
+    ["국감","의원실 협의","주요 의원실 면담·질의 협의","","2026-10-08","보통"],
+    ["국감","자료요구","피감기관 자료요구 목록 전달","","2026-10-05","보통"],
+    ["국감","모니터링","감사 당일 모니터링·발언 기록","","2026-10-27","보통"],
+    ["국감","성명·보도","국감 결과 정리 및 성명·보도자료","","2026-10-30","보통"],
+    ["예산","의제·자료 분석","2027년 정부 예산안 소관 부처 사업 분석","고용노동부","2026-10-15","높음"],
+    ["예산","증액·감액 요구","증액·감액 요구안 작성","","2026-10-30","높음"],
+    ["예산","의원실 협의","상임위 예비심사 대응(의원실 전달)","기후에너지환경노동위","2026-11-10","보통"],
+    ["예산","의원실 협의","예결위 소위 심사 대응","예산결산특별위원회","2026-11-30","보통"],
+    ["예산","모니터링","본회의 의결 후 반영 결과 점검","","2026-12-05","보통"]
+  ];
+  $("#loadTpl").addEventListener("click",async ()=>{
+    if(!db||!canWrite){ toast("변경 권한이 없어 불러올 수 없습니다"); return; }
+    const b=$("#loadTpl"); b.disabled=true;
+    try{
+      for(const [track,kind,title,committee,due,priority] of TEMPLATE){
+        await db.collection("tasks").add({track,kind,title,committee,due,priority,owner:"",status:"준비",note:"",createdAt:new Date().toISOString()});
+      }
+      touch("업무 추가"); toast("기본 업무 12건을 불러왔습니다. 담당과 마감일을 조정해 주세요");
+    }catch(err){ fail(err); } finally{ b.disabled=false; }
+  });
+
+  document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{
+    trackF=b.dataset.track;
+    document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+    renderTasks();
+  }));
+  $("#statusFilter").addEventListener("change",renderTasks);
+  $("#ownerFilter").addEventListener("change",renderTasks);
+
+  // ---- 일정 ----
+  function renderEvents(){
+    const t=todayStr();
+    const sorted=[...events].sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);
+    const past=sorted.filter(e=>e.date<t), up=sorted.filter(e=>e.date>=t);
+    const ul=$("#evList"); ul.textContent="";
+    $("#evEmpty").hidden=events.length>0;
+    const pt=$("#pastToggle"); pt.hidden=!past.length; pt.textContent=(showPast?"지난 일정 접기":"지난 일정 "+past.length+"건 보기");
+    (showPast?past:[]).concat(up).forEach(e=>{
+      const cls=e.track==="국감"?"g":e.track==="예산"?"b":"law";
+      const x=canWrite?el("button",{class:"x",type:"button","aria-label":"일정 삭제: "+e.title},"삭제"):el("span");
+      if(canWrite) x.addEventListener("click",async ()=>{
+        if(x.dataset.armed!=="1"){ x.dataset.armed="1"; x.textContent="확인"; return; }
+        try{ await db.collection("events").doc(e.id).delete(); touch("일정 삭제"); toast("일정을 삭제했습니다"); }catch(err){ fail(err); }
+      });
+      ul.append(el("li",{class:"ev"+(e.date<t?" past":"")+(e.date===t?" today-line":"")},
+        el("div",{class:"d"}, md(e.date), el("small",{}, "("+wd(e.date)+") "+(e.date>=t?dLabel(e.date):""))),
+        el("div",{class:"body"}, el("div",{}, el("span",{class:"tag "+cls}, e.track)), el("b",{}, e.title), e.note?el("span",{}, e.note):null),
+        x));
+    });
+  }
+  $("#pastToggle").addEventListener("click",()=>{ showPast=!showPast; renderEvents(); });
+  const evForm=$("#evForm");
+  $("#addEvBtn").addEventListener("click",()=>{ if(!canWrite) return; evForm.hidden=!evForm.hidden; if(!evForm.hidden) $("#eDate").focus(); });
+  $("#evCancel").addEventListener("click",()=>evForm.hidden=true);
+  evForm.addEventListener("submit",async e=>{
+    e.preventDefault(); if(!db) return;
+    const data={date:$("#eDate").value,track:$("#eTrack").value,title:$("#eTitle").value.trim(),note:$("#eNote").value.trim()};
+    if(!data.date||!data.title) return;
+    try{ await db.collection("events").add(data); touch("일정 추가"); toast("일정을 추가했습니다"); evForm.reset(); evForm.hidden=true; }catch(err){ fail(err); }
+  });
+
+  function applyWriteMode(){
+    ["#addTaskBtn","#emptyAdd","#loadTpl","#addEvBtn"].forEach(s=>$(s).hidden=!canWrite);
+    renderTasks(); renderEvents();
+  }
+
+  renderTasks(); renderEvents();
+
+  // ---- 저장소 연결 ----
+  (async function(){
+    if(!window.claude||!window.claude.use){ renderLastChange(); canWrite=false; applyWriteMode(); return; }
+    db=await window.claude.use("db");
+    if(!db){ renderLastChange(); notice("로그인하면 업무와 일정을 등록하고 동료와 공유할 수 있습니다."); canWrite=false; applyWriteMode(); return; }
+    try{
+      const user=await window.claude.use("user");
+      if(user){ const c=await user.can("data.write"); if(c===false) canWrite=false; }
+    }catch(_){}
+    applyWriteMode();
+    db.doc("meta/lastChange").onSnapshot(s=>{ lastChange=s.exists?s.data():null; renderLastChange(); }, ()=>{});
+    db.collection("tasks").onSnapshot(s=>{ tasks=s.docs.map(d=>Object.assign({id:d.id},d.data())); renderTasks(); },
+      ()=>{ $("#syncLabel").textContent="연결이 끊겼습니다 · 새로고침해 주세요"; });
+    db.collection("events").onSnapshot(s=>{ events=s.docs.map(d=>Object.assign({id:d.id},d.data())); renderEvents(); },
+      ()=>{ $("#syncLabel").textContent="연결이 끊겼습니다 · 새로고침해 주세요"; });
+  })();
+})();
+</script>
+
+</body></html>
