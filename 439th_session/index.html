@@ -112,6 +112,16 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 .lock-hint{margin:0;font-size:12.5px;color:var(--warn)}
 .lock-err{margin:0;font-size:13px;color:var(--seal);font-weight:600}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#reformContent{position:relative;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+#reformContent.shield > :not(.wm){filter:blur(14px);transition:filter .1s}
+.wm{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:3}
+.wm-grid{position:absolute;left:-30%;top:-10%;width:160%;display:grid;grid-template-columns:repeat(4,1fr);gap:70px 40px;transform:rotate(-24deg);transform-origin:center}
+.wm-t{font-size:15px;font-weight:700;line-height:1.5;text-align:center;white-space:nowrap;color:var(--seal);opacity:.16}
+.wm-t span{display:block}
+.wm-t .wm-time{font-family:var(--f-mono);font-weight:500}
+.shield-msg{position:absolute;inset:0;z-index:4;display:none;align-items:flex-start;justify-content:center;padding-top:80px;font-weight:700;color:var(--ink)}
+#reformContent.shield .shield-msg{display:flex}
+@media print{#reformModal,#reformContent,.modal{display:none!important}}
 .modal-empty{color:var(--ink-3);text-align:center;padding:30px 0}
 /* 타임라인 */
 .tl{background:var(--sheet);border:1px solid var(--rule);padding:16px 18px 12px}
@@ -514,11 +524,45 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     btns.forEach(b=>b.addEventListener("click",()=>{ apply(b.dataset.fs); try{ localStorage.setItem("fontScale",b.dataset.fs); }catch(_){} }));
   })();
 
+
+  // ---- 기능개혁 방안: 복사·인쇄·캡처 억제와 워터마크 ----
+  let wmTimer=null;
+  function wmStamp(){ const d=new Date(), z=n=>String(n).padStart(2,"0"); return d.getFullYear()+". "+(d.getMonth()+1)+". "+d.getDate()+". "+z(d.getHours())+":"+z(d.getMinutes())+":"+z(d.getSeconds()); }
+  function protectOn(){
+    const out=document.getElementById("reformContent");
+    const wm=el("div",{class:"wm","aria-hidden":"true"}), grid=el("div",{class:"wm-grid"});
+    const rows=Math.max(8,Math.ceil(out.scrollHeight/150)+4);
+    for(let i=0;i<rows*4;i++) grid.append(el("div",{class:"wm-t"}, el("span",{},"공공운수노조 내부자료"), el("span",{},"복사, 캡쳐 등 절대금지함"), el("span",{class:"wm-time"},wmStamp())));
+    wm.append(grid); out.append(wm);
+    out.append(el("div",{class:"shield-msg"},"화면을 벗어나 내용을 가렸습니다. 이 창을 다시 누르면 보입니다."));
+    clearInterval(wmTimer);
+    wmTimer=setInterval(()=>{ const t=wmStamp(); out.querySelectorAll(".wm-time").forEach(x=>x.textContent=t); },1000);
+  }
+  function protectOff(){ clearInterval(wmTimer); wmTimer=null; }
+  (function(){
+    const m=document.getElementById("reformModal");
+    const on=()=>{ const o=document.getElementById("reformContent"); return !m.hidden && o && !o.hidden; };
+    const deny=e=>{ if(on()){ e.preventDefault(); } };
+    ["copy","cut","contextmenu","selectstart","dragstart"].forEach(ev=>m.addEventListener(ev,deny));
+    document.addEventListener("copy",deny);
+    document.addEventListener("keydown",e=>{
+      if(!on()) return;
+      const k=(e.key||"").toLowerCase();
+      if((e.ctrlKey||e.metaKey)&&["c","x","a","p","s"].includes(k)){ e.preventDefault(); toast("복사·저장·인쇄할 수 없는 자료입니다"); }
+      if(k==="printscreen"){ shield(true); try{ navigator.clipboard.writeText("공공운수노조 내부자료 - 캡처 금지"); }catch(_){} }
+    });
+    document.addEventListener("keyup",e=>{ if(on() && (e.key||"").toLowerCase()==="printscreen"){ shield(true); try{ navigator.clipboard.writeText("공공운수노조 내부자료 - 캡처 금지"); }catch(_){} toast("캡처할 수 없는 자료입니다"); } });
+    function shield(v){ const o=document.getElementById("reformContent"); if(o) o.classList.toggle("shield",v); }
+    window.addEventListener("blur",()=>{ if(on()) shield(true); });
+    document.addEventListener("visibilitychange",()=>{ if(document.hidden && on()) shield(true); });
+    window.addEventListener("focus",()=>shield(false));
+    m.addEventListener("pointerdown",()=>shield(false));
+  })();
   // ---- 공공기관 기능개혁 방안 팝업 ----
   (function(){
     const m=document.getElementById("reformModal"), btn=document.getElementById("reformBtn");
     function open(){ m.hidden=false; document.body.style.overflow="hidden"; document.getElementById("lockPw").focus(); }
-    function close(){ m.hidden=true; document.body.style.overflow=""; const o=document.getElementById("reformContent"); o.innerHTML=""; o.hidden=true; document.getElementById("lockForm").hidden=false; document.getElementById("lockPw").value=""; document.getElementById("lockErr").hidden=true; document.getElementById("lockHint").hidden=true; btn.focus(); }
+    function close(){ m.hidden=true; document.body.style.overflow=""; protectOff(); const o=document.getElementById("reformContent"); o.innerHTML=""; o.hidden=true; o.classList.remove("shield"); document.getElementById("lockForm").hidden=false; document.getElementById("lockPw").value=""; document.getElementById("lockErr").hidden=true; document.getElementById("lockHint").hidden=true; btn.focus(); }
     btn.addEventListener("click",open);
     m.querySelectorAll("[data-close]").forEach(x=>x.addEventListener("click",close));
     document.addEventListener("keydown",e=>{ if(!m.hidden && e.key==="Escape") close(); });
@@ -543,7 +587,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
         let pt;
         try{ pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:b64(ENC.i)},key,b64(ENC.c)); }
         catch(_){ err.textContent="비밀번호가 올바르지 않습니다"; err.hidden=false; hint.hidden=true; pw.select(); return; }
-        out.innerHTML=new TextDecoder().decode(pt); out.hidden=false; f.hidden=true; pw.value=""; hint.hidden=true;
+        out.innerHTML=new TextDecoder().decode(pt); out.hidden=false; f.hidden=true; pw.value=""; hint.hidden=true; protectOn();
       }catch(x){ err.textContent="이 화면에서는 내용을 열 수 없습니다. 크롬·엣지·사파리 최신 버전에서 다시 열어 주세요. ("+((x&&x.name)||"오류")+")"; err.hidden=false; }
       finally{ btn.disabled=false; btn.textContent="확인"; }
     });
@@ -579,7 +623,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-02T05:04:54Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-03T10:37:21Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
