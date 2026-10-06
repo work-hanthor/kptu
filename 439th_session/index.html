@@ -135,7 +135,8 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 @media (max-width:620px){.vswitch{width:100%;align-items:flex-start}}
 .view{display:flex;flex-direction:column;gap:28px}
 .bdocs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,auto);grid-auto-flow:column;gap:10px}
-@media (max-width:760px){.bdocs{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}}
+.bdocs .bdoc:nth-child(n+5){margin-left:22px}
+@media (max-width:760px){.bdocs{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}.bdocs .bdoc:nth-child(n+5){margin-left:0;margin-top:12px}.bdocs .bdoc:nth-child(6){margin-top:0}}
 .bdoc{border-color:var(--ochre)}
 .bdoc:hover{border-color:var(--ochre);color:var(--ochre)}
 .lk .bdoc-ico{font-size:20px;line-height:1;flex:none}
@@ -716,7 +717,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-06T04:59:33Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T05:00:36Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
