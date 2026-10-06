@@ -11,7 +11,7 @@
   --seal:#b8322a; --seal-soft:#f6e3e0;          /* 인주 빛 강조색 */
   --teal:#1f5d5c; --teal-soft:#dde9e6;           /* 국정감사 트랙 */
   --ochre:#8a6414; --ochre-soft:#f1e8d2;         /* 예산 트랙 */
-  --lex:#45508a; --lex-soft:#e3e5f1; --loc:#b0501a; --loc-soft:#fbe7d8; --ref:#6d3f8e; --ref-soft:#efe4f6; --hl:#fff4c2;
+  --lex:#45508a; --lex-soft:#e3e5f1; --loc:#b0501a; --loc-soft:#fbe7d8; --ref:#6d3f8e; --ref-soft:#efe4f6; --hl:#fff4c2; --on-acc:#ffffff;
   --ok:#2e6b3a; --ok-soft:#e0eddf; --warn:#9a5a00; --warn-soft:#f6e9d3; --hold:#6b6f76; --hold-soft:#e8e9ec;
   --focus:#1f5d5c;
   --f-display:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;
@@ -23,7 +23,7 @@
   --rule:#2f3a39; --rule-2:#263030;
   --seal:#e8675c; --seal-soft:#3a2220;
   --teal:#6fb8b3; --teal-soft:#1f3534; --ochre:#d9ac55; --ochre-soft:#3a3120;
-  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517;
+  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517; --on-acc:#1b2222;
   --ok:#7cc48a; --ok-soft:#1f3324; --warn:#e3a650; --warn-soft:#3a2d1a; --hold:#a3a8b0; --hold-soft:#2b2f34;
   --focus:#6fb8b3; color-scheme:dark}}
 :root[data-theme="dark"]{
@@ -31,7 +31,7 @@
   --rule:#2f3a39; --rule-2:#263030;
   --seal:#e8675c; --seal-soft:#3a2220;
   --teal:#6fb8b3; --teal-soft:#1f3534; --ochre:#d9ac55; --ochre-soft:#3a3120;
-  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517;
+  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517; --on-acc:#1b2222;
   --ok:#7cc48a; --ok-soft:#1f3324; --warn:#e3a650; --warn-soft:#3a2d1a; --hold:#a3a8b0; --hold-soft:#2b2f34;
   --focus:#6fb8b3; color-scheme:dark}
 
@@ -141,6 +141,25 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 .bdoc:hover{border-color:var(--ochre);color:var(--ochre)}
 .lk .bdoc-ico{font-size:20px;line-height:1;flex:none}
 .bdoc span{word-break:keep-all;line-height:1.35}
+.stage{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:16px 18px 18px}
+.stage-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap;margin-bottom:14px}
+.stage-h h2{font-size:17px}
+.stage-h span{font-size:13px;color:var(--ochre);font-weight:700}
+.stage-scroll{overflow-x:auto}
+.sA{list-style:none;margin:0;padding:6px 0 2px;display:grid;grid-template-columns:repeat(11,minmax(96px,1fr));min-width:1056px}
+.sA .sp{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;position:relative;padding-top:4px}
+.sA .sp::before{content:"";position:absolute;top:15px;left:-50%;right:50%;height:3px;background:var(--rule)}
+.sA .sp:first-child::before{display:none}
+.sA .sp.done::before,.sA .sp.now::before{background:var(--ochre)}
+.sA .dot{width:24px;height:24px;border-radius:50%;background:var(--sheet);border:3px solid var(--rule);position:relative;z-index:1;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--ink-3)}
+.sA .done .dot{background:var(--ochre);border-color:var(--ochre);color:var(--on-acc)}
+.sA .now .dot{width:34px;height:34px;margin-top:-5px;background:var(--ochre);border-color:var(--ochre);color:var(--on-acc);font-size:14px;box-shadow:0 0 0 6px var(--ochre-soft)}
+.sA .lb{width:100%;padding:0 3px;font-size:12.5px;color:var(--ink-3);line-height:1.35;word-break:keep-all}
+.sA .done .lb{color:var(--ink-2)}
+.sA .now .lb{color:var(--ochre);font-weight:700;font-size:14px}
+.sA .tag{font-size:11px;font-weight:700;color:var(--on-acc);background:var(--ochre);padding:1px 8px;border-radius:999px}
+@media (prefers-reduced-motion:no-preference){.sA .now .dot{animation:stpulse 2s ease-in-out infinite}}
+@keyframes stpulse{0%,100%{box-shadow:0 0 0 6px var(--ochre-soft)}50%{box-shadow:0 0 0 11px var(--ochre-soft)}}
 .bud-notice{display:flex;align-items:center;gap:16px;padding:26px 28px;background:var(--ochre-soft);border:2px solid var(--ochre);border-radius:8px;box-shadow:0 6px 18px rgba(138,100,20,.18)}
 .bud-notice svg{width:38px;height:38px;flex:none;color:var(--ochre)}
 .bud-notice p{margin:0;font-family:var(--f-display);font-size:clamp(22px,3.2vw,32px);font-weight:700;line-height:1.3;color:var(--ochre);text-wrap:balance}
@@ -450,6 +469,10 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-2h2v2Zm0-4h-2V7h2v6Z"/></svg>
       <p>2027 예산 대응 현황판은 현재 준비중입니다</p>
     </section>
+    <section class="stage" aria-labelledby="stageH">
+      <div class="stage-h"><h2 id="stageH">2027년도 예산안 심사 진행 단계</h2><span id="stageCount"></span></div>
+      <div class="stage-scroll"><ol class="sA" id="stageList"></ol></div>
+    </section>
     <nav class="bdocs" aria-label="2027년도 예산안 자료">
       <a class="lk bdoc" href="https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_D2R6A0R9J0O3S1G3G5H3F5M0P9U7P5" target="_blank" rel="noopener noreferrer"><span class="bdoc-ico" aria-hidden="true">📘</span><span>2027년도 예산안</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
       <a class="lk bdoc" href="https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_T2T6U0P9O0P3Q1C3Z5D4O4X3H9U7N6" target="_blank" rel="noopener noreferrer"><span class="bdoc-ico" aria-hidden="true">📘</span><span>2027년도 기금계획운용안</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
@@ -686,6 +709,20 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     show(location.hash==="#budget"?"budget":"audit");
     window.addEventListener("hashchange",()=>show(location.hash==="#budget"?"budget":"audit"));
   })();
+
+  // ---- 예산화면: 예산안 심사 진행 단계 (BUDGET_STAGE = 현재 단계 번호, 1부터) ----
+  const BUDGET_STEPS=["정부 예산안 국회 제출","소관 상임위원회 회부 및 정부 시정연설","상임위원회 예비심사","예결위 종합심사","종합정책질의(2일간)","경제부처 심사(2일간)","비경제부처 심사(2일간)","예산안등조정소위 심사","예결위 최종 의결","본회의 의결","정부 이송 및 국무회의 공포"];
+  const BUDGET_STAGE=2;
+  (function(){
+    const now=BUDGET_STAGE-1, ol=document.getElementById("stageList");
+    BUDGET_STEPS.forEach((t,i)=>{
+      const cls=i<now?"done":(i===now?"now":"");
+      const li=el("li",{class:"sp "+cls}, el("span",{class:"dot"}, i<now?"✓":String(i+1)), i===now?el("span",{class:"tag"},"현재"):null, el("span",{class:"lb"},t));
+      if(i===now) li.setAttribute("aria-current","step");
+      ol.append(li);
+    });
+    document.getElementById("stageCount").textContent=BUDGET_STEPS.length+"단계 중 "+BUDGET_STAGE+"단계 진행 중";
+  })();
   // ---- 날짜 ----
   const TEST_DATE=""; // 테스트용 오늘 날짜 (빈 문자열이면 실제 오늘)
   function todayStr(){ if(TEST_DATE) return TEST_DATE; const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
@@ -717,7 +754,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-06T05:01:39Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T07:05:46Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
