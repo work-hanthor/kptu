@@ -154,9 +154,10 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 .sA .dot{width:24px;height:24px;border-radius:50%;background:var(--sheet);border:3px solid var(--rule);position:relative;z-index:1;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--ink-3)}
 .sA .done .dot{background:var(--ochre);border-color:var(--ochre);color:var(--on-acc)}
 .sA .now .dot{width:34px;height:34px;margin-top:-5px;background:var(--ochre);border-color:var(--ochre);color:var(--on-acc);font-size:14px;box-shadow:0 0 0 6px var(--ochre-soft)}
-.sA .lb{width:100%;padding:0 3px;font-size:12.5px;color:var(--ink-3);line-height:1.35;word-break:keep-all}
+.sA .lb{width:100%;padding:0 2px;font-size:12.5px;color:var(--ink-3);line-height:1.35;word-break:keep-all}
 .sA .done .lb{color:var(--ink-2)}
-.sA .now .lb{color:var(--ochre);font-weight:700;font-size:14px}
+.sA .lb .ln{display:block;white-space:nowrap}
+.sA .now .lb{color:var(--ochre);font-weight:700;font-size:13px}
 .sA .tag{font-size:11px;font-weight:700;color:var(--on-acc);background:var(--ochre);padding:1px 8px;border-radius:999px}
 @media (prefers-reduced-motion:no-preference){.sA .now .dot{animation:stpulse 2s ease-in-out infinite}}
 @keyframes stpulse{0%,100%{box-shadow:0 0 0 6px var(--ochre-soft)}50%{box-shadow:0 0 0 11px var(--ochre-soft)}}
@@ -711,13 +712,13 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
   })();
 
   // ---- 예산화면: 예산안 심사 진행 단계 (BUDGET_STAGE = 현재 단계 번호, 1부터) ----
-  const BUDGET_STEPS=["정부 예산안 국회 제출","소관 상임위원회 회부 및 정부 시정연설","상임위원회 예비심사","예결위 종합심사","종합정책질의(2일간)","경제부처 심사(2일간)","비경제부처 심사(2일간)","예산안등조정소위 심사","예결위 최종 의결","본회의 의결","정부 이송 및 국무회의 공포"];
+  const BUDGET_STEPS=["정부의\n예산안 국회 제출","소관 상임위 회부\n및 정부 시정연설","상임위원회 예비심사","예결위\n종합심사","종합정책질의(2일간)","경제부처 심사(2일간)","비경제부처 심사(2일간)","예산안등\n조정소위 심사","예결위 최종 의결","본회의 의결","정부 이송 및 국무회의 공포"];
   const BUDGET_STAGE=2;
   (function(){
     const now=BUDGET_STAGE-1, ol=document.getElementById("stageList");
     BUDGET_STEPS.forEach((t,i)=>{
       const cls=i<now?"done":(i===now?"now":"");
-      const li=el("li",{class:"sp "+cls}, el("span",{class:"dot"}, i<now?"✓":String(i+1)), i===now?el("span",{class:"tag"},"현재"):null, el("span",{class:"lb"},t));
+      const li=el("li",{class:"sp "+cls}, el("span",{class:"dot"}, i<now?"✓":String(i+1)), i===now?el("span",{class:"tag"},"현재"):null, el("span",{class:"lb"}, t.includes("\n")?t.split("\n").map(x=>el("span",{class:"ln"},x)):t));
       if(i===now) li.setAttribute("aria-current","step");
       ol.append(li);
     });
@@ -754,7 +755,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-06T07:05:46Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T07:09:18Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
