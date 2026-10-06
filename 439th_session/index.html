@@ -403,7 +403,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     </div>
   </section>
 
-  <div class="cols">
+  <div class="cols" hidden>
     <section class="panel" aria-labelledby="tasksH" hidden>
       <div class="panel-head">
         <h2 id="tasksH">업무 현황</h2>
@@ -455,7 +455,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       </div>
     </section>
 
-    <section class="panel" aria-labelledby="evH">
+    <section class="panel" aria-labelledby="evH" hidden>
       <div class="panel-head">
         <h2 id="evH">주요 일정</h2>
         <button class="btn ghost" id="addEvBtn" type="button">일정 추가</button>
@@ -623,7 +623,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-03T10:37:21Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T00:03:28Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
