@@ -333,10 +333,12 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 
 .notice{border:1px solid var(--warn);background:var(--warn-soft);color:var(--warn);padding:10px 14px;font-size:13.5px;border-radius:4px}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--sheet);padding:9px 16px;border-radius:4px;font-size:13.5px;z-index:10}
-.links{display:flex;flex-direction:column;gap:10px}
+.links{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:16px 20px}
+@media (max-width:760px){.links{grid-template-columns:minmax(0,1fr)}}
+.lk-grp{display:flex;flex-direction:column;gap:10px;min-width:0}
 .links h2{font-size:17px}
-.lk-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-@media (max-width:900px){.lk-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lk-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.lk-row.one{grid-template-columns:minmax(0,1fr)}
 @media (max-width:440px){.lk-row{grid-template-columns:minmax(0,1fr)}}
 .lk{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;min-width:0}
 .lk span{flex:1;min-width:0}
@@ -485,13 +487,19 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     </section>
   </div>
 
-  <section class="links" aria-labelledby="lkH">
-    <h2 id="lkH">국정감사 생중계·일정 바로가기</h2>
-    <div class="lk-row">
-      <a class="lk" href="https://assembly.go.kr/portal/na/agenda/agendaSchl.do?menuNo=600015" target="_blank" rel="noopener noreferrer"><svg class="lk-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 3 6.5V8h18V6.5L12 2Zm-7 8v7H4v3h16v-3h-1v-7h-2v7h-2v-7h-2v7h-2v-7H9v7H7v-7H5Z"/></svg><span>국회일정</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
-      <a class="lk" href="https://assembly.go.kr/portal/na/agenda/agendaSchl.do?menuNo=600015" target="_blank" rel="noopener noreferrer"><svg class="lk-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 3 6.5V8h18V6.5L12 2Zm-7 8v7H4v3h16v-3h-1v-7h-2v7h-2v-7h-2v7h-2v-7H9v7H7v-7H5Z"/></svg><span>국회 기자회견 일정</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
-      <a class="lk" href="https://assembly.webcast.go.kr/main/" target="_blank" rel="noopener noreferrer"><svg class="lk-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 3 6.5V8h18V6.5L12 2Zm-7 8v7H4v3h16v-3h-1v-7h-2v7h-2v-7h-2v7h-2v-7H9v7H7v-7H5Z"/></svg><span>국회인터넷의사중계시스템</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
-      <a class="lk" href="https://www.youtube.com/@NATV_korea" target="_blank" rel="noopener noreferrer"><svg class="lk-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-5v1.5h3V22H7v-1.5h3V19H5a2 2 0 0 1-2-2V5Zm7 3v6l5-3-5-3Z"/></svg><span>NATV 국회방송</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
+  <section class="links" aria-label="국정감사 생중계와 국회 일정 바로가기">
+    <div class="lk-grp">
+      <h2 id="lkLive">국정감사 생중계</h2>
+      <div class="lk-row">
+        <a class="lk" href="https://assembly.webcast.go.kr/main/" target="_blank" rel="noopener noreferrer"><svg class="lk-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 3 6.5V8h18V6.5L12 2Zm-7 8v7H4v3h16v-3h-1v-7h-2v7h-2v-7h-2v7h-2v-7H9v7H7v-7H5Z"/></svg><span>국회인터넷의사중계시스템</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
+        <a class="lk" href="https://www.youtube.com/@NATV_korea" target="_blank" rel="noopener noreferrer"><svg class="lk-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-5v1.5h3V22H7v-1.5h3V19H5a2 2 0 0 1-2-2V5Zm7 3v6l5-3-5-3Z"/></svg><span>NATV 국회방송</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
+      </div>
+    </div>
+    <div class="lk-grp">
+      <h2 id="lkSched">국회 일정확인</h2>
+      <div class="lk-row one">
+        <a class="lk" href="https://assembly.go.kr/portal/na/agenda/agendaSchl.do?menuNo=600015" target="_blank" rel="noopener noreferrer"><svg class="lk-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 3 6.5V8h18V6.5L12 2Zm-7 8v7H4v3h16v-3h-1v-7h-2v7h-2v-7h-2v7h-2v-7H9v7H7v-7H5Z"/></svg><span>국회 및 상임위원회 일정</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
+      </div>
     </div>
   </section>
   <footer>이 페이지는 공공운수노조 연대사업실이 관리 및 업데이트를 진행하고 있습니다.　※ 담당자 : 연대사업부장 서한솔(010-2562-9051, work.hanthor@gmail.com)</footer>
@@ -643,7 +651,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-06T01:18:33Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T01:21:11Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
