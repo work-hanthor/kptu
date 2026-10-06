@@ -655,7 +655,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       A.hidden=budget; B.hidden=!budget;
       btn.classList.toggle("to-audit",budget);
       document.getElementById("viewBtnText").textContent=budget?"국감 대응 현황판 전환":"예산 대응 현황판 전환";
-      try{ history.replaceState(null,"",budget?"#budget":"#audit"); }catch(_){}
+      try{ history.replaceState(null,"",budget?"#budget":location.pathname+location.search); }catch(_){}
     }
     btn.addEventListener("click",()=>{ show(A.hidden?"audit":"budget"); window.scrollTo({top:0,behavior:"smooth"}); });
     show(location.hash==="#budget"?"budget":"audit");
@@ -692,7 +692,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-06T04:42:24Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T04:44:24Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
