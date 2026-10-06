@@ -134,7 +134,13 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 :root[data-theme="dark"] .vswitch{color:#1b2222}
 @media (max-width:620px){.vswitch{width:100%;align-items:flex-start}}
 .view{display:flex;flex-direction:column;gap:28px}
-.bdocs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px}
+.bdocs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.bdocs .bdoc:nth-child(1){grid-column:1;grid-row:1}
+.bdocs .bdoc:nth-child(2){grid-column:1;grid-row:2}
+.bdocs .bdoc:nth-child(3){grid-column:3;grid-row:1}
+.bdocs .bdoc:nth-child(4){grid-column:4;grid-row:1}
+.bdocs .bdoc:nth-child(5){grid-column:5;grid-row:1}
+@media (max-width:900px){.bdocs{grid-template-columns:minmax(0,1fr)}.bdocs .bdoc:nth-child(n){grid-column:auto;grid-row:auto}}
 .bdoc{border-color:var(--ochre)}
 .bdoc:hover{border-color:var(--ochre);color:var(--ochre)}
 .lk .bdoc-ico{font-size:20px;line-height:1;flex:none}
@@ -714,7 +720,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-06T04:56:27Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T04:58:19Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
