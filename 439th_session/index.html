@@ -123,6 +123,20 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 #reformContent.shield .shield-msg{display:flex}
 @media print{#reformModal,#reformContent,.modal{display:none!important}}
 .modal-empty{color:var(--ink-3);text-align:center;padding:30px 0}
+.vswitch{flex:0 0 auto;align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:10px 22px;border:0;border-radius:6px;background:var(--ochre);color:#fff;cursor:pointer;text-align:left;box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.vswitch:hover{filter:brightness(1.08)}
+.vswitch:active{transform:translateY(1px);box-shadow:none}
+.vswitch .vs-k{font-size:12px;font-weight:600;opacity:.85;letter-spacing:.04em}
+.vswitch .vs-t{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:700;white-space:nowrap}
+.vswitch svg{width:20px;height:20px;flex:none}
+.vswitch.to-audit{background:var(--teal)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .vswitch{color:#1b2222}}
+:root[data-theme="dark"] .vswitch{color:#1b2222}
+@media (max-width:620px){.vswitch{width:100%;align-items:flex-start}}
+.view{display:flex;flex-direction:column;gap:28px}
+.bud{background:var(--sheet);border:1px solid var(--rule);border-top:3px solid var(--ochre);padding:22px 22px 26px;display:flex;flex-direction:column;gap:8px}
+.bud h2{font-size:20px;color:var(--ochre)}
+.bud p{margin:0;color:var(--ink-2);max-width:62ch}
 /* 타임라인 */
 .tl{background:var(--sheet);border:1px solid var(--rule);padding:16px 18px 12px}
 .tl-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
@@ -366,6 +380,10 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     <div><span class="lbl" id="d1lbl">국정감사 개시</span><span class="num" id="d1">—</span></div>
     <div><span class="lbl">예산안 의결 법정시한</span><span class="num" id="d2">—</span></div>
     </section>
+    <button class="vswitch" type="button" id="viewBtn" aria-controls="viewAudit viewBudget">
+      <span class="vs-k" id="viewBtnKicker">화면 전환</span>
+      <span class="vs-t"><span id="viewBtnText">예산 대응 현황판 전환</span><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 7h10.6l-3.3-3.3 1.4-1.4L21.4 8l-5.7 5.7-1.4-1.4 3.3-3.3H7V7Zm10 10H6.4l3.3 3.3-1.4 1.4L2.6 16l5.7-5.7 1.4 1.4L6.4 15H17v2Z"/></svg></span>
+    </button>
     <div class="dtools">
         <div class="fs" role="group" aria-labelledby="fsLabel">
           <span id="fsLabel">글자 크기</span>
@@ -377,6 +395,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     </div>
   </div>
 
+  <div class="view" id="viewAudit">
   <section class="tl" aria-label="회기 타임라인">
     <div class="tl-head">
       <h2>2026년 정기 국회 전체 의사일정 흐름</h2>
@@ -415,6 +434,13 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       <ul class="aud-list com-list" id="comList"></ul>
     </div>
   </section>
+  </div>
+  <div class="view" id="viewBudget" hidden>
+    <section class="bud">
+      <h2>2027년도 예산 대응 현황판</h2>
+      <p>2027년도 예산안 심사 대응 내용을 준비하고 있습니다. 국정감사가 끝나면 이 화면에서 예산 심사 일정과 대응 현황을 확인할 수 있습니다.</p>
+    </section>
+  </div>
 
   <div class="cols" hidden>
     <section class="panel" aria-labelledby="tasksH" hidden>
@@ -620,6 +646,21 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       finally{ btn.disabled=false; btn.textContent="확인"; }
     });
   })();
+
+  // ---- 국감 ↔ 예산 화면 전환 (내용은 둘 다 유지, 보이는 화면만 바뀜) ----
+  (function(){
+    const btn=document.getElementById("viewBtn"), A=document.getElementById("viewAudit"), B=document.getElementById("viewBudget");
+    function show(v){
+      const budget=v==="budget";
+      A.hidden=budget; B.hidden=!budget;
+      btn.classList.toggle("to-audit",budget);
+      document.getElementById("viewBtnText").textContent=budget?"국감 대응 현황판 전환":"예산 대응 현황판 전환";
+      try{ history.replaceState(null,"",budget?"#budget":"#audit"); }catch(_){}
+    }
+    btn.addEventListener("click",()=>{ show(A.hidden?"audit":"budget"); window.scrollTo({top:0,behavior:"smooth"}); });
+    show(location.hash==="#budget"?"budget":"audit");
+    window.addEventListener("hashchange",()=>show(location.hash==="#budget"?"budget":"audit"));
+  })();
   // ---- 날짜 ----
   const TEST_DATE=""; // 테스트용 오늘 날짜 (빈 문자열이면 실제 오늘)
   function todayStr(){ if(TEST_DATE) return TEST_DATE; const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
@@ -651,7 +692,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-06T04:30:27Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T04:42:24Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
