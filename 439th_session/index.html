@@ -145,22 +145,23 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 .stage-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap;margin-bottom:14px}
 .stage-h h2{font-size:17px}
 .stage-h span{font-size:13px;color:var(--ochre);font-weight:700}
-.stage-scroll{overflow-x:auto}
+.stage-scroll{overflow-x:auto;padding-bottom:4px}
 .sA{list-style:none;margin:0;padding:6px 0 2px;display:grid;grid-template-columns:repeat(11,minmax(96px,1fr));min-width:1056px}
-.sA .sp{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;position:relative;padding-top:4px}
-.sA .sp::before{content:"";position:absolute;top:15px;left:-50%;right:50%;height:3px;background:var(--rule)}
+.sA .sp{display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;position:relative;padding-top:4px}
+.sA .sp::before{content:"";position:absolute;top:48.5px;left:-50%;right:50%;height:3px;background:var(--rule)}
 .sA .sp:first-child::before{display:none}
 .sA .sp.done::before,.sA .sp.now::before{background:var(--ochre)}
 .sA .dot{width:24px;height:24px;border-radius:50%;background:var(--sheet);border:3px solid var(--rule);position:relative;z-index:1;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--ink-3)}
 .sA .done .dot{background:var(--ochre);border-color:var(--ochre);color:var(--on-acc)}
-.sA .now .dot{width:34px;height:34px;margin-top:-5px;background:var(--ochre);border-color:var(--ochre);color:var(--on-acc);font-size:14px;box-shadow:0 0 0 6px var(--ochre-soft)}
-.sA .lb{width:100%;padding:0 2px;font-size:12.5px;color:var(--ink-3);line-height:1.35;word-break:keep-all}
+.sA .now .dot{width:34px;height:34px;margin:-5px 0;background:var(--ochre);border-color:var(--ochre);color:var(--on-acc);font-size:14px;box-shadow:0 0 0 6px var(--ochre-soft)}
+.sA .lb{margin-top:16px;width:100%;padding:0 2px;font-size:12px;letter-spacing:-.02em;color:var(--ink-3);line-height:1.35;word-break:keep-all}
 .sA .done .lb{color:var(--ink-2)}
 .sA .lb .ln{display:block;white-space:nowrap}
-.sA .now .lb{color:var(--ochre);font-weight:700;font-size:13px}
+.sA .now .lb{color:var(--ochre);font-weight:700}
 .sA .tag{font-size:11px;font-weight:700;color:var(--on-acc);background:var(--ochre);padding:1px 8px;border-radius:999px}
 @media (prefers-reduced-motion:no-preference){.sA .now .dot{animation:stpulse 2s ease-in-out infinite}}
-@keyframes stpulse{0%,100%{box-shadow:0 0 0 6px var(--ochre-soft)}50%{box-shadow:0 0 0 11px var(--ochre-soft)}}
+@keyframes stpulse{0%,100%{box-shadow:0 0 0 5px var(--ochre-soft)}50%{box-shadow:0 0 0 9px var(--ochre-soft)}}
+.sA .tg{height:20px;margin-bottom:14px;display:flex;align-items:flex-end;justify-content:center}
 .bud-notice{display:flex;align-items:center;gap:16px;padding:26px 28px;background:var(--ochre-soft);border:2px solid var(--ochre);border-radius:8px;box-shadow:0 6px 18px rgba(138,100,20,.18)}
 .bud-notice svg{width:38px;height:38px;flex:none;color:var(--ochre)}
 .bud-notice p{margin:0;font-family:var(--f-display);font-size:clamp(22px,3.2vw,32px);font-weight:700;line-height:1.3;color:var(--ochre);text-wrap:balance}
@@ -718,7 +719,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     const now=BUDGET_STAGE-1, ol=document.getElementById("stageList");
     BUDGET_STEPS.forEach((t,i)=>{
       const cls=i<now?"done":(i===now?"now":"");
-      const li=el("li",{class:"sp "+cls}, el("span",{class:"dot"}, i<now?"✓":String(i+1)), i===now?el("span",{class:"tag"},"현재"):null, el("span",{class:"lb"}, t.includes("\n")?t.split("\n").map(x=>el("span",{class:"ln"},x)):t));
+      const li=el("li",{class:"sp "+cls}, el("span",{class:"tg"}, i===now?el("span",{class:"tag"},"현재"):null), el("span",{class:"dot"}, i<now?"✓":String(i+1)), el("span",{class:"lb"}, t.includes("\n")?t.split("\n").map(x=>el("span",{class:"ln"},x)):t));
       if(i===now) li.setAttribute("aria-current","step");
       ol.append(li);
     });
@@ -755,7 +756,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-06T07:09:18Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T07:11:24Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
