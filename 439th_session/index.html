@@ -63,7 +63,7 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 .dday > div{padding:10px 14px;border-left:1px solid var(--rule);display:flex;flex-direction:column;gap:2px;min-width:0}
 .dday > div:first-child{border-left:0}
 .dday .lbl{font-size:15px;font-weight:600;color:var(--ink-2)}
-.dday .num{font-family:var(--f-mono);font-size:23px;font-weight:500;line-height:1.2}
+.dday .num{font-family:var(--f-body);font-size:28px;font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.2}
 .dday .num.hot{color:var(--seal)}
 .dday .when{font-size:12px;color:var(--ink-3)}
 .dday .basis{font-size:11.5px;color:var(--ink-3)}
@@ -351,8 +351,8 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   <div class="drow">
     <section class="dday" aria-label="주요 기한">
-    <div><span class="lbl" id="d1lbl">국정감사 개시</span><span class="num mono" id="d1">—</span></div>
-    <div><span class="lbl">예산안 의결 법정시한</span><span class="num mono" id="d2">—</span></div>
+    <div><span class="lbl" id="d1lbl">국정감사 개시</span><span class="num" id="d1">—</span></div>
+    <div><span class="lbl">예산안 의결 법정시한</span><span class="num" id="d2">—</span></div>
     </section>
     <div class="dtools">
         <div class="fs" role="group" aria-labelledby="fsLabel">
@@ -624,7 +624,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-06T00:09:46Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-06T00:10:39Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
