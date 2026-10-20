@@ -11,7 +11,7 @@
   --seal:#b8322a; --seal-soft:#f6e3e0;          /* 인주 빛 강조색 */
   --teal:#1f5d5c; --teal-soft:#dde9e6;           /* 국정감사 트랙 */
   --ochre:#8a6414; --ochre-soft:#f1e8d2;         /* 예산 트랙 */
-  --lex:#45508a; --lex-soft:#e3e5f1; --loc:#b0501a; --loc-soft:#fbe7d8; --ref:#6d3f8e; --ref-soft:#efe4f6; --hl:#fff4c2; --on-acc:#ffffff;
+  --lex:#45508a; --lex-soft:#e3e5f1; --loc:#b0501a; --loc-soft:#fbe7d8; --ref:#6d3f8e; --ref-soft:#efe4f6; --hl:#fff4c2; --on-acc:#ffffff; --go:#2e6b3a; --go-soft:#e3f0df;
   --ok:#2e6b3a; --ok-soft:#e0eddf; --warn:#9a5a00; --warn-soft:#f6e9d3; --hold:#6b6f76; --hold-soft:#e8e9ec;
   --focus:#1f5d5c;
   --f-display:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;
@@ -23,7 +23,7 @@
   --rule:#2f3a39; --rule-2:#263030;
   --seal:#e8675c; --seal-soft:#3a2220;
   --teal:#6fb8b3; --teal-soft:#1f3534; --ochre:#d9ac55; --ochre-soft:#3a3120;
-  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517; --on-acc:#1b2222;
+  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517; --on-acc:#1b2222; --go:#8fd09b; --go-soft:#203a27;
   --ok:#7cc48a; --ok-soft:#1f3324; --warn:#e3a650; --warn-soft:#3a2d1a; --hold:#a3a8b0; --hold-soft:#2b2f34;
   --focus:#6fb8b3; color-scheme:dark}}
 :root[data-theme="dark"]{
@@ -31,7 +31,7 @@
   --rule:#2f3a39; --rule-2:#263030;
   --seal:#e8675c; --seal-soft:#3a2220;
   --teal:#6fb8b3; --teal-soft:#1f3534; --ochre:#d9ac55; --ochre-soft:#3a3120;
-  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517; --on-acc:#1b2222;
+  --lex:#9aa6dc; --lex-soft:#262b40; --loc:#f0a36b; --loc-soft:#3d2a1c; --ref:#c9a3e6; --ref-soft:#33263f; --hl:#3d3517; --on-acc:#1b2222; --go:#8fd09b; --go-soft:#203a27;
   --ok:#7cc48a; --ok-soft:#1f3324; --warn:#e3a650; --warn-soft:#3a2d1a; --hold:#a3a8b0; --hold-soft:#2b2f34;
   --focus:#6fb8b3; color-scheme:dark}
 
@@ -407,6 +407,36 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 .lk-ext{width:14px;height:14px;flex:none;color:var(--ink-3)}
 footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:12px}
 @media (prefers-reduced-motion:no-preference){.task,.ev{transition:background-color .15s}}
+
+/* ---- 위원회별 예산 심사 일정·상황 ---- */
+.bsch{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:18px 20px}
+.bsch-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.bsch-h h2{font-family:var(--f-display);font-size:20px;margin:0}
+.bsch-lg{display:flex;gap:14px;font-size:12px;color:var(--ink-2);flex-wrap:wrap}
+.bsch-lg i{display:inline-block;width:14px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:4px;border:1px solid var(--rule)}
+.bsch-scroll{overflow-x:auto}
+.bst{width:100%;min-width:1000px;border-collapse:collapse;table-layout:fixed;font-size:13.5px}
+.bst col.c-nm{width:270px}
+.bst th{background:var(--ink);color:var(--sheet);font-size:12.5px;font-weight:700;padding:7px 10px;text-align:center}
+.bst td{border-bottom:1px solid var(--rule-2);padding:9px 10px;text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bst td.nm{text-align:left;font-weight:700}
+.bst .nm-w{display:flex;align-items:center;gap:8px}
+.bst .iss{font:inherit;font-size:11.5px;font-weight:700;color:var(--ref);background:var(--ref-soft);border:1px solid transparent;border-radius:999px;padding:1px 9px;cursor:pointer;white-space:nowrap}
+.bst .iss[aria-expanded="true"]{border-color:var(--ref)}
+.bst tr.yc td{background:var(--seal-soft)}
+.bst tr.yc>td{border-bottom:2px solid var(--ink)}
+.bst td.ok{color:var(--ink-3)} .bst td.ok::before{content:"✓ "}
+.bst td.cur,.bst tr.yc td.cur{background:var(--go-soft);color:var(--go);font-weight:700}
+.bst td.tbd{color:var(--ink-3);letter-spacing:.3em;background:repeating-linear-gradient(-45deg,transparent 0 8px,var(--rule-2) 8px 9px)}
+.bst tr.yc td.tbd{background:repeating-linear-gradient(-45deg,var(--seal-soft) 0 8px,var(--rule-2) 8px 9px)}
+.bst tr.issrow td{background:var(--paper);text-align:left;white-space:normal;padding:10px 14px 12px 22px;border-bottom:1px solid var(--rule)}
+.bst .issbox b{font-size:12.5px;color:var(--ref)}
+.bst .issbox ul{margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.bchip{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.bchip.up{background:var(--sheet);color:var(--go);border:1px solid var(--go)}
+.bchip.now{background:var(--go);color:var(--on-acc)}
+.bchip.end{background:var(--rule-2);color:var(--ink-2)}
+.bchip.yc{background:var(--seal);color:#fff}
 </style>
 
 <div class="wrap">
@@ -593,6 +623,14 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       </div>
     </div>
   </section>
+  <section class="bsch" id="budSched" aria-labelledby="bschH" hidden>
+    <div class="bsch-h"><h2 id="bschH">위원회별 예산 심사 일정·상황</h2>
+      <div class="bsch-lg"><span><i style="background:var(--go-soft);border-color:var(--go-soft)"></i>오늘 진행 중</span><span><i></i>✓ 지난 일정</span><span><i style="background:repeating-linear-gradient(-45deg,transparent 0 3px,var(--rule) 3px 4px)"></i>일정 미정</span></div>
+    </div>
+    <div class="bsch-scroll"><table class="bst"><colgroup><col class="c-nm"><col><col><col><col></colgroup>
+      <thead><tr><th>위원회</th><th>전체회의 상정 / 종합정책질의</th><th>소위원회 심사 / 부처별 심사</th><th>전체회의 의결</th><th>지금 상황</th></tr></thead>
+      <tbody id="bschBody"></tbody></table></div>
+  </section>
   <footer>이 페이지는 공공운수노조 연대사업실이 관리 및 업데이트를 진행하고 있습니다.　※ 담당자 : 연대사업부장 서한솔(010-2562-9051, work.hanthor@gmail.com)</footer>
 </div>
 <div class="modal" id="reformModal" hidden>
@@ -733,7 +771,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     const btn=document.getElementById("viewBtn"), A=document.getElementById("viewAudit"), B=document.getElementById("viewBudget");
     function show(v){
       const budget=v==="budget";
-      A.hidden=budget; B.hidden=!budget;
+      A.hidden=budget; B.hidden=!budget; const bs=document.getElementById("budSched"); if(bs) bs.hidden=!budget;
       btn.classList.toggle("to-audit",budget);
       document.getElementById("viewBtnText").textContent=budget?"국감 대응 현황판 전환":"예산 대응 현황판 전환";
       try{ history.replaceState(null,"",budget?"#budget":location.pathname+location.search); }catch(_){}
@@ -788,7 +826,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-20T01:15:23Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-20T06:33:20Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
@@ -821,6 +859,56 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     const b=$("#d2"), m=diff("2026-12-02"); b.textContent=dLabel("2026-12-02"); b.classList.toggle("hot",m>=0&&m<=7);
   }
   renderDday(); setInterval(renderDday, 60000);
+
+  // ---- 위원회별 예산 심사 일정·상황 (예산화면 맨 아래) ----
+  // 상임위: a=전체회의 상정, b=[소위 시작, 끝], c=전체회의 의결(예비심사 종료). null = 일정 미정
+  // 예결위: a=[종합정책질의 시작, 끝], b=[부처별 심사 시작, 끝], c=전체회의 의결
+  const BUD_COMS=["예산결산특별","국회운영","법제사법","정무","재정경제기획","교육","과학기술정보방송통신","외교통일","국방","행정안전","문화체육관광","농림축산식품해양수산","산업통상자원중소벤처기업","보건복지","기후에너지환경노동","국토교통","정보","성평등가족"];
+  const BUD_SCHED={
+    "농림축산식품해양수산":{a:"2026-11-05", b:["2026-11-10","2026-11-10"], c:"2026-11-11"}
+  };
+  const BUD_ISSUES={ /* 예: "기후에너지환경노동":["쟁점 1","쟁점 2"] */ };
+  const bschOpen=new Set();
+  function renderBudSched(){
+    const tb=document.getElementById("bschBody"); if(!tb) return; tb.textContent="";
+    const t=todayStr();
+    const md=x=>{ const d=parse(x); return (d.getMonth()+1)+"/"+d.getDate()+"("+wd(x)+")"; };
+    const rng=r=>{ if(!r) return null; const [x,y]=Array.isArray(r)?r:[r,r]; if(!x) return null; if(!y||x===y) return {a:x,b:x,txt:md(x)};
+      const dx=parse(x), dy=parse(y); return {a:x,b:y,txt:md(x)+" ~ "+(dx.getMonth()===dy.getMonth()?"":(dy.getMonth()+1)+"/")+dy.getDate()+"("+wd(y)+")"}; };
+    const cell=r=>{ if(!r) return el("td",{},"미정"); return el("td",{class:t>r.b?"ok":(t>=r.a?"cur":"")},r.txt); };
+    const active=BUD_COMS.slice(1).some(c=>{ const v=BUD_SCHED[c]; return v&&v.a&&v.c&&t>=v.a&&t<v.c; });
+    BUD_COMS.forEach((c,i)=>{
+      const yc=i===0, v=BUD_SCHED[c], iss=BUD_ISSUES[c];
+      const tr=el("tr",{class:yc?"yc":""});
+      const nm=el("div",{class:"nm-w"},c);
+      if(iss&&iss.length){ const open=bschOpen.has(c); const b=el("button",{class:"iss",type:"button","aria-expanded":String(open)},"쟁점 사안 "+(open?"▴":"▾"));
+        b.addEventListener("click",()=>{ open?bschOpen.delete(c):bschOpen.add(c); renderBudSched(); }); nm.append(b); }
+      tr.append(el("td",{class:"nm"},nm));
+      if(!v){
+        if(yc&&active){ tr.append(el("td",{class:"tbd",colspan:"3"},"일정 미정"), el("td",{},el("span",{class:"bchip yc"},"상임위 예비심사 중"))); }
+        else tr.append(el("td",{class:"tbd",colspan:"4"},"일정 미정"));
+      } else {
+        const A=rng(v.a), B=rng(v.b), C=rng(v.c);
+        tr.append(cell(A),cell(B),cell(C));
+        let chip=null;
+        if(yc){
+          if(C&&t>=C.a) chip=el("span",{class:"bchip end"},"예결위 의결");
+          else if(B&&t>=B.a) chip=el("span",{class:"bchip yc"},t>B.b?"예산소위 심사 중":"부처별 심사 중");
+          else if(A&&t>=A.a) chip=el("span",{class:"bchip yc"},t>A.b?"부처별 심사 예정":"종합정책질의 중");
+          else if(active) chip=el("span",{class:"bchip yc"},"상임위 예비심사 중");
+        } else {
+          if(C&&t>=C.a) chip=el("span",{class:"bchip end"},"예비심사 종료");
+          else if(!A||t<A.a) chip=el("span",{class:"bchip up"},"전체회의 상정");
+          else if(t===A.a) chip=el("span",{class:"bchip now"},"전체회의 상정");
+          else chip=el("span",{class:"bchip "+(B&&t>=B.a&&t<=B.b?"now":"up")},"소위원회 심사중");
+        }
+        tr.append(el("td",{},chip));
+      }
+      tb.append(tr);
+      if(iss&&iss.length&&bschOpen.has(c)) tb.append(el("tr",{class:"issrow"},el("td",{colspan:"5"},el("div",{class:"issbox"},el("b",{},c+" 쟁점 사안"),el("ul",{},iss.map(x=>el("li",{},x)))))));
+    });
+  }
+  renderBudSched(); setInterval(renderBudSched, 60000);
 
   // ---- 타임라인 (국감·예산 화면 공용) ----
   function drawTimeline(body){
