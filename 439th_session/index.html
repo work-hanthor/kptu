@@ -609,6 +609,14 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     </section>
   </div>
 
+  <section class="bsch" id="budSched" aria-labelledby="bschH" hidden>
+    <div class="bsch-h"><h2 id="bschH">위원회별 예산 심사 일정·상황</h2>
+      <div class="bsch-lg"><span><i style="background:var(--go-soft);border-color:var(--go-soft)"></i>오늘 진행 중</span><span><i></i>✓ 지난 일정</span><span><i style="background:repeating-linear-gradient(-45deg,transparent 0 3px,var(--rule) 3px 4px)"></i>일정 미정</span></div>
+    </div>
+    <div class="bsch-scroll"><table class="bst"><colgroup><col class="c-nm"><col><col><col><col></colgroup>
+      <thead><tr><th>위원회</th><th>전체회의 상정 / 종합정책질의</th><th>소위원회 심사 / 부처별 심사</th><th>전체회의 의결</th><th>지금 상황</th></tr></thead>
+      <tbody id="bschBody"></tbody></table></div>
+  </section>
   <section class="links" aria-label="국정감사 생중계와 국회 일정 바로가기">
     <div class="lk-grp">
       <h2 id="lkLive">국정감사 생중계</h2>
@@ -623,14 +631,6 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
         <a class="lk" href="https://assembly.go.kr/portal/na/agenda/agendaSchl.do?menuNo=600015" target="_blank" rel="noopener noreferrer"><svg class="lk-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 3 6.5V8h18V6.5L12 2Zm-7 8v7H4v3h16v-3h-1v-7h-2v7h-2v-7h-2v7h-2v-7H9v7H7v-7H5Z"/></svg><span>국회 및 상임위원회 일정</span><svg class="lk-ext" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg></a>
       </div>
     </div>
-  </section>
-  <section class="bsch" id="budSched" aria-labelledby="bschH" hidden>
-    <div class="bsch-h"><h2 id="bschH">위원회별 예산 심사 일정·상황</h2>
-      <div class="bsch-lg"><span><i style="background:var(--go-soft);border-color:var(--go-soft)"></i>오늘 진행 중</span><span><i></i>✓ 지난 일정</span><span><i style="background:repeating-linear-gradient(-45deg,transparent 0 3px,var(--rule) 3px 4px)"></i>일정 미정</span></div>
-    </div>
-    <div class="bsch-scroll"><table class="bst"><colgroup><col class="c-nm"><col><col><col><col></colgroup>
-      <thead><tr><th>위원회</th><th>전체회의 상정 / 종합정책질의</th><th>소위원회 심사 / 부처별 심사</th><th>전체회의 의결</th><th>지금 상황</th></tr></thead>
-      <tbody id="bschBody"></tbody></table></div>
   </section>
   <footer>이 페이지는 공공운수노조 연대사업실이 관리 및 업데이트를 진행하고 있습니다.　※ 담당자 : 연대사업부장 서한솔(010-2562-9051, work.hanthor@gmail.com)</footer>
 </div>
@@ -827,7 +827,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-20T06:38:39Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-20T06:40:10Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
