@@ -18,13 +18,15 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: 위원회 회의 일정 받기
         env:
           ASSEMBLY_API_KEY: ${{ secrets.ASSEMBLY_API_KEY }}
+        id: fetch
+        continue-on-error: true
         run: python scripts/fetch_assembly.py
       - name: 바뀐 내용 저장
         run: |
@@ -37,3 +39,8 @@ jobs:
           else
             echo "변경 없음"
           fi
+      - name: 받기 실패 시 표시
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          cat 439th_session/data/fetch_status.json
+          exit 1

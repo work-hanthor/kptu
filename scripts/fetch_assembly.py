@@ -11,10 +11,25 @@ UNIT_CD = "100022"                      # 제22대 국회
 MONTHS = ["2026-10", "2026-11", "2026-12"]
 OUT = "439th_session/data/committee_meetings.json"
 
+STATUS = "439th_session/data/fetch_status.json"
+LOG = []
+
 def call(params):
-    q = urllib.parse.urlencode({"KEY": KEY, "Type": "json", "UNIT_CD": UNIT_CD, **params})
-    with urllib.request.urlopen(API + "?" + q, timeout=30) as r:
-        return json.loads(r.read().decode("utf-8"))
+    full = {"KEY": KEY, "Type": "json", "pIndex": 1, "pSize": 100, "UNIT_CD": UNIT_CD, **params}
+    q = urllib.parse.urlencode(full)
+    shown = {k: v for k, v in full.items() if k != "KEY"}
+    try:
+        req = urllib.request.Request(API + "?" + q, headers={"User-Agent": "Mozilla/5.0 (kptu-board)"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            raw = r.read().decode("utf-8", "replace")
+    except Exception as e:
+        LOG.append({"params": shown, "error": repr(e)}); raise
+    try:
+        data = json.loads(raw)
+    except Exception:
+        LOG.append({"params": shown, "raw": raw[:800]}); raise SystemExit("JSON이 아닌 응답")
+    LOG.append({"params": shown, "head": raw[:400]})
+    return data
 
 def fetch_month(month):
     rows, page = [], 1
@@ -52,5 +67,15 @@ def main():
     json.dump(out, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("저장:", OUT, len(allrows), "건")
 
+def write_status(ok, msg):
+    kst = timezone(timedelta(hours=9))
+    os.makedirs(os.path.dirname(STATUS), exist_ok=True)
+    json.dump({"at": datetime.now(kst).isoformat(timespec="seconds"), "ok": ok, "message": msg, "calls": LOG[-6:]},
+              open(STATUS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
 if __name__ == "__main__":
-    main()
+    try:
+        main(); write_status(True, "성공")
+    except BaseException as e:
+        print("실패:", e); write_status(False, str(e))
+        sys.exit(1)
