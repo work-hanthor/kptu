@@ -1,0 +1,37 @@
+{
+ "at": "2026-10-21T14:08:00+09:00",
+ "ok": true,
+ "message": "성공",
+ "calls": [
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-10"
+   },
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":43},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-10-27\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":3,\"TITLE\":\"농림축산식품법안심사소위원회\",\"COMMITTEE_NAME\":\"농림축산식품해양수산위원회\",\"LINK_URL2\":\"https://agri.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121435\",\"UNIT_CD\":\"100022\",\"UNI"
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-11"
+   },
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":3},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-11\",\"MEETING_TIME\":\"15:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":6,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"농림축산식품해양수산위원회\",\"LINK_URL2\":\"https://agri.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121438\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대"
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-12"
+   },
+   "head": "{\"RESULT\":{\"CODE\":\"INFO-200\",\"MESSAGE\":\"해당하는 데이터가 없습니다.\"}}"
+  }
+ ]
+}
