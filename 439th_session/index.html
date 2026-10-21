@@ -416,6 +416,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 .bsch{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:18px 20px}
 .bsch-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px}
 .bsch-h h2{font-family:var(--f-display);font-size:20px;margin:0}
+.bsch-auto{font-family:var(--f-body);font-size:12px;font-weight:500;color:var(--ink-3);margin-left:8px;font-variant-numeric:tabular-nums}
 .bsch-lg{display:flex;gap:14px;font-size:12px;color:var(--ink-2);flex-wrap:wrap}
 .bsch-lg i{display:inline-block;width:14px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:4px;border:1px solid var(--rule)}
 .bsch-scroll{overflow-x:auto}
@@ -630,7 +631,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
   </div>
 
   <section class="bsch" id="budSched" aria-labelledby="bschH" hidden>
-    <div class="bsch-h"><h2 id="bschH">위원회별 예산 심사 일정·상황</h2>
+    <div class="bsch-h"><h2 id="bschH">위원회별 예산 심사 일정·상황 <small class="bsch-auto" id="bschAuto" hidden></small></h2>
       <div class="bsch-lg"><span><i style="background:var(--go-soft);border-color:var(--go-soft)"></i>오늘 진행 중</span><span><i></i>✓ 지난 일정</span><span><i style="background:repeating-linear-gradient(-45deg,transparent 0 3px,var(--rule) 3px 4px)"></i>일정 미정</span></div>
     </div>
     <div class="bsch-scroll"><table class="bst"><colgroup><col class="c-nm"><col><col><col><col></colgroup>
@@ -850,7 +851,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-21T01:48:07Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-21T05:09:18Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
@@ -933,6 +934,17 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     });
   }
   renderBudSched(); setInterval(renderBudSched, 60000);
+  // 깃허브 페이지: 국회 위원회 일정(열린국회정보)에서 자동으로 골라 둔 예산 심사 일정을 읽어 덮어씀
+  (function(){
+    if(!/^https?:$/.test(location.protocol) || !window.fetch) return;
+    fetch("data/budget_schedule.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{
+      if(!j||!j.committees) return;
+      for(const [c,v] of Object.entries(j.committees)){ if(BUD_COMS.includes(c)) BUD_SCHED[c]=Object.assign({},BUD_SCHED[c]||{},v); }
+      if(j.fetched_at){ const d=new Date(j.fetched_at); const z=n=>String(n).padStart(2,"0");
+        const a=document.getElementById("bschAuto"); if(a){ a.textContent="국회 위원회 일정에서 자동 반영 · "+(d.getMonth()+1)+"/"+d.getDate()+" "+z(d.getHours())+":"+z(d.getMinutes()); a.hidden=false; } }
+      renderBudSched();
+    }).catch(()=>{});
+  })();
 
   // ---- 예산화면 공지 전광판: 문구는 여기만 고치면 됨 ----
   const NOTICE_MSGS=["현재 국정감사중","상임위의 예산안 등 예비심사는 11월부터 시작됩니다"];
