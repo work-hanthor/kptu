@@ -1,5 +1,5 @@
 {
- "at": "2026-10-21T14:08:00+09:00",
+ "at": "2026-10-21T23:10:22+09:00",
  "ok": true,
  "message": "성공",
  "calls": [
@@ -11,7 +11,7 @@
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-10"
    },
-   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":43},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-10-27\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":3,\"TITLE\":\"농림축산식품법안심사소위원회\",\"COMMITTEE_NAME\":\"농림축산식품해양수산위원회\",\"LINK_URL2\":\"https://agri.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121435\",\"UNIT_CD\":\"100022\",\"UNI"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":45},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-10-27\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":3,\"TITLE\":\"농림축산식품법안심사소위원회\",\"COMMITTEE_NAME\":\"농림축산식품해양수산위원회\",\"LINK_URL2\":\"https://agri.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121435\",\"UNIT_CD\":\"100022\",\"UNI"
   },
   {
    "params": {
