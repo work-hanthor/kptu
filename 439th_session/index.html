@@ -851,7 +851,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-21T06:05:05Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-21T06:05:46Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
@@ -881,7 +881,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       else if(diff(AUDIT_END)>=0){ $("#d1lbl").textContent="국정감사 진행"; setNum(a,(1-n)+"일차"); a.classList.add("hot"); }
       else { $("#d1lbl").textContent="국정감사"; setNum(a,"종료"); a.classList.add("muted"); }
     }
-    const b=$("#d2"), m=diff("2026-12-02"); setNum(b,dLabel("2026-12-02"),(vb&&!vb.hidden)?"2026. 12. 2.":null); b.classList.toggle("hot",m>=0&&m<=7);
+    const b=$("#d2"), m=diff("2026-12-02"); setNum(b,dLabel("2026-12-02"),"2026. 12. 2."); b.classList.toggle("hot",m>=0&&m<=7);
   }
   renderDday(); setInterval(renderDday, 60000);
 
