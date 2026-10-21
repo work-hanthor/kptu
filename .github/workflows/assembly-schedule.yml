@@ -28,6 +28,9 @@ jobs:
         id: fetch
         continue-on-error: true
         run: python scripts/fetch_assembly.py
+      - name: 예산 심사 회의만 골라 정리
+        if: steps.fetch.outcome == 'success'
+        run: python scripts/parse_budget.py
       - name: 바뀐 내용 저장
         run: |
           if [ -n "$(git status --porcelain 439th_session/data)" ]; then
