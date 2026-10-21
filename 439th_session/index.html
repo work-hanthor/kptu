@@ -442,6 +442,20 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 .bchip.pre{background:var(--sheet);color:var(--ink-2);border:1px solid var(--rule)}
 .bchip.end{background:var(--rule-2);color:var(--ink-2)}
 .bchip.yc{background:var(--seal);color:#fff}
+
+/* ---- 예산화면 공지 전광판 (지하철 행선 안내판 모양) ---- */
+.nt{background:#101820;border-radius:10px;padding:14px 18px;box-shadow:inset 0 2px 0 #2b3a48,0 6px 18px rgba(0,0,0,.22);display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 18px;align-items:center}
+.nt-tag{grid-row:1/3;display:grid;place-items:center;width:64px;height:64px;border-radius:8px;background:#ff8a00;font-size:34px;line-height:1}
+.nt-top{font-size:13px;letter-spacing:.12em;color:#7fd1ff;font-weight:700}
+.nt-tk{overflow:hidden;border-top:1px dashed #2b3a48;padding-top:6px}
+.nt-track{display:flex;width:max-content;animation:ntflow var(--dur,24s) linear infinite}
+.nt-track span{white-space:nowrap;font-size:clamp(20px,3vw,30px);font-weight:800;color:#ff9d2e;text-shadow:0 0 8px rgba(255,140,30,.45)}
+.nt-track span.g{color:#7cf29a;text-shadow:0 0 8px rgba(110,240,150,.45)}
+.nt-track span.sep{color:#ff9d2e;padding:0 26px}
+.nt-tk:hover .nt-track{animation-play-state:paused}
+@keyframes ntflow{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.nt-track{animation:none}}
+@media (max-width:560px){.nt{padding:12px 14px;gap:4px 12px}.nt-tag{width:48px;height:48px;font-size:26px}}
 </style>
 
 <div class="wrap">
@@ -517,9 +531,10 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
   </section>
   </div>
   <div class="view" id="viewBudget" hidden>
-    <section class="bud-notice" role="status">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-2h2v2Zm0-4h-2V7h2v6Z"/></svg>
-      <p>2027 예산 대응 현황판은 현재 준비중입니다</p>
+    <section class="nt" aria-labelledby="ntTop">
+      <div class="nt-tag" aria-hidden="true">📢</div>
+      <div class="nt-top" id="ntTop">오늘의 공지사항</div>
+      <div class="nt-tk"><div class="nt-track" id="ntTrack"></div></div>
     </section>
     <section class="stage" aria-labelledby="stageH">
       <div class="stage-h"><h2 id="stageH">2027년 예산안 심사, 어디까지 왔나?</h2><span id="stageCount"></span></div>
@@ -835,7 +850,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-21T01:33:44Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-21T01:48:07Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
@@ -918,6 +933,16 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     });
   }
   renderBudSched(); setInterval(renderBudSched, 60000);
+
+  // ---- 예산화면 공지 전광판: 문구는 여기만 고치면 됨 ----
+  const NOTICE_MSGS=["현재 국정감사중","상임위의 예산안 등 예비심사는 11월부터 시작됩니다"];
+  (function(){
+    const tr=document.getElementById("ntTrack"); if(!tr) return;
+    const one=()=>NOTICE_MSGS.flatMap((m,i)=>[el("span",{class:i%2?"":"g"},m), el("span",{class:"sep","aria-hidden":"true"},"▶")]);
+    tr.append(...one(), ...one(), ...one(), ...one());
+    const fit=()=>{ const w=tr.scrollWidth/2; if(w>0) tr.style.setProperty("--dur",Math.max(12,w/90)+"s"); };
+    fit(); if(window.ResizeObserver) new ResizeObserver(fit).observe(tr); else window.addEventListener("resize",fit);
+  })();
 
   // ---- 타임라인 (국감·예산 화면 공용) ----
   function drawTimeline(body){
