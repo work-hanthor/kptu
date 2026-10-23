@@ -1,6 +1,6 @@
 {
- "fetched_at": "2026-10-23T10:02:44+09:00",
- "count": 49,
+ "fetched_at": "2026-10-23T17:51:59+09:00",
+ "count": 50,
  "rows": [
   {
    "MEETING_DATE": "2026-10-01",
@@ -588,7 +588,20 @@
    "ANGUN": "1. [ZZ22138] 특별감찰관후보자(최길수) 인사청문요청안<br>2. 특별감찰관후보자(최길수) 인사청문경과보고서 채택의 건<br>"
   },
   {
-   "MEETING_DATE": "2026-10-27",
+   "MEETING_DATE": "2026-10-23",
+   "MEETING_TIME": "국정감사 진행중",
+   "SESS": "제439회국회(정기회)",
+   "DEGREE": 9,
+   "TITLE": "전체회의",
+   "COMMITTEE_NAME": "과학기술정보방송통신위원회",
+   "LINK_URL2": "https://science.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121443",
+   "UNIT_CD": "100022",
+   "UNIT_NM": "제22대",
+   "HR_DEPT_CD": "9700479",
+   "ANGUN": "1. 2026년도 국정감사 증인 출석요구 추가의 건<br>"
+  },
+  {
+   "MEETING_DATE": "2026-11-03",
    "MEETING_TIME": "10:00",
    "SESS": "제439회국회(정기회)",
    "DEGREE": 3,

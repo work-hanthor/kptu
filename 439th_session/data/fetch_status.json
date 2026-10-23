@@ -1,5 +1,5 @@
 {
- "at": "2026-10-23T10:02:44+09:00",
+ "at": "2026-10-23T17:51:59+09:00",
  "ok": true,
  "message": "성공",
  "calls": [
@@ -11,7 +11,7 @@
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-10"
    },
-   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":46},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-10-27\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":3,\"TITLE\":\"농림축산식품법안심사소위원회\",\"COMMITTEE_NAME\":\"농림축산식품해양수산위원회\",\"LINK_URL2\":\"https://agri.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121435\",\"UNIT_CD\":\"100022\",\"UNI"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":46},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-10-23\",\"MEETING_TIME\":\"국정감사 진행중\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":9,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"과학기술정보방송통신위원회\",\"LINK_URL2\":\"https://science.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121443\",\"UNIT_CD\":\"100022\",\"UNIT_NM"
   },
   {
    "params": {
@@ -21,7 +21,7 @@
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-11"
    },
-   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":3},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-11\",\"MEETING_TIME\":\"15:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":6,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"농림축산식품해양수산위원회\",\"LINK_URL2\":\"https://agri.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121438\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":4},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-11\",\"MEETING_TIME\":\"15:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":6,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"농림축산식품해양수산위원회\",\"LINK_URL2\":\"https://agri.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121438\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대"
   },
   {
    "params": {
