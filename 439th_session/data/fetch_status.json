@@ -1,5 +1,5 @@
 {
- "at": "2026-10-25T17:45:11+09:00",
+ "at": "2026-10-25T22:23:57+09:00",
  "ok": true,
  "message": "성공",
  "calls": [
@@ -11,7 +11,7 @@
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-10"
    },
-   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":46},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-10-23\",\"MEETING_TIME\":\"국정감사 진행중\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":9,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"과학기술정보방송통신위원회\",\"LINK_URL2\":\"https://science.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121443\",\"UNIT_CD\":\"100022\",\"UNIT_NM"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":47},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-10-26\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":9,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"행정안전위원회\",\"LINK_URL2\":\"https://adminhom.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121445\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대\""
   },
   {
    "params": {

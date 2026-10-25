@@ -1,6 +1,6 @@
 {
- "fetched_at": "2026-10-23T17:51:59+09:00",
- "count": 50,
+ "fetched_at": "2026-10-25T22:23:57+09:00",
+ "count": 51,
  "rows": [
   {
    "MEETING_DATE": "2026-10-01",
@@ -599,6 +599,19 @@
    "UNIT_NM": "제22대",
    "HR_DEPT_CD": "9700479",
    "ANGUN": "1. 2026년도 국정감사 증인 출석요구 추가의 건<br>"
+  },
+  {
+   "MEETING_DATE": "2026-10-26",
+   "MEETING_TIME": "10:00",
+   "SESS": "제439회국회(정기회)",
+   "DEGREE": 9,
+   "TITLE": "전체회의",
+   "COMMITTEE_NAME": "행정안전위원회",
+   "LINK_URL2": "https://adminhom.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121445",
+   "UNIT_CD": "100022",
+   "UNIT_NM": "제22대",
+   "HR_DEPT_CD": "9700480",
+   "ANGUN": "1. 2026년도 국정감사 증인,참고인 출석요구 철회의 건<br>2. 2026년도 국정감사계획서 변경의 건<br>3. 2026년도 국정감사 보고요구 추가의 건<br>4. 2026년도 국정감사 증인 출석요구 추가의 건<br>"
   },
   {
    "MEETING_DATE": "2026-11-03",
