@@ -1,0 +1,34 @@
+name: 알림 시험 (예결위 일정 변경 알림 메일 확인용)
+
+on:
+  push:
+    paths:
+      - ".github/alert-test.txt"
+  workflow_dispatch: {}
+
+permissions:
+  issues: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 시험용 알림 이슈 만들기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > body.md <<'MD'
+          ※ 알림 시험용입니다. 실제 일정 변경이 아니며, 현황판 내용은 바뀌지 않았습니다.
+
+          현황판이 국회 위원회 일정을 불러오다가 예결위 일정이 일정표와 다른 것을 발견했습니다.
+
+          - 일정표에 없는 예결위 회의가 국회 일정에 올라왔습니다: 2026-11-06 전체회의 (1. 2027년도 예산안)
+          - 종합정책질의 일정이 바뀌었습니다: 일정표 ['2026-11-04', '2026-11-05'] → 국회 일정 ['2026-11-04', '2026-11-06'] (현황판에 자동 반영)
+
+          바뀐 일정은 현황판(깃허브 페이지)에 자동으로 반영됩니다.
+          현황판: https://work-hanthor.github.io/kptu/439th_session/#budget
+          MD
+          sed -i 's/^          //' body.md
+          gh issue create --repo "${{ github.repository }}" \
+            --title "[현황판 알림·시험] 예결위 예산안 심사 일정 변경 ($(TZ=Asia/Seoul date '+%m/%d %H:%M'))" \
+            --body-file body.md --assignee "${{ github.repository_owner }}"
