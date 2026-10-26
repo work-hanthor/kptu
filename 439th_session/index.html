@@ -175,6 +175,7 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 .sA .lb{margin-top:20px;width:100%;padding:0 2px;font-size:12px;letter-spacing:-.02em;color:var(--ink-3);line-height:1.35;word-break:keep-all}
 .sA .done .lb{color:var(--ink-2)}
 .sA .lb .ln{display:block;white-space:nowrap}
+.sA .lb .dt{display:block;margin-top:3px;font-size:11px;color:var(--ink-3);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
 .sA .now .lb{color:var(--seal);font-weight:700;font-size:13px;letter-spacing:-.04em}
 .sA .tag{font-size:12.5px;font-weight:700;color:var(--on-acc);background:var(--seal);padding:2px 10px;border-radius:999px}
 @media (prefers-reduced-motion:no-preference){.sA .now .dot{animation:stpulse 2s ease-in-out infinite}}
@@ -794,8 +795,8 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
   // ---- 국감 ↔ 예산 화면 전환 (내용은 둘 다 유지, 보이는 화면만 바뀜) ----
   (function(){
     const btn=document.getElementById("viewBtn"), A=document.getElementById("viewAudit"), B=document.getElementById("viewBudget");
-    // 2026. 11. 1.부터는 주소만 치고 들어오면 예산 화면이 먼저 뜸 (국감 화면은 #audit)
-    const BUDGET_FIRST=(()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0") >= "2026-11-01"; })();
+    // 2026. 10. 30.부터는 주소만 치고 들어오면 예산 화면이 먼저 뜸 (국감 화면은 #audit)
+    const BUDGET_FIRST=(()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0") >= "2026-10-30"; })();
     function show(v){
       const budget=v==="budget";
       A.hidden=budget; B.hidden=!budget; const bs=document.getElementById("budSched"); if(bs) bs.hidden=!budget;
@@ -810,19 +811,27 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     window.addEventListener("hashchange",()=>show(pick()));
   })();
 
-  // ---- 예산화면: 예산안 심사 진행 단계 (BUDGET_STAGE = 현재 단계 번호, 1부터) ----
+  // ---- 예산화면: 예산안 심사 진행 단계 (날짜에 따라 자동 진행) ----
   const BUDGET_STEPS=["정부의\n예산안 국회 제출","소관 상임위 회부\n및 정부 시정연설","상임위원회 예비심사","예결위\n종합심사","종합정책질의(2일간)","경제부처 심사(2일간)","비경제부처 심사(2일간)","예산안등\n조정소위 심사","예결위 최종 의결","본회의 의결","정부 이송 및 국무회의 공포"];
-  const BUDGET_STAGE=2;
-  (function(){
-    const now=BUDGET_STAGE-1, ol=document.getElementById("stageList");
-    BUDGET_STEPS.forEach((t,i)=>{
+  // 단계별 시작일은 renderStages()에서 예결위 일정(BUD_SCHED)으로 계산 — 날짜가 지나면 자동으로 다음 단계로 넘어감
+  function renderStages(){
+    const ol=document.getElementById("stageList"); if(!ol) return; ol.textContent="";
+    const y=(typeof BUD_SCHED!=="undefined"&&BUD_SCHED["예산결산특별"])||{};
+    const first=r=>Array.isArray(r)?r[0]:r, mdx=x=>{ const d=parse(x); return (d.getMonth()+1)+"/"+d.getDate(); };
+    const span=r=>{ if(!r) return null; const a=first(r), b=Array.isArray(r)?r[1]:null; if(!a) return null; if(!b||b===a) return mdx(a);
+      const da=parse(a), db=parse(b); return mdx(a)+"~"+(da.getMonth()===db.getMonth()?db.getDate():mdx(b)); };
+    // [시작일, 단계 아래 작은 날짜]
+    const S=[["2026-09-03","9/3"],["2026-09-04",null],["2026-11-02","11/2~"],[first(y.a),null],[first(y.a),span(y.a)],[first(y.e),span(y.e)],[first(y.n),span(y.n)],[y.s||null,y.s?mdx(y.s)+"~":"미정"],[y.c||null,y.c?mdx(y.c):"소위 의결 시"],[y.pl||null,y.pl?mdx(y.pl):"법정시한 12/2"],[null,null]];
+    const t=todayStr(); let now=0;
+    S.forEach((x,i)=>{ if(x[0]&&x[0]<=t) now=i; });
+    BUDGET_STEPS.forEach((tx,i)=>{
       const cls=i<now?"done":(i===now?"now":"");
-      const li=el("li",{class:"sp "+cls}, el("span",{class:"tg"}, i===now?el("span",{class:"tag"},"현재"):null), el("span",{class:"dot"}, i<now?"✓":String(i+1)), el("span",{class:"lb"}, t.includes("\n")?t.split("\n").map(x=>el("span",{class:"ln"},x)):t));
+      const li=el("li",{class:"sp "+cls}, el("span",{class:"tg"}, i===now?el("span",{class:"tag"},"현재"):null), el("span",{class:"dot"}, i<now?"✓":String(i+1)), el("span",{class:"lb"}, tx.includes("\n")?tx.split("\n").map(x=>el("span",{class:"ln"},x)):tx, S[i][1]?el("span",{class:"dt"},S[i][1]):null));
       if(i===now) li.setAttribute("aria-current","step");
       ol.append(li);
     });
-    document.getElementById("stageCount").textContent=BUDGET_STEPS.length+"단계 중 "+BUDGET_STAGE+"단계 진행 중";
-  })();
+    document.getElementById("stageCount").textContent=BUDGET_STEPS.length+"단계 중 "+(now+1)+"단계 진행 중";
+  }
   // ---- 날짜 ----
   const TEST_DATE=""; // 테스트용 오늘 날짜 (빈 문자열이면 실제 오늘)
   function todayStr(){ if(TEST_DATE) return TEST_DATE; const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
@@ -854,7 +863,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-26T00:27:14Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-26T00:39:17Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
@@ -893,6 +902,8 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
   // 예결위: a=[종합정책질의 시작, 끝], b=[부처별 심사 시작, 끝], c=전체회의 의결
   const BUD_COMS=["예산결산특별","국회운영","법제사법","정무","재정경제기획","교육","과학기술정보방송통신","외교통일","국방","행정안전","문화체육관광","농림축산식품해양수산","산업통상자원중소벤처기업","보건복지","기후에너지환경노동","국토교통","정보","성평등가족"];
   const BUD_SCHED={
+    // 예결위 (2027년도 예산안 심사 일정표 기준): p=공청회, a=종합정책질의, e=경제부처, n=비경제부처, b=부별심사 전체, s=조정소위 시작, c=전체회의 의결, pl=본회의
+    "예산결산특별":{p:"2026-10-30", a:["2026-11-04","2026-11-05"], e:["2026-11-09","2026-11-10"], n:["2026-11-11","2026-11-12"], b:["2026-11-09","2026-11-12"], s:"2026-11-16", c:null},
     "농림축산식품해양수산":{a:"2026-11-05", b:["2026-11-10","2026-11-10"], c:"2026-11-11"}
   };
   const BUD_ISSUES={ /* 예: "기후에너지환경노동":["쟁점 1","쟁점 2"] */ };
@@ -917,13 +928,21 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
         else tr.append(el("td",{class:"tbd",colspan:"4"},"일정 미정"));
       } else {
         const A=rng(v.a), B=rng(v.b), C=rng(v.c);
-        tr.append(cell(A),cell(B),cell(C));
+        tr.append(cell(A),cell(B),(!C&&yc)?el("td",{},"소위 의결 시"):cell(C));
         let chip=null;
         if(yc){
+          const E=rng(v.e), N=rng(v.n);
           if(C&&t>=C.a) chip=el("span",{class:"bchip end"},"예결위 의결");
-          else if(B&&t>=B.a) chip=el("span",{class:"bchip yc"},t>B.b?"예산소위 심사 중":"부처별 심사 중");
-          else if(A&&t>=A.a) chip=el("span",{class:"bchip yc"},t>A.b?"부처별 심사 예정":"종합정책질의 중");
+          else if(v.s&&t>=v.s) chip=el("span",{class:"bchip yc"},"조정소위 심사 중");
+          else if(B&&t>B.b) chip=el("span",{class:"bchip up"},"조정소위 심사 예정");
+          else if(N&&t>=N.a&&t<=N.b) chip=el("span",{class:"bchip yc"},"비경제부처 심사 중");
+          else if(E&&t>=E.a&&t<=E.b) chip=el("span",{class:"bchip yc"},"경제부처 심사 중");
+          else if(B&&t>=B.a) chip=el("span",{class:"bchip up"},"부별심사 진행 중");
+          else if(A&&t>=A.a&&t<=A.b) chip=el("span",{class:"bchip yc"},"종합정책질의 중");
+          else if(A&&t>A.b) chip=el("span",{class:"bchip up"},"부별심사 예정");
+          else if(v.p&&t===v.p) chip=el("span",{class:"bchip yc"},"공청회");
           else if(active) chip=el("span",{class:"bchip yc"},"상임위 예비심사 중");
+          else chip=el("span",{class:"bchip pre"},t<"2026-11-01"?"국정감사 진행중":"심의 예정");
         } else {
           if(C&&t>=C.a) chip=el("span",{class:"bchip end"},"예비심사 종료");
           else if(!A||t<A.a) chip=el("span",{class:"bchip pre"},t<"2026-11-01"?"국정감사 진행중":"심의 예정");
@@ -936,13 +955,14 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       if(iss&&iss.length&&bschOpen.has(c)) tb.append(el("tr",{class:"issrow"},el("td",{colspan:"5"},el("div",{class:"issbox"},el("b",{},c+" 쟁점 사안"),el("ul",{},iss.map(x=>el("li",{},x)))))));
     });
   }
-  renderBudSched(); setInterval(renderBudSched, 60000);
+  renderBudSched(); renderStages(); setInterval(()=>{ renderBudSched(); renderStages(); }, 60000);
   // 깃허브 페이지: 국회 위원회 일정(열린국회정보)에서 자동으로 골라 둔 예산 심사 일정을 읽어 덮어씀
   (function(){
     if(!/^https?:$/.test(location.protocol) || !window.fetch) return;
     fetch("data/budget_schedule.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{
       if(!j||!j.committees) return;
       for(const [c,v] of Object.entries(j.committees)){ if(BUD_COMS.includes(c)) BUD_SCHED[c]=Object.assign({},BUD_SCHED[c]||{},v); }
+      renderStages();
       if(j.fetched_at){ const d=new Date(j.fetched_at); const z=n=>String(n).padStart(2,"0");
         const a=document.getElementById("bschAuto"); if(a){ a.textContent="(참고) 국회 홈페이지에 공지(확정)된 내용을 하루 3번 자동으로 불러오고 있음"; a.hidden=false; } }
       renderBudSched();
