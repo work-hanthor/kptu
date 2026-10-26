@@ -31,10 +31,10 @@ def call(params):
     LOG.append({"params": shown, "head": raw[:400]})
     return data
 
-def fetch_month(month):
+def fetch_month(month, extra=None):
     rows, page = [], 1
     while True:
-        data = call({"pIndex": page, "pSize": 1000, "MEETING_DATE": month})
+        data = call({"pIndex": page, "pSize": 1000, "MEETING_DATE": month, **(extra or {})})
         if "RESULT" in data:                       # 자료 없음 등
             code = data["RESULT"].get("CODE")
             if code == "INFO-200": return rows
@@ -54,6 +54,17 @@ def main():
     allrows = []
     for m in MONTHS:
         got = fetch_month(m); print(m, len(got), "건"); allrows += got
+    # 예결위(특별위원회)는 따로 한 번 더 찾아서 빠짐없이 합침
+    for m in MONTHS:
+        try: got = fetch_month(m, {"COMMITTEE_NAME": "예산결산특별위원회"})
+        except SystemExit as e: print("예결위 조회 실패:", e); got = []
+        print(m, "예결위", len(got), "건"); allrows += got
+    seen, uniq = set(), []
+    for r in allrows:
+        k = (r.get("MEETING_DATE"), r.get("MEETING_TIME"), r.get("COMMITTEE_NAME"), r.get("TITLE"), r.get("DEGREE"))
+        if k in seen: continue
+        seen.add(k); uniq.append(r)
+    allrows = uniq
     allrows.sort(key=lambda r: (str(r.get("MEETING_DATE")), str(r.get("MEETING_TIME")), str(r.get("COMMITTEE_NAME"))))
     kst = timezone(timedelta(hours=9))
     out = {"fetched_at": datetime.now(kst).isoformat(timespec="seconds"), "count": len(allrows), "rows": allrows}
