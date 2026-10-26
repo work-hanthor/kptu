@@ -1,5 +1,5 @@
 {
- "at": "2026-10-25T22:23:57+09:00",
+ "at": "2026-10-26T09:46:27+09:00",
  "ok": true,
  "message": "성공",
  "calls": [
@@ -30,6 +30,39 @@
     "pSize": 1000,
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-12"
+   },
+   "head": "{\"RESULT\":{\"CODE\":\"INFO-200\",\"MESSAGE\":\"해당하는 데이터가 없습니다.\"}}"
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-10",
+    "COMMITTEE_NAME": "예산결산특별위원회"
+   },
+   "head": "{\"RESULT\":{\"CODE\":\"INFO-200\",\"MESSAGE\":\"해당하는 데이터가 없습니다.\"}}"
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-11",
+    "COMMITTEE_NAME": "예산결산특별위원회"
+   },
+   "head": "{\"RESULT\":{\"CODE\":\"INFO-200\",\"MESSAGE\":\"해당하는 데이터가 없습니다.\"}}"
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-12",
+    "COMMITTEE_NAME": "예산결산특별위원회"
    },
    "head": "{\"RESULT\":{\"CODE\":\"INFO-200\",\"MESSAGE\":\"해당하는 데이터가 없습니다.\"}}"
   }
