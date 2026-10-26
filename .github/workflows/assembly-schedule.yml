@@ -6,6 +6,9 @@ on:
     - cron: "50 3 * * *"    # 매일 12:50 (한국시간)
     - cron: "50 8 * * *"    # 매일 17:50 (한국시간)
   workflow_dispatch: {}      # Actions 탭에서 'Run workflow'로 바로 실행
+  push:                      # 실패 알림 시험용: 이 파일을 고치면 일부러 틀린 인증키로 한 번 돌려 봄
+    paths:
+      - ".github/fail-test.txt"
 
 permissions:
   contents: write
@@ -25,7 +28,7 @@ jobs:
           python-version: "3.12"
       - name: 위원회 회의 일정 받기
         env:
-          ASSEMBLY_API_KEY: ${{ secrets.ASSEMBLY_API_KEY }}
+          ASSEMBLY_API_KEY: ${{ github.event_name == 'push' && 'TEST-INVALID-KEY' || secrets.ASSEMBLY_API_KEY }}
         id: fetch
         continue-on-error: true
         run: python scripts/fetch_assembly.py
@@ -58,8 +61,33 @@ jobs:
           else
             echo "변경 없음"
           fi
-      - name: 받기 실패 시 표시
-        if: steps.fetch.outcome == 'failure'
+      - name: 실패하면 알림(이슈 → 이메일), 이미 열린 실패 알림이 있으면 중복으로 보내지 않음
+        if: failure() || steps.fetch.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          cat 439th_session/data/fetch_status.json
+          msg=$(python3 -c "import json;d=json.load(open('439th_session/data/fetch_status.json'));print(d.get('message',''))" 2>/dev/null || echo "알 수 없는 오류")
+          open=$(gh issue list --repo "${{ github.repository }}" --state open --search "in:title 국회 일정 자동 수집 실패" --json number --jq '.[0].number')
+          if [ -z "$open" ]; then
+            printf '%s\n' \
+              "현황판이 국회 위원회 일정을 불러오지 못했습니다. 그동안 현황판의 예산 심사 일정은 마지막으로 불러온 내용 그대로입니다." "" \
+              "- 실패 시각: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M')" \
+              "- 원인(국회 API 응답): ${msg}" \
+              "- 실행 기록: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" "" \
+              "다음 자동 실행(07:50 · 12:50 · 17:50)에서 다시 시도합니다. 정상으로 돌아오면 이 알림은 자동으로 닫히고 '복구' 메일이 갑니다." \
+              "인증키 문제(ERROR-290 등)라면 열린국회정보에서 키를 확인한 뒤 Settings → Secrets → ASSEMBLY_API_KEY 를 바꿔 주세요." > body.md
+            gh issue create --repo "${{ github.repository }}" \
+              --title "[현황판 알림] 국회 일정 자동 수집 실패 ($(TZ=Asia/Seoul date '+%m/%d %H:%M'))" \
+              --body-file body.md --assignee "${{ github.repository_owner }}"
+          else
+            echo "이미 열린 실패 알림 #$open 이 있어 새로 보내지 않음"
+          fi
           exit 1
+      - name: 정상으로 돌아오면 실패 알림 닫기
+        if: success() && steps.fetch.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --repo "${{ github.repository }}" --state open --search "in:title 국회 일정 자동 수집 실패" --json number --jq '.[].number'); do
+            gh issue close "$n" --repo "${{ github.repository }}" --comment "복구되었습니다. $(TZ=Asia/Seoul date '+%m/%d %H:%M')에 국회 위원회 일정을 정상으로 불러왔습니다."
+          done
