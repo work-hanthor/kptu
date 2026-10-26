@@ -821,12 +821,12 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     const span=r=>{ if(!r) return null; const a=first(r), b=Array.isArray(r)?r[1]:null; if(!a) return null; if(!b||b===a) return mdx(a);
       const da=parse(a), db=parse(b); return mdx(a)+"~"+(da.getMonth()===db.getMonth()?db.getDate():mdx(b)); };
     // [시작일, 단계 아래 작은 날짜]
-    const S=[["2026-09-03","9/3"],["2026-09-04",null],["2026-11-02","11/2~"],[first(y.a),null],[first(y.a),span(y.a)],[first(y.e),span(y.e)],[first(y.n),span(y.n)],[y.s||null,y.s?mdx(y.s)+"~":"미정"],[y.c||null,y.c?mdx(y.c):"소위 의결 시"],[y.pl||null,y.pl?mdx(y.pl):"법정시한 12/2"],[null,null]];
+    const S=[["2026-09-03","9/3"],["2026-09-04",null],["2026-11-02","11/2~"],[first(y.a),null],[first(y.a),span(y.a)],[first(y.e),span(y.e)],[first(y.n),span(y.n)],[y.s||null,y.s?mdx(y.s)+"~":"미정"],[y.c||null,y.c?mdx(y.c):"소위 의결 시"],[y.pl||null,y.pl?mdx(y.pl):"법정시한\n12/2"],[null,null]];
     const t=todayStr(); let now=0;
     S.forEach((x,i)=>{ if(x[0]&&x[0]<=t) now=i; });
     BUDGET_STEPS.forEach((tx,i)=>{
       const cls=i<now?"done":(i===now?"now":"");
-      const li=el("li",{class:"sp "+cls}, el("span",{class:"tg"}, i===now?el("span",{class:"tag"},"현재"):null), el("span",{class:"dot"}, i<now?"✓":String(i+1)), el("span",{class:"lb"}, tx.includes("\n")?tx.split("\n").map(x=>el("span",{class:"ln"},x)):tx, S[i][1]?el("span",{class:"dt"},S[i][1]):null));
+      const li=el("li",{class:"sp "+cls}, el("span",{class:"tg"}, i===now?el("span",{class:"tag"},"현재"):null), el("span",{class:"dot"}, i<now?"✓":String(i+1)), el("span",{class:"lb"}, tx.includes("\n")?tx.split("\n").map(x=>el("span",{class:"ln"},x)):tx, S[i][1]?el("span",{class:"dt"},S[i][1].split("\n").flatMap((x,k)=>k?[el("br"),x]:[x])):null));
       if(i===now) li.setAttribute("aria-current","step");
       ol.append(li);
     });
@@ -863,7 +863,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-26T00:39:17Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-26T00:43:23Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
