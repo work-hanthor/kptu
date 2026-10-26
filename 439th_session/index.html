@@ -794,17 +794,20 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
   // ---- 국감 ↔ 예산 화면 전환 (내용은 둘 다 유지, 보이는 화면만 바뀜) ----
   (function(){
     const btn=document.getElementById("viewBtn"), A=document.getElementById("viewAudit"), B=document.getElementById("viewBudget");
+    // 2026. 11. 1.부터는 주소만 치고 들어오면 예산 화면이 먼저 뜸 (국감 화면은 #audit)
+    const BUDGET_FIRST=(()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0") >= "2026-11-01"; })();
     function show(v){
       const budget=v==="budget";
       A.hidden=budget; B.hidden=!budget; const bs=document.getElementById("budSched"); if(bs) bs.hidden=!budget;
       btn.classList.toggle("to-audit",budget);
       document.getElementById("viewBtnText").textContent=budget?"국감 대응 현황판 전환":"예산 대응 현황판 전환";
-      try{ history.replaceState(null,"",budget?"#budget":location.pathname+location.search); }catch(_){}
+      try{ history.replaceState(null,"",budget?(BUDGET_FIRST?location.pathname+location.search:"#budget"):(BUDGET_FIRST?"#audit":location.pathname+location.search)); }catch(_){}
       try{ renderDday(); }catch(_){}
     }
     btn.addEventListener("click",()=>{ show(A.hidden?"audit":"budget"); window.scrollTo({top:0,behavior:"smooth"}); });
-    show(location.hash==="#budget"?"budget":"audit");
-    window.addEventListener("hashchange",()=>show(location.hash==="#budget"?"budget":"audit"));
+    const pick=()=>location.hash==="#budget"?"budget":(location.hash==="#audit"?"audit":(BUDGET_FIRST?"budget":"audit"));
+    show(pick());
+    window.addEventListener("hashchange",()=>show(pick()));
   })();
 
   // ---- 예산화면: 예산안 심사 진행 단계 (BUDGET_STAGE = 현재 단계 번호, 1부터) ----
@@ -851,7 +854,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-21T06:05:46Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-26T00:27:14Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
@@ -941,7 +944,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       if(!j||!j.committees) return;
       for(const [c,v] of Object.entries(j.committees)){ if(BUD_COMS.includes(c)) BUD_SCHED[c]=Object.assign({},BUD_SCHED[c]||{},v); }
       if(j.fetched_at){ const d=new Date(j.fetched_at); const z=n=>String(n).padStart(2,"0");
-        const a=document.getElementById("bschAuto"); if(a){ a.textContent="국회 위원회 일정에서 자동 반영 · "+(d.getMonth()+1)+"/"+d.getDate()+" "+z(d.getHours())+":"+z(d.getMinutes()); a.hidden=false; } }
+        const a=document.getElementById("bschAuto"); if(a){ a.textContent="(참고) 국회 홈페이지에 공지(확정)된 내용을 하루 3번 자동으로 불러오고 있음"; a.hidden=false; } }
       renderBudSched();
     }).catch(()=>{});
   })();
