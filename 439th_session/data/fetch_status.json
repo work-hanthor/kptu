@@ -1,7 +1,7 @@
 {
- "at": "2026-10-26T09:46:49+09:00",
- "ok": false,
- "message": "API 오류 ERROR-290: 인증키가 유효하지 않습니다. 인증키가 없는 경우, 홈페이지에서 인증키를 신청하십시오.",
+ "at": "2026-10-30T13:17:33+09:00",
+ "ok": true,
+ "message": "성공",
  "calls": [
   {
    "params": {
@@ -11,7 +11,60 @@
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-10"
    },
-   "head": "{\"RESULT\":{\"CODE\":\"ERROR-290\",\"MESSAGE\":\"인증키가 유효하지 않습니다. 인증키가 없는 경우, 홈페이지에서 인증키를 신청하십시오.\"}}"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":54},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-10-30\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":4,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"국회운영위원회\",\"LINK_URL2\":\"https://steering.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121453\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대\""
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-11"
+   },
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":11},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-16\",\"MEETING_TIME\":\"14:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":9,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"국방위원회\",\"LINK_URL2\":\"https://defense.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121458\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대\",\"H"
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-12"
+   },
+   "head": "{\"RESULT\":{\"CODE\":\"INFO-200\",\"MESSAGE\":\"해당하는 데이터가 없습니다.\"}}"
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-10",
+    "COMMITTEE_NAME": "예산결산특별위원회"
+   },
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":1},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-10-30\",\"MEETING_TIME\":\"14:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":2,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"예산결산특별위원회\",\"LINK_URL2\":\"https://budget.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121454\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대\","
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-11",
+    "COMMITTEE_NAME": "예산결산특별위원회"
+   },
+   "head": "{\"RESULT\":{\"CODE\":\"INFO-200\",\"MESSAGE\":\"해당하는 데이터가 없습니다.\"}}"
+  },
+  {
+   "params": {
+    "Type": "json",
+    "pIndex": 1,
+    "pSize": 1000,
+    "UNIT_CD": "100022",
+    "MEETING_DATE": "2026-12",
+    "COMMITTEE_NAME": "예산결산특별위원회"
+   },
+   "head": "{\"RESULT\":{\"CODE\":\"INFO-200\",\"MESSAGE\":\"해당하는 데이터가 없습니다.\"}}"
   }
  ]
 }
