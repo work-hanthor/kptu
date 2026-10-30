@@ -103,7 +103,9 @@ def main():
         full = [m for m in ms if "소위" not in m["title"] and is_budget(m["ang"] + m["title"])]
         sub = [m for m in ms if "소위" in m["title"] and (re.search(r"예산|결산", m["title"]) or is_budget(m["ang"]))]
         e = {}
-        votes = [m for m in full if "의결" in m["ang"]]
+        # 상정: 예산 안건이 있는 첫 전체회의 / 의결: 안건에 '의결'이 있거나, 소위 심사가 끝난 뒤 열린 예산 안건 전체회의
+        sub_last = sub[-1]["d"] if sub else None
+        votes = [m for m in full if "의결" in m["ang"] or (sub_last and m["d"] > sub_last)]
         intro = [m for m in full if m not in votes]
         if intro: e["a"] = intro[0]["d"]
         elif full and len(full) > 1: e["a"] = full[0]["d"]
