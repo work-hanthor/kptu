@@ -875,7 +875,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-30T06:54:10Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-10-30T06:57:14Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
@@ -994,7 +994,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
   })();
 
   // ---- 타임라인 (국감·예산 화면 공용) ----
-  function drawTimeline(body){
+  function drawTimeline(body, mergeAudit){
     const start=parse("2026-08-29"), end=parse("2026-12-21"), span=end-start;
     const pos=s=>((parse("2026-"+s)-start)/span*100);
     const posEnd=s=>((parse("2026-"+s)-start+86400000)/span*100);
@@ -1017,6 +1017,8 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
         [{a:"11-30",t:"예산 심사기한(11. 30.)",end:1},{a:"12-02",t:"예산안 의결(12. 2.)",key:1}],
         [{a:"12-09",t:"정기회 종료(12. 9.)"}]]}
     ];
+    // 예산 화면: 국정감사 줄을 없애고 국정감사 막대를 예산 심사 줄 첫 칸에 같은 색·표기로 넣음
+    if(mergeAudit){ const g=LANES.shift(); LANES[0].rows[0].push(...g.rows[0].map(it=>Object.assign({c:g.c},it))); }
     const lines=el("div",{class:"tl-lines"});
     const head=el("div",{class:"tl-mhead"});
     ["09-01","10-01","11-01","12-01"].forEach((m,i)=>{
@@ -1028,7 +1030,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
       const lane=el("div",{class:"lane c-"+L.c,style:"height:"+(L.rows.length*ROW+8)+"px"});
       lane.append(el("div",{class:"lane-name"},L.name));
       L.rows.forEach((row,ri)=>row.forEach(it=>{
-        const cls=["it","c-"+L.c]; if(!it.b) cls.push("pt"); if(it.tent) cls.push("tent"); if(it.end) cls.push("end"); if(it.key) cls.push("key");
+        const cls=["it","c-"+(it.c||L.c)]; if(!it.b) cls.push("pt"); if(it.tent) cls.push("tent"); if(it.end) cls.push("end"); if(it.key) cls.push("key");
         const style="top:"+(ri*ROW+8)+"px;left:"+pos(it.a)+"%;"+(it.b?"width:"+(posEnd(it.b)-pos(it.a))+"%":"width:0");
         lane.append(el("div",{class:cls.join(" "),style,title:it.tip||it.t}, el("div",{class:"mk"}), it.nolb?null:el("span",{class:"lb"},it.t)));
       }));
@@ -1038,7 +1040,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
     if(now>=start&&now<end){ const n=el("div",{class:"tl-now",style:"left:"+((now-start)/span*100)+"%"}); n.append(el("span",{},"오늘("+(now.getMonth()+1)+"/"+now.getDate()+")")); lines.append(n); }
     body.append(lines);
   }
-  drawTimeline($("#tlBody")); drawTimeline($("#tlBody2"));
+  drawTimeline($("#tlBody")); drawTimeline($("#tlBody2"), true);
 
 
   // ---- 오늘·내일 국정감사 ----
