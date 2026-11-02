@@ -1,5 +1,5 @@
 {
- "at": "2026-11-02T10:51:50+09:00",
+ "at": "2026-11-02T20:42:02+09:00",
  "ok": true,
  "message": "성공",
  "calls": [
@@ -21,7 +21,7 @@
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-11"
    },
-   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":13},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-16\",\"MEETING_TIME\":\"14:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":9,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"국방위원회\",\"LINK_URL2\":\"https://defense.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121458\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대\",\"H"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":17},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-16\",\"MEETING_TIME\":\"14:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":9,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"국방위원회\",\"LINK_URL2\":\"https://defense.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121458\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대\",\"H"
   },
   {
    "params": {
@@ -53,7 +53,7 @@
     "MEETING_DATE": "2026-11",
     "COMMITTEE_NAME": "예산결산특별위원회"
    },
-   "head": "{\"RESULT\":{\"CODE\":\"INFO-200\",\"MESSAGE\":\"해당하는 데이터가 없습니다.\"}}"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":2},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-05\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":4,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"예산결산특별위원회\",\"LINK_URL2\":\"https://budget.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121464\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대\","
   },
   {
    "params": {
