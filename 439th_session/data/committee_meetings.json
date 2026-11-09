@@ -1,6 +1,6 @@
 {
- "fetched_at": "2026-11-08T10:52:29+09:00",
- "count": 88,
+ "fetched_at": "2026-11-09T11:01:53+09:00",
+ "count": 93,
  "rows": [
   {
    "MEETING_DATE": "2026-10-01",
@@ -851,19 +851,6 @@
    "MEETING_DATE": "2026-11-09",
    "MEETING_TIME": "10:00",
    "SESS": "제439회국회(정기회)",
-   "DEGREE": 1,
-   "TITLE": "예산결산심사소위원회",
-   "COMMITTEE_NAME": "문화체육관광위원회",
-   "LINK_URL2": "https://cst.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121475",
-   "UNIT_CD": "100022",
-   "UNIT_NM": "제22대",
-   "HR_DEPT_CD": "9700513",
-   "ANGUN": "1. [2221032] 2027년도 예산안(정부)<br>   가. 문화체육관광부 소관<br>   나. 국가유산청 소관<br>2. [2221033] 2027년도 기금운용계획안(정부)<br>   가. 문화체육관광부 소관<br>   나. 국가유산청 소관<br>"
-  },
-  {
-   "MEETING_DATE": "2026-11-09",
-   "MEETING_TIME": "10:00",
-   "SESS": "제439회국회(정기회)",
    "DEGREE": 2,
    "TITLE": "예산결산기금심사소위원회",
    "COMMITTEE_NAME": "법제사법위원회",
@@ -898,6 +885,19 @@
    "UNIT_NM": "제22대",
    "HR_DEPT_CD": "9700049",
    "ANGUN": "1. [2221032] 2027년도 예산안(정부)<br>2. [2221033] 2027년도 기금운용계획안(정부)<br>3. [2221034] 2027년도 임대형 민자사업(BTL) 한도액안(정부)<br>"
+  },
+  {
+   "MEETING_DATE": "2026-11-09",
+   "MEETING_TIME": "10:30",
+   "SESS": "제439회국회(정기회)",
+   "DEGREE": 1,
+   "TITLE": "예산결산심사소위원회",
+   "COMMITTEE_NAME": "문화체육관광위원회",
+   "LINK_URL2": "https://cst.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121475",
+   "UNIT_CD": "100022",
+   "UNIT_NM": "제22대",
+   "HR_DEPT_CD": "9700513",
+   "ANGUN": "1. [2221032] 2027년도 예산안(정부)<br>   가. 문화체육관광부 소관<br>   나. 국가유산청 소관<br>2. [2221033] 2027년도 기금운용계획안(정부)<br>   가. 문화체육관광부 소관<br>   나. 국가유산청 소관<br>"
   },
   {
    "MEETING_DATE": "2026-11-09",
@@ -1096,6 +1096,19 @@
   },
   {
    "MEETING_DATE": "2026-11-12",
+   "MEETING_TIME": "09:30",
+   "SESS": "제439회국회(정기회)",
+   "DEGREE": 4,
+   "TITLE": "전체회의",
+   "COMMITTEE_NAME": "성평등가족위원회",
+   "LINK_URL2": "https://women.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121485",
+   "UNIT_CD": "100022",
+   "UNIT_NM": "제22대",
+   "HR_DEPT_CD": "9700586",
+   "ANGUN": "1. [2221032] 2027년도 예산안(정부)<br>   가. 성평등가족부 소관<br>2. [2221033] 2027년도 기금운용계획안(정부)<br>   가. 양성평등기금<br>   나. 청소년육성기금<br>"
+  },
+  {
+   "MEETING_DATE": "2026-11-12",
    "MEETING_TIME": "10:00",
    "SESS": "제439회국회(정기회)",
    "DEGREE": 9,
@@ -1135,6 +1148,19 @@
   },
   {
    "MEETING_DATE": "2026-11-16",
+   "MEETING_TIME": "10:00",
+   "SESS": "제439회국회(정기회)",
+   "DEGREE": 1,
+   "TITLE": "예산결산심사소위원회",
+   "COMMITTEE_NAME": "성평등가족위원회",
+   "LINK_URL2": "https://women.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121486",
+   "UNIT_CD": "100022",
+   "UNIT_NM": "제22대",
+   "HR_DEPT_CD": "9700586",
+   "ANGUN": "1. [2221032] 2027년도 예산안(정부)<br>   가. 성평등가족부 소관<br>2. [2221033] 2027년도 기금운용계획안(정부)<br>   가. 양성평등기금<br>   나. 청소년육성기금<br>"
+  },
+  {
+   "MEETING_DATE": "2026-11-16",
    "MEETING_TIME": "14:00",
    "SESS": "제439회국회(정기회)",
    "DEGREE": 9,
@@ -1145,6 +1171,45 @@
    "UNIT_NM": "제22대",
    "HR_DEPT_CD": "9700019",
    "ANGUN": "1. [2221032] 2027년도 예산안(정부)<br>   가. 국방부 소관<br>   나. 병무청 소관<br>   다. 방위사업청 소관<br>2. [2221033] 2027년도 기금운용계획안(정부)<br>   가. 국방부 소관<br>3. [2221034] 2027년도 임대형 민자사업(BTL) 한도액안(정부)<br>   가. 국방부 소관<br>4. 법률안 등 상정<br>"
+  },
+  {
+   "MEETING_DATE": "2026-11-17",
+   "MEETING_TIME": "10:00",
+   "SESS": "제439회국회(정기회)",
+   "DEGREE": 5,
+   "TITLE": "전체회의",
+   "COMMITTEE_NAME": "성평등가족위원회",
+   "LINK_URL2": "https://women.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121487",
+   "UNIT_CD": "100022",
+   "UNIT_NM": "제22대",
+   "HR_DEPT_CD": "9700586",
+   "ANGUN": "1. [2221032] 2027년도 예산안(정부)<br>   가. 성평등가족부 소관<br>2. [2221033] 2027년도 기금운용계획안(정부)<br>   가. 양성평등기금<br>   나. 청소년육성기금<br>"
+  },
+  {
+   "MEETING_DATE": "2026-11-18",
+   "MEETING_TIME": "10:00",
+   "SESS": "제439회국회(정기회)",
+   "DEGREE": 10,
+   "TITLE": "공청회",
+   "COMMITTEE_NAME": "국방위원회",
+   "LINK_URL2": "https://defense.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=004&cmtSchSn=10121488",
+   "UNIT_CD": "100022",
+   "UNIT_NM": "제22대",
+   "HR_DEPT_CD": "9700019",
+   "ANGUN": "1. [2220836] 핵추진잠수함사업에 관한 특별법안(유용원의원 대표발의)<br>2. [2221677] 핵추진잠수함 등의 획득·운영 및 안전관리 등 핵추진잠수함 사업에 관한 특별법안(정부)<br>"
+  },
+  {
+   "MEETING_DATE": "2026-11-23",
+   "MEETING_TIME": "10:00",
+   "SESS": "제439회국회(정기회)",
+   "DEGREE": 11,
+   "TITLE": "공청회",
+   "COMMITTEE_NAME": "국방위원회",
+   "LINK_URL2": "https://defense.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=004&cmtSchSn=10121489",
+   "UNIT_CD": "100022",
+   "UNIT_NM": "제22대",
+   "HR_DEPT_CD": "9700019",
+   "ANGUN": "1. [2216355] 국방인공지능법안(유용원의원ㆍ부승찬의원 대표발의)<br>2. [2220937] 국방첨단전력사업에 관한 법률안(김병주의원ㆍ유용원의원 대표발의)<br>"
   }
  ]
 }
