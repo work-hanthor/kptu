@@ -1,5 +1,5 @@
 {
- "at": "2026-11-09T11:01:53+09:00",
+ "at": "2026-11-09T21:09:49+09:00",
  "ok": true,
  "message": "성공",
  "calls": [
@@ -21,7 +21,7 @@
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-11"
    },
-   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":42},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-23\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":11,\"TITLE\":\"공청회\",\"COMMITTEE_NAME\":\"국방위원회\",\"LINK_URL2\":\"https://defense.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=004&cmtSchSn=10121489\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대\",\"H"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":46},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-25\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":5,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"정보위원회\",\"LINK_URL2\":\"https://intelligence.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121491\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22"
   },
   {
    "params": {
