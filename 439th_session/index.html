@@ -306,6 +306,10 @@ h1 .seal{display:inline-grid;place-items:center;width:1.25em;height:1.25em;borde
 .aud-notice ul.dot li{padding-left:14px;text-indent:-14px}
 .aud-notice ul.dot li::before{content:"● ";font-size:10px;vertical-align:1px;color:var(--warn)}
 .aud-notice strong{color:var(--ink)}
+.aud-cols.done{display:block}
+.aud-done{display:flex;align-items:center;justify-content:center;gap:14px;padding:44px 20px;text-align:center;background:var(--teal-soft)}
+.aud-done p{margin:0;font-family:var(--f-display);font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--teal);text-wrap:balance}
+.aud-done-ico{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--teal);color:var(--sheet);font-size:22px;font-weight:700}
 .aud-empty{padding:22px 18px;color:var(--ink-2);font-size:14px;display:flex;flex-direction:column;gap:4px}
 .aud-empty small{color:var(--ink-3);font-size:12.5px}
 @media (max-width:480px){.aud-list li{grid-template-columns:minmax(0,1fr);gap:4px}}
@@ -876,7 +880,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-10-30T06:59:17Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-11-09T00:28:14Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
@@ -1097,6 +1101,9 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
   function renderAudit(){
     const t=AUD_PREVIEW||todayStr(); if(t===audKey) return; audKey=t;
     const box=$("#audCols"); box.textContent="";
+    // 국정감사 기간(10. 30.)이 끝나면 일별 일정표 대신 마무리 안내만 크게 표시
+    if(t>AUDIT_END){ box.classList.add("done"); box.append(el("div",{class:"aud-done"}, el("span",{class:"aud-done-ico","aria-hidden":"true"},"✓"), el("p",{},"2026년 국정감사가 모두 마무리되었습니다"))); return; }
+    box.classList.remove("done");
     [["오늘",t],["내일",addDays(t,1)]].forEach(([nm,k])=>{
       const e=AUDIT[k], items=(e?e.items:[]).concat(ongoingFor(k));
       const d=parse(k);
