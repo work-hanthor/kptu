@@ -106,7 +106,7 @@ def main():
         e = {}
         # 상정: 예산 안건이 있는 첫 전체회의 / 의결: 안건에 '의결'이 있거나, 소위 심사가 끝난 뒤 열린 예산 안건 전체회의
         sub_last = sub[-1]["d"] if sub else None
-        votes = [m for m in full if "의결" in m["ang"] or (sub_last and m["d"] > sub_last)]
+        votes = [m for m in full if "의결" in m["ang"] or (sub_last and m["d"] >= sub_last)]  # 소위 마지막 날 오후 전체회의 의결도 포함
         intro = [m for m in full if m not in votes]
         if intro: e["a"] = intro[0]["d"]
         elif full and len(full) > 1: e["a"] = full[0]["d"]
