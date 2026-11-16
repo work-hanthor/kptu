@@ -455,6 +455,18 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 .bst tr.issrow td{background:var(--paper);text-align:left;white-space:normal;padding:10px 14px 12px 22px;border-bottom:1px solid var(--rule)}
 .bst .issbox b{font-size:12.5px;color:var(--ref)}
 .bst .issbox ul{margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.bst tr.yc.has-sub>td{border-bottom:1px solid var(--rule-2)}
+.bst tr.ycs td{background:var(--seal-soft);text-align:left;white-space:normal;padding:6px 10px 10px;border-bottom:2px solid var(--ink)}
+.ycs-w{display:flex;align-items:center;gap:8px 0;flex-wrap:wrap}
+.ycs-l{flex:0 0 260px;font-weight:700;color:var(--seal);padding-left:14px}
+.ycs-days{display:flex;flex-wrap:wrap;gap:6px}
+.ycs-d{display:inline-flex;flex-direction:column;align-items:center;min-width:66px;padding:3px 8px;border-radius:6px;border:1px solid var(--rule);background:var(--sheet);font-size:12.5px;font-weight:600;line-height:1.3;font-variant-numeric:tabular-nums}
+.ycs-d small{font-size:11px;color:var(--ink-3);font-weight:500}
+.ycs-d.ok{color:var(--ink-3);background:transparent}
+.ycs-d.ok::before{content:"✓ ";font-size:10px}
+.ycs-d.now{background:var(--go-soft);border-color:var(--go);color:var(--go)}
+.ycs-d.now small{color:var(--go)}
+.ycs-d.tbd{border-style:dashed;color:var(--ink-3);background:transparent}
 .bchip{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
 .bchip.up{background:var(--sheet);color:var(--go);border:1px solid var(--go)}
 .bchip.now{background:var(--go);color:var(--on-acc)}
@@ -880,7 +892,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
 
   // ---- 최종 변경 기록 ----
   // 현황판 화면(구성·일정표 등)을 마지막으로 고쳐 게시한 시각. 게시할 때마다 갱신합니다.
-  const PAGE_UPDATED={at:"2026-11-16T07:00:05Z", action:"현황판 수정"};
+  const PAGE_UPDATED={at:"2026-11-16T07:03:21Z", action:"현황판 수정"};
   let lastChange=null;
   function renderLastChange(){
     const l=$("#syncLabel");
@@ -985,6 +997,15 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
         tr.append(el("td",{},chip));
       }
       tb.append(tr);
+      // 예결위 아래: 예산안등조정소위원회 날짜 칸 (국회 일정에서 모은 날짜 v.sd)
+      if(yc&&v&&v.sd&&v.sd.length){
+        tr.classList.add("has-sub");
+        const box=el("div",{class:"ycs-days"});
+        v.sd.forEach((x,k)=>{ const st=t>x?"ok":(t===x?"now":""); const d=parse(x);
+          box.append(el("span",{class:"ycs-d "+st}, (d.getMonth()+1)+"/"+d.getDate()+"("+wd(x)+")", el("small",{},(k+1)+"일차"+(st==="now"?" · 오늘":"")))); });
+        if(!v.c){ const last=parse(v.sd[v.sd.length-1]); const nx=new Date(last.getTime()+86400000*((8-last.getDay())%7||7)); box.append(el("span",{class:"ycs-d tbd"},(nx.getMonth()+1)+"/"+nx.getDate()+"~",el("small",{},"추후 공지"))); }
+        tb.append(el("tr",{class:"ycs"}, el("td",{colspan:"5"}, el("div",{class:"ycs-w"}, el("span",{class:"ycs-l"},"└ 예산안등조정소위원회"), box))));
+      }
       if(iss&&iss.length&&bschOpen.has(c)) tb.append(el("tr",{class:"issrow"},el("td",{colspan:"5"},el("div",{class:"issbox"},el("b",{},c+" 쟁점 사안"),el("ul",{},iss.map(x=>el("li",{},x)))))));
     });
   }
@@ -1023,6 +1044,7 @@ footer{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);paddin
         [{a:"10-06",b:"10-30",t:"국정감사(10. 6. ~ 10. 30, 25일간)",key:1}]]},
       {name:"예산 심사", c:"b", rows:[
         [{a:"09-03",t:"정부 예산안 국회 제출(9. 3.)"},{a:"11-02",b:"11-30",t:"상임위 예비심사·예결위 심사(예정)",tent:1}],
+        [{a:"11-16",b:"11-20",t:"예결위 예산안등조정소위원회(11. 16.~20.)"}],
         [{a:"11-25",b:"11-27",t:"국회의장 예산안 부수법률안 지정(11. 25.~27. 중 하루 예상)",tent:1,end:1}]]},
       {name:"법안심사(본회의)", c:"l", rows:[
         [{a:"09-02",b:"09-02",t:"위원회 법률안 심사(9. 2.)",nolb:1},{a:"09-04",b:"09-06",t:"위원회 법률안 심사(9. 4.~9. 6.)",nolb:1},
