@@ -32,7 +32,7 @@ def yc_extract(ms):
     if ec: e["e"] = rng(ec)
     if ne: e["n"] = rng(ne)
     if ec or ne: e["b"] = rng(ec + ne)
-    if sub: e["s"] = min(sub)
+    if sub: e["s"] = min(sub); e["sd"] = sorted(set(sub))
     if fin: e["c"] = max(fin)
     return e
 
@@ -43,7 +43,7 @@ def yc_compare(ms, plan, today):
     have = {m["d"] for m in ms}
     plan_days = {plan["p"]}
     for k in ("a", "e", "n"):
-        a, b = plan[k]; plan_days |= {a, b}
+        plan_days |= days(plan[k])
     s0 = plan.get("s")
     for m in ms:
         if m["d"] not in plan_days and (not s0 or m["d"] < s0):
@@ -79,6 +79,7 @@ def yc_merge(plan, got):
         if k in got and not (days(got[k]) <= days(plan.get(k))) and not (k == "s" and got[k] >= (plan.get("s") or "")):
             m[k] = got[k]
     if got.get("c"): m["c"] = got["c"]
+    if got.get("sd"): m["sd"] = got["sd"]
     bd = days(m.get("e")) | days(m.get("n"))
     m["b"] = [min(bd), max(bd)] if bd else None
     return {k: v for k, v in m.items() if v}
