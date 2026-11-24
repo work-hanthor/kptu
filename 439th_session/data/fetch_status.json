@@ -1,5 +1,5 @@
 {
- "at": "2026-11-24T05:37:44+09:00",
+ "at": "2026-11-24T15:28:15+09:00",
  "ok": true,
  "message": "성공",
  "calls": [
@@ -21,7 +21,7 @@
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-11"
    },
-   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":132},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-27\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":3,\"TITLE\":\"정보통신방송미디어법안심사소위원회\",\"COMMITTEE_NAME\":\"과학기술정보방송통신위원회\",\"LINK_URL2\":\"https://science.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121509\",\"UNIT_CD\":\"10002"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":136},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-27\",\"MEETING_TIME\":\"10:00\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":8,\"TITLE\":\"전체회의\",\"COMMITTEE_NAME\":\"교육위원회\",\"LINK_URL2\":\"https://edu.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=001&cmtSchSn=10121586\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":\"제22대\",\"HR_D"
   },
   {
    "params": {
