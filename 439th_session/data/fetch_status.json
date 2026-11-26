@@ -1,5 +1,5 @@
 {
- "at": "2026-11-26T13:28:02+09:00",
+ "at": "2026-11-26T22:12:03+09:00",
  "ok": true,
  "message": "성공",
  "calls": [
@@ -21,7 +21,7 @@
     "UNIT_CD": "100022",
     "MEETING_DATE": "2026-11"
    },
-   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":148},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-30\",\"MEETING_TIME\":\"10:30\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":2,\"TITLE\":\"체육관광법안심사소위원회\",\"COMMITTEE_NAME\":\"문화체육관광위원회\",\"LINK_URL2\":\"https://cst.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121593\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":"
+   "head": "{\"nrsldhjpaemrmolla\":[{\"head\":[{\"list_total_count\":149},{\"RESULT\":{\"CODE\":\"INFO-000\",\"MESSAGE\":\"정상 처리되었습니다.\"}}]},{\"row\":[{\"MEETING_DATE\":\"2026-11-30\",\"MEETING_TIME\":\"10:30\",\"SESS\":\"제439회국회(정기회)\",\"DEGREE\":2,\"TITLE\":\"체육관광법안심사소위원회\",\"COMMITTEE_NAME\":\"문화체육관광위원회\",\"LINK_URL2\":\"https://cst.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&cmtCnclDivCd=002&cmtSchSn=10121593\",\"UNIT_CD\":\"100022\",\"UNIT_NM\":"
   },
   {
    "params": {
